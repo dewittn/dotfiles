@@ -1,0 +1,1 @@
+{"title":"Caplocks","rules":[{"description":"Key press","manipulators":[{"type":"basic","from":{"key_code":"caps_lock"},"to":[{"repeat":true,"key_code":"delete_or_backspace","modifiers":[]}]},{"type":"basic","from":{"key_code":"caps_lock"},"to_if_held_down":[{"repeat":false,"key_code":"fn"}]}]}]}

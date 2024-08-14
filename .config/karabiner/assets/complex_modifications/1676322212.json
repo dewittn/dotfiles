@@ -1,0 +1,1 @@
+{"title":"","rules":[{"description":"Right command","manipulators":[{"type":"basic","from":{"key_code":"right_gui"},"to_if_held_down":[{"repeat":false,"key_code":"mission_control"}]}]}]}
