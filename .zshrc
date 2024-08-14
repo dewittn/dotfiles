@@ -1,8 +1,3 @@
-if [[ -f "/opt/homebrew/bin/brew" ]] then
-  # If you're using macOS, you'll want this enabled
-  eval "$(/opt/homebrew/bin/brew shellenv)"
-fi
-
 # Set the directory we want to store zinit and plugins
 ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
 
@@ -43,9 +38,14 @@ eval "$(oh-my-posh init zsh --config $HOME/.config/ohmyposh/nr.yaml)"
 source <(fzf --zsh)
 
 # Load zoxide
-eval "$(zoxide init zsh)"
+eval "$(zoxide init --cmd cd zsh)"
 
 # Source oh-my-zsh custom confs
-for file in ~/.oh-my-zsh/custom/*.zsh; do
+for file in ~/.oh-my-zsh/custom/*.zinit.zsh; do
     source "$file"
 done
+
+# Set atuin as history search
+bindkey '^r' atuin-search
+bindkey '^[[3;9~' vi-beginning-of-line
+bindkey '^[[5;9~' vi-end-of-line
