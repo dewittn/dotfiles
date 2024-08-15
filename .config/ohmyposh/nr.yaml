@@ -6,10 +6,20 @@ blocks:
     alignment: left
     newline: true
     segments:
-      - type: path
+      - type: os
         style: plain
         background: transparent
         foreground: blue
+        template: "{{.Icon}} "
+      - type: session
+        background: transparent
+        foreground: blue
+        style: plain
+        template: "{{ if .SSHSession }} {{ .UserName }}@{{ .HostName }} {{ end }}"
+      - type: path
+        background: transparent
+        foreground: blue
+        style: plain
         template: "{{ .Path }}"
         properties:
           style: full
