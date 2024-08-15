@@ -4,4 +4,6 @@ alias aliased='vim $HOME/.oh-my-zsh/custom/aliases.zsh'
 alias l='eza --icons --git'
 alias la='eza -lah --icons --git'
 alias lt='eza --tree --level=2 --icons --git'
-
+alias z='zellia a'
+alias gt='gittower ./'
+alias reload='source ~/.zshrc'
