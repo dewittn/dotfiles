@@ -9,19 +9,19 @@ blocks:
       - type: os
         style: plain
         background: transparent
-        foreground: blue
         template: "{{.Icon}} "
       - type: session
         background: transparent
         foreground: blue
         style: plain
-        template: "{{ if .SSHSession }} {{ .UserName }}@{{ .HostName }} {{ end }}"
+        template: "{{ if .SSHSession }}  {{ .UserName }}@{{ .HostName }} {{ end }}"
       - type: path
         background: transparent
         foreground: blue
         style: plain
         template: "{{ .Path }}"
         properties:
+          home_icon: "󱂵 ~"
           style: full
       - type: git
         style: plain
@@ -35,6 +35,18 @@ blocks:
           branch_icon: ""
           commit_icon: "@"
           fetch_status: true
+      - type: node
+        style: plain
+        foreground: "#6CA35E"
+        template: " {{ if not .Error }}{{ .Full }}{{ end }}"
+      - type: ruby
+        style: plain
+        foreground: red
+        template: " {{ if not .Error }}{{ .Full }}{{ end }}"
+      - type: php
+        style: plain
+        foreground: "#4063D8"
+        template: "  {{ if not .Error }}{{ .Full }}{{ end }}"
   - type: rprompt
     overflow: hidden
     segments:
