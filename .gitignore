@@ -2,4 +2,6 @@ automatic_backups
 fontforge
 .s3cfg
 ..bfg-report
-known_hosts
+known_hosts*
+id_ed25519
+id_ed25519.pub

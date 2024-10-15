@@ -93,6 +93,18 @@
                                     }
                                 ],
                                 "type": "basic"
+                            },
+                            {
+                                "from": {
+                                    "key_code": "right_gui",
+                                    "modifiers": { "mandatory": ["e"] }
+                                },
+                                "to": [
+                                    {
+                                        "key_code": "f",
+                                        "modifiers": [{ "apple_vendor_keyboard_key_code": "language" }]
+                                    }
+                                ]
                             }
                         ]
                     },
@@ -171,7 +183,8 @@
                 }
             ],
             "name": "Default profile",
-            "selected": true
+            "selected": true,
+            "virtual_hid_keyboard": { "keyboard_type_v2": "ansi" }
         }
     ]
 }
