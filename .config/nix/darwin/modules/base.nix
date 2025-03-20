@@ -5,7 +5,7 @@
     [ 
       pkgs.alacritty
       pkgs.git
-      pkgs.neofetch
+      pkgs.fastfetch
       pkgs.tailscale
       pkgs.tailscaled
       pkgs.vim
@@ -23,11 +23,11 @@
     ];
     taps = [
     ];
-    masApps = {
-      Things = 904280696;
-      Drafts = 1435957248;
-      "1Password for Safari" = 1569813296;
-    };
+    # masApps = {
+    #   Things = 904280696;
+    #   Drafts = 1435957248;
+    #   "1Password for Safari" = 1569813296;
+    # };
   };
   
   system.activationScripts.applications.text = 
@@ -69,9 +69,9 @@
     screencapture.location = "~/Pictures/screenshots";
     screensaver.askForPasswordDelay = 10;
     dock.persistent-apps = [
-      "/Applications/Things3.app"
+      # "/Applications/Things3.app"
       "/Applications/Calendar.app"
-      "/Applications/Drafts.app"
+      # "/Applications/Drafts.app"
       "/Applications/Safari.app"
       "/Applications/Mail.app"
       "/Applications/Music.app"
