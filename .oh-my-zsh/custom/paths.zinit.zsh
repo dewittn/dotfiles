@@ -29,3 +29,9 @@ if [ -d $HOME/go/bin ]
 then
   export PATH="$PATH:$HOME/go/bin"
 fi
+
+if [ -d $HOME/.lmstudio/bin ]
+then
+  # Added by LM Studio CLI (lms)
+  export PATH="$PATH:$HOME/.lmstudio/bin"
+fi
