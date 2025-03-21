@@ -1,4 +1,4 @@
-{ pkgs, lib, config, ... }: {
+{ pkgs, lib, config, self, ... }: {
 
   options = {
     baseModule.enable = lib.mkEnableOption "enables baseModule";
@@ -7,14 +7,43 @@
   config = lib.mkIf config.baseModule.enable {
     # List packages installed in system profile. To search by name, run:
     # $ nix-env -qaP | grep wget
+    nixpkgs.config.allowUnfree = true;
+    nixpkgs.overlays = [
+      inputs.templ.overlays.default
+    ];
+    
     environment.systemPackages =
       [ 
         pkgs.alacritty
-        pkgs.git
         pkgs.fastfetch
+        pkgs.git
         pkgs.tailscale
         pkgs.vim
+        pkgs.zoxide
       ];
+    
+    nix-homebrew = {
+      # Install Homebrew under the default prefix
+      enable = true;
+    
+      # Apple Silicon Only: Also install Homebrew under the default Intel prefix for Rosetta 2
+      enableRosetta = true;
+    
+      # User owning the Homebrew prefix
+      user = "dewittn";
+    
+      # Optional: Declarative tap management
+      taps = {
+        "homebrew/homebrew-core" = homebrew-core;
+        "homebrew/homebrew-cask" = homebrew-cask;
+        "homebrew/homebrew-bundle" = homebrew-bundle;
+      };
+    
+      # Optional: Enable fully-declarative tap management
+      #
+      # With mutableTaps disabled, taps can no longer be added imperatively with `brew tap`.
+      mutableTaps = false;
+    };
     
     homebrew = {
       enable = true;
@@ -34,6 +63,14 @@
       #   "1Password for Safari" = 1569813296;
       # };
     };
+    
+    services.nix-daemon.enable = true;
+    nix.settings.experimental-features = "nix-command flakes";
+    programs.zsh.enable = true;  # default shell on catalina
+    system.configurationRevision = self.rev or self.dirtyRev or null;
+    system.stateVersion = 4;
+    nixpkgs.hostPlatform = "aarch64-darwin";
+    security.pam.enableSudoTouchIdAuth = true;
     
     system.activationScripts.applications.text = 
     let
@@ -55,9 +92,6 @@
           ${pkgs.mkalias}/bin/mkalias "$src" "/Applications/Nix Apps/$app_name"
         done
       '';
-    
-    # Necessary for using flakes on this system.
-    nix.settings.experimental-features = "nix-command flakes";
     
     # Set Git commit hash for darwin-version.
     # system.configurationRevision = self.rev or self.dirtyRev or null;
