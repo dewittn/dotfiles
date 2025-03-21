@@ -12,9 +12,10 @@
     # Build darwin flake using:
     # $ darwin-rebuild build --flake .#rcoto
     darwinConfigurations."ndewitt" = nix-darwin.lib.darwinSystem {
-      modules = [ ./modules/base.nix ];
+      modules = [ ./darwinModules ];
       # modules = [ base dev ];
     };
+    
     darwinConfigurations."rcoto" = nix-darwin.lib.darwinSystem {
       modules = [ ./modules/base.nix ];
     };
