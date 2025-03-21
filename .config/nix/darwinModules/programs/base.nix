@@ -1,5 +1,5 @@
-{self, nixpkgs, nix-homebrew, homebrew-core, homebrew-cask, homebrew-bundle, ... }:
-{ pkgs, lib, config, ... }: {
+# {self, nixpkgs, nix-homebrew, homebrew-core, homebrew-cask, homebrew-bundle, ... }:
+{ pkgs, lib, config, inputs, ... }: {
 
   options = {
     baseModule.enable = lib.mkEnableOption "enables baseModule";
@@ -23,7 +23,7 @@
         pkgs.zoxide
       ];
     
-    nix-homebrew = {
+    inputs.nix-homebrew = {
       # Install Homebrew under the default prefix
       enable = true;
     
