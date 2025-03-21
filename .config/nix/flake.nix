@@ -31,7 +31,11 @@
       modules = [ ./darwinModules ];
       # modules = [ base dev ];
       
+<<<<<<< HEAD
       nix-homebrew = {inputs, ...}: {
+=======
+      nix-homebrew = {
+>>>>>>> 0d9ee65 (move inputs out of sub-modules)
         # Install Homebrew under the default prefix
         enable = true;
       
@@ -43,9 +47,15 @@
       
         # Optional: Declarative tap management
         taps = {
+<<<<<<< HEAD
           "homebrew/homebrew-core" = inputs.homebrew-core;
           "homebrew/homebrew-cask" = inputs.homebrew-cask;
           "homebrew/homebrew-bundle" = inputs.homebrew-bundle;
+=======
+          "homebrew/homebrew-core" = homebrew-core;
+          "homebrew/homebrew-cask" = homebrew-cask;
+          "homebrew/homebrew-bundle" = homebrew-bundle;
+>>>>>>> 0d9ee65 (move inputs out of sub-modules)
         };
       
         # Optional: Enable fully-declarative tap management
