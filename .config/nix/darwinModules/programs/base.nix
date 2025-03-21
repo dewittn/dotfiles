@@ -1,4 +1,4 @@
-{self, nix-homebrew, homebrew-core, homebrew-cask, homebrew-bundle,}:
+{self, nixpkgs, nix-homebrew, homebrew-core, homebrew-cask, homebrew-bundle, ... }:
 { pkgs, lib, config, ... }: {
 
   options = {
