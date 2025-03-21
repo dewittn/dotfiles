@@ -20,6 +20,7 @@
         pkgs.tailscale
         pkgs.vim
         pkgs.zoxide
+        pkgs.oh-my-posh
       ];
     
     homebrew = {
