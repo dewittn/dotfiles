@@ -2,7 +2,7 @@
 
   options = {
     baseModule.enable = lib.mkEnableOption "enables baseModule";
-  }
+  };
   
   config = lib.mkIf config.baseModule.enable {
     # List packages installed in system profile. To search by name, run:
