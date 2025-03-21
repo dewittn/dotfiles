@@ -18,7 +18,7 @@
     };
   };
 
-  outputs = inputs@{ self, nix-darwin, nix-homebrew, homebrew-core, homebrew-cask, homebrew-bundle, ... }:
+  outputs = inputs@{ self, nix-darwin, nix-homebrew, homebrew-core, homebrew-cask, ... }:
   {
     # Build darwin flake using:
     # $ darwin-rebuild build --flake .#rcoto
