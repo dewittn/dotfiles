@@ -23,7 +23,7 @@
         pkgs.zoxide
       ];
     
-    inputs.nix-homebrew = {
+    inputs.nix-homebrew = {inputs, ...}: {
       # Install Homebrew under the default prefix
       enable = true;
     
