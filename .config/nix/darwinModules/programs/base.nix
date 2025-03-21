@@ -13,7 +13,6 @@
         pkgs.git
         pkgs.fastfetch
         pkgs.tailscale
-        pkgs.tailscaled
         pkgs.vim
       ];
     
