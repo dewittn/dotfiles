@@ -1,7 +1,7 @@
 { pkgs, lib, config, ... }: {
 
   options = {
-    baseModule.enable = lib.mkEnableOption "enables baseModule"
+    baseModule.enable = lib.mkEnableOption "enables baseModule";
   }
   
   config = lib.mkIf config.baseModule.enable {
