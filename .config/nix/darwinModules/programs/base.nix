@@ -75,13 +75,13 @@
       screensaver.askForPasswordDelay = 10;
       dock.persistent-apps = [
         # "/Applications/Things3.app"
-        "/Applications/Calendar.app"
+        "/System/Applications/Calendar.app"
         # "/Applications/Drafts.app"
-        "/Applications/Safari.app"
-        "/Applications/Mail.app"
-        "/Applications/Music.app"
-        "/Applications/App Store.app"
-        "/Applications/System Settings.app"
+        "/System/Applications/Safari.app"
+        "/System/Applications/Mail.app"
+        "/System/Applications/Music.app"
+        "/System/Applications/App Store.app"
+        "/System/Applications/System Settings.app"
       ];
     };
     #networking.hostName = "rcoto"
