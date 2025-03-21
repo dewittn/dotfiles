@@ -27,6 +27,7 @@
     # Build darwin flake using:
     # $ darwin-rebuild build --flake .#rcoto
     darwinConfigurations."ndewitt" = nix-darwin.lib.darwinSystem {
+      specialArgs = { inherit inputs; };
       modules = [ ./darwinModules ];
       # modules = [ base dev ];
     };
