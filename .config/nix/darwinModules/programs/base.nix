@@ -83,7 +83,7 @@
         "/Applications/Music.app"
         "/Applications/App Store.app"
         "/Applications/System Settings.app"
-      ]
+      ];
     };
     #networking.hostName = "rcoto"
     
