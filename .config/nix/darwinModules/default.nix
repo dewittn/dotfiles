@@ -2,7 +2,7 @@
   
   specialArgs = { inherit inputs; };
   imports = [
-    (import ./programs/base.nix inputs)
+    ./programs/base.nix 
     # ./programs/photography.nix
     # ./programs/web-dev.nix
     # ./programs/writing.nix
