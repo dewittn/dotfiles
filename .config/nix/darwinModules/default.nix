@@ -1,7 +1,7 @@
-{ pkgs, lib, ... }: {
+{ pkgs, lib, inputs, ... }: {
 
   imports = [
-    ./programs/base.nix
+    ./programs/base.nix inputs
     # ./programs/photography.nix
     # ./programs/web-dev.nix
     # ./programs/writing.nix
