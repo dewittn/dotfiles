@@ -48,7 +48,7 @@
     # $ darwin-rebuild changelog
     system.stateVersion = 4;
     # nixpkgs.hostPlatform = "aarch64-darwin";
-    security.pam.enableSudoTouchIdAuth = true;
+    security.pam.services.sudo_local.touchIdAuth = true;
     
     system.activationScripts.applications.text = 
     let
