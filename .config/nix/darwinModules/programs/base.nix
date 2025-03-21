@@ -67,7 +67,13 @@
     services.nix-daemon.enable = true;
     nix.settings.experimental-features = "nix-command flakes";
     programs.zsh.enable = true;  # default shell on catalina
+    
+    # Set Git commit hash for darwin-version.
+    # system.configurationRevision = self.rev or self.dirtyRev or null;
     system.configurationRevision = self.rev or self.dirtyRev or null;
+    
+    # Used for backwards compatibility, please read the changelog before changing.
+    # $ darwin-rebuild changelog
     system.stateVersion = 4;
     nixpkgs.hostPlatform = "aarch64-darwin";
     security.pam.enableSudoTouchIdAuth = true;
@@ -92,14 +98,7 @@
           ${pkgs.mkalias}/bin/mkalias "$src" "/Applications/Nix Apps/$app_name"
         done
       '';
-    
-    # Set Git commit hash for darwin-version.
-    # system.configurationRevision = self.rev or self.dirtyRev or null;
-    
-    # Used for backwards compatibility, please read the changelog before changing.
-    # $ darwin-rebuild changelog
-    system.stateVersion = 5;
-    
+
     system.defaults = {
       NSGlobalDomain.AppleICUForce24HourTime = false;
       NSGlobalDomain.AppleShowAllExtensions = true;

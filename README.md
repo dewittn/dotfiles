@@ -29,5 +29,5 @@ nix-shell -p stow --run 'stow .'
 ## Install Nix-Darwin
 
 ```
-nix run nix-darwin -- switch --flake .config/nix#<hostname>
+nix --extra-experimental-features 'nix-command flakes' run nix-darwin -- switch --flake .config/nix#<hostname>
 ```
