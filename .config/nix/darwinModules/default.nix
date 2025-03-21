@@ -1,5 +1,6 @@
 { pkgs, lib, inputs, ... }: {
-
+  
+  specialArgs = { inherit inputs; };
   imports = [
     (import ./programs/base.nix inputs)
     # ./programs/photography.nix
