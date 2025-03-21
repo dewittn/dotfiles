@@ -35,9 +35,9 @@
     
       # Optional: Declarative tap management
       taps = {
-        "homebrew/homebrew-core" = homebrew-core;
-        "homebrew/homebrew-cask" = homebrew-cask;
-        "homebrew/homebrew-bundle" = homebrew-bundle;
+        "homebrew/homebrew-core" = inputs.homebrew-core;
+        "homebrew/homebrew-cask" = inputs.homebrew-cask;
+        "homebrew/homebrew-bundle" = inputs.homebrew-bundle;
       };
     
       # Optional: Enable fully-declarative tap management
