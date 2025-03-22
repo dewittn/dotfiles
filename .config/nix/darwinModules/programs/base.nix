@@ -88,7 +88,7 @@
       screencapture.location = "~/Pictures/screenshots";
       screensaver.askForPasswordDelay = 10;
       spaces.spans-displays = true;
-      NSGlobalDomain."com.apple.swipescrolldirection"= 1;
+      NSGlobalDomain."com.apple.swipescrolldirection"= true;
       dock.persistent-apps = [
         # "/Applications/Things3.app"
         "/System/Applications/Calendar.app"
