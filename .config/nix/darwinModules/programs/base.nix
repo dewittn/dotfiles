@@ -79,6 +79,7 @@
         done
       '';
 
+    time.timeZone = "America/New_York";
     system.defaults = {
       NSGlobalDomain.AppleICUForce24HourTime = false;
       NSGlobalDomain.AppleShowAllExtensions = true;
@@ -86,9 +87,8 @@
       finder.FXPreferredViewStyle = "clmv";
       screencapture.location = "~/Pictures/screenshots";
       screensaver.askForPasswordDelay = 10;
-      system.defaults.spaces.spans-displays = true;
-      system.defaults.NSGlobalDomain."com.apple.swipescrolldirection"= 1;
-      time.timeZone = "America/New_York";
+      spaces.spans-displays = true;
+      NSGlobalDomain."com.apple.swipescrolldirection"= 1;
       dock.persistent-apps = [
         # "/Applications/Things3.app"
         "/System/Applications/Calendar.app"
