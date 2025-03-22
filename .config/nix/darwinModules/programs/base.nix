@@ -19,6 +19,8 @@
         fastfetch
         fzf
         git
+        google-chrome
+        karabiner-elements
         oh-my-posh
         tailscale
         vim
@@ -35,6 +37,7 @@
         "alfred"
         "firefox"
         "1password"
+        "Setapp"
       ];
       taps = [
       ];
@@ -83,6 +86,9 @@
       finder.FXPreferredViewStyle = "clmv";
       screencapture.location = "~/Pictures/screenshots";
       screensaver.askForPasswordDelay = 10;
+      system.defaults.spaces.spans-displays = true;
+      system.defaults.NSGlobalDomain."com.apple.swipescrolldirection"= 1;
+      time.timeZone = "America/New_York";
       dock.persistent-apps = [
         # "/Applications/Things3.app"
         "/System/Applications/Calendar.app"
@@ -91,7 +97,10 @@
         "/System/Applications/Mail.app"
         "/System/Applications/Music.app"
         "/System/Applications/App Store.app"
+        "/System/Applications/Maps.app"
+        "/System/Applications/Photos.app"
         "/System/Applications/System Settings.app"
+        "/System/Applications/iPhone Mirroring.app"
       ];
     };
     #networking.hostName = "rcoto"
