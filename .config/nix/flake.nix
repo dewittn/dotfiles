@@ -19,14 +19,14 @@
     };
   };
 
-  outputs = inputs@{ self, nix-darwin, darwin, nix-homebrew, homebrew-core, homebrew-cask,  ... }:
+  outputs = inputs@{ self, nix-darwin, nix-homebrew, homebrew-core, homebrew-cask,  ... }:
   {
     # Build darwin flake using:
     # $ darwin-rebuild build --flake .#rcoto
     darwinConfigurations."ndewitt" = nix-darwin.lib.darwinSystem {
       specialArgs = { 
         inherit (inputs) self; 
-        inherit (inputs) darwin; 
+        inherit (inputs) nix-darwin; 
         inherit (inputs) nix-homebrew; 
         inherit (inputs) homebrew-core; 
         inherit (inputs) homebrew-cask; 
