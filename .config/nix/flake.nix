@@ -44,7 +44,7 @@
             enableRosetta = true;
         
             # User owning the Homebrew prefix
-            user = "yourname";
+            user = "dewittn";
         
             # Optional: Declarative tap management
             taps = {
