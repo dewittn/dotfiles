@@ -12,15 +12,18 @@
     #   inputs.templ.overlays.default
     # ];
     
-    environment.systemPackages =
+    environment.systemPackages = with pkgs;
       [ 
-        pkgs.alacritty
-        pkgs.fastfetch
-        pkgs.git
-        pkgs.tailscale
-        pkgs.vim
-        pkgs.zoxide
-        pkgs.oh-my-posh
+        alacritty
+        atuin
+        fastfetch
+        fzf
+        git
+        oh-my-posh
+        tailscale
+        vim
+        zellij
+        zoxide
       ];
     
     homebrew = {
@@ -84,7 +87,7 @@
         # "/Applications/Things3.app"
         "/System/Applications/Calendar.app"
         # "/Applications/Drafts.app"
-        "/System/Applications/Safari.app"
+        "/Applications/Safari.app"
         "/System/Applications/Mail.app"
         "/System/Applications/Music.app"
         "/System/Applications/App Store.app"
