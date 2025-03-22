@@ -1,4 +1,4 @@
-{ pkgs, lib, config, inputs, ... }: {
+{ pkgs, lib, config, darwin, nix-homebrew, homebrew-core, homebrew-cask, ... }: {
 
   options = {
     baseModule.enable = lib.mkEnableOption "enables baseModule";
@@ -44,12 +44,13 @@
     
     nix.settings.experimental-features = "nix-command flakes";
     programs.zsh.enable = true;  # default shell on catalina
+    security.pam.services.sudo_local.touchIdAuth = true;
     
     # Used for backwards compatibility, please read the changelog before changing.
     # $ darwin-rebuild changelog
     system.stateVersion = 5;
-    # nixpkgs.hostPlatform = "aarch64-darwin";
-    security.pam.services.sudo_local.touchIdAuth = true;
+    # Set Git commit hash for darwin-version.
+    system.configurationRevision = self.rev or self.dirtyRev or null;
     
     system.activationScripts.applications.text = 
     let
