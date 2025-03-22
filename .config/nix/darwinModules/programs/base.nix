@@ -21,6 +21,7 @@
         git
         google-chrome
         karabiner-elements
+        mkalias
         oh-my-posh
         tailscale
         vim
