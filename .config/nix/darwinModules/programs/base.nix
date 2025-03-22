@@ -1,4 +1,4 @@
-{ pkgs, lib, config, darwin, nix-homebrew, homebrew-core, homebrew-cask, ... }: {
+{ pkgs, lib, config, self, nix-homebrew, homebrew-core, homebrew-cask, ... }: {
 
   options = {
     baseModule.enable = lib.mkEnableOption "enables baseModule";
