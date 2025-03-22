@@ -2,6 +2,16 @@
 
 ## Install x-code
 
+```
+xcode-select --install
+```
+
+## Install Rosetta
+
+```
+softwareupdate --install-rosetta
+```
+
 ## Install Nix
 
 ```
