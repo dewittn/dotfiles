@@ -17,12 +17,14 @@
         alacritty
         atuin
         fastfetch
+        eza
         fzf
         git
         google-chrome
         karabiner-elements
         mkalias
         oh-my-posh
+        stow
         tailscale
         vim
         zellij
@@ -35,17 +37,91 @@
         "mas"
       ];
       casks = [
-        "alfred"
-        "firefox"
-        "1password"
-        "Setapp"
+        {
+          name = "alfred";
+          greedy = true;
+        }
+        {
+          name = "firefox";
+          greedy = true;
+        }
+        {
+          name = "1password";
+          greedy = true;
+        }
+        {
+          name = "Setapp";
+          greedy = true;
+        }
+        {
+          name = "nextcloud";
+          greedy = true;
+        }
+        {
+          name = "NextCloud Talk";
+          greedy = true;
+        }
+        {
+          name = "hazel";
+          greedy = true;
+        }
+        {
+          name = "textexpander";
+          greedy = true;
+        }
+        {
+          name = "zoom";
+          greedy = true;
+        }
+        {
+          name = "moom";
+          greedy = true;
+        }
+        {
+          name = "grammarly-desktop";
+          greedy = true;
+        }
+        {
+          name = "bunch";
+          greedy = true;
+        }
+        {
+          name = "thingsmacsandboxhelper";
+          greedy = true;
+        }
       ];
       taps = [
       ];
       # masApps = {
+      ## Base Apps (Installed on all systems)
       #   Things = 904280696;
       #   Drafts = 1435957248;
       #   "1Password for Safari" = 1569813296;
+      #   "Kagi for Safari" = 1622835804;
+      
+      ## Media Apps
+      #   "Pixelmator Pro" = 1289583905;
+      
+      ## Personal Apps
+      #   Portal = 1436994560;
+      #   "Paprika Recipe Manager 3" = 1303222628;
+      
+      ## Programing Apps
+      #   Boop = 1518425043;
+      #   "Data Jar" = 1453273600;
+      #   "Screens 5" = 1663047912;
+
+      ## Reading Apps
+      #   "Save to Matter" = 1548677272;
+      #   Kindle = 302584613;
+
+
+
+      ##  Apple Apps
+      #   iMovie = 408981434;
+      #   Numbers = 409203825;
+      #   Keynote = 409183694;
+      #   Pages = 409201541;
       # };
     };
     
