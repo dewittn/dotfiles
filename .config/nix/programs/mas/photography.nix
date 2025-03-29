@@ -1,7 +1,7 @@
 { pkgs, lib, config, ... }: {
 
   options = {
-    photograghyMasModule.enable = lib.mkEnableOption "enables photograghyMasModule";
+    photographyMasModule.enable = lib.mkEnableOption "enables photograghyMasModule";
   };
 
   config = lib.mkIf config.photograghyMasModule.enable {
