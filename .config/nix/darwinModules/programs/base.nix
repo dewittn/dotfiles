@@ -23,6 +23,7 @@
         google-chrome
         karabiner-elements
         mkalias
+        nextcloud-talk-desktop
         oh-my-posh
         stow
         tailscale
@@ -55,10 +56,6 @@
         }
         {
           name = "nextcloud";
-          greedy = true;
-        }
-        {
-          name = "NextCloud Talk";
           greedy = true;
         }
         {
