@@ -22,8 +22,8 @@
   outputs = inputs@{ self, nix-darwin, nix-homebrew, homebrew-core, homebrew-cask,  ... }:
   {
     # Build darwin flake using:
-    # $ darwin-rebuild build --flake .#rcoto
-    darwinConfigurations."ndewitt" = nix-darwin.lib.darwinSystem {
+    # $ darwin-rebuild build --flake .#desktop
+    darwinConfigurations."desktop" = nix-darwin.lib.darwinSystem {
       specialArgs = { 
         inherit (inputs) self; 
         inherit (inputs) nix-darwin; 
@@ -62,7 +62,7 @@
       
     };
     
-    darwinConfigurations."rcoto" = nix-darwin.lib.darwinSystem {
+    darwinConfigurations."server" = nix-darwin.lib.darwinSystem {
       modules = [ ./modules/base.nix ];
     };
   };
