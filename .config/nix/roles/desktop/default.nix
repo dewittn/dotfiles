@@ -7,4 +7,5 @@
 
   baseModule.enable = true;
   programmingModule.enable = true;
+  masModule.enable = true;
 }

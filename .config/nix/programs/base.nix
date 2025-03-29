@@ -88,37 +88,6 @@
       ];
       taps = [
       ];
-      # masApps = {
-      ## Base Apps (Installed on all systems)
-      #   Things = 904280696;
-      #   Drafts = 1435957248;
-      #   "1Password for Safari" = 1569813296;
-      #   "Kagi for Safari" = 1622835804;
-      
-      ## Media Apps
-      #   "Pixelmator Pro" = 1289583905;
-      
-      ## Personal Apps
-      #   Portal = 1436994560;
-      #   "Paprika Recipe Manager 3" = 1303222628;
-      
-      ## Programing Apps
-      #   Boop = 1518425043;
-      #   "Data Jar" = 1453273600;
-      #   "Screens 5" = 1663047912;
-
-      ## Reading Apps
-      #   "Save to Matter" = 1548677272;
-      #   Kindle = 302584613;
-
-
-
-      ##  Apple Apps
-      #   iMovie = 408981434;
-      #   Numbers = 409203825;
-      #   Keynote = 409183694;
-      #   Pages = 409201541;
-      # };
     };
     
     nix.settings.experimental-features = "nix-command flakes";

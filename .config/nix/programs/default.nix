@@ -2,11 +2,11 @@
   
   imports = [
     ./base.nix
-    ./programing.nix
-    # ./programs/photography.nix
-    # ./programs/writing.nix
+    ./pkgs/programing.nix
+    ./mas
   ];
 
   baseModule.enable = lib.mkDefault true;
-  programmingModule.enable = lib.mkDefault false;
+  programmingPkgsModule.enable = lib.mkDefault false;
+  masModule.enable = lib.mkDefault false;
 }

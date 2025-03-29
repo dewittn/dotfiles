@@ -1,5 +1,6 @@
 { pkgs, lib, config, ... }: {
   
+  
   options = {
     writtingMasModule.enable = lib.mkEnableOption "enables writtingMasModule";
   };
@@ -7,14 +8,19 @@
   config = lib.mkIf config.writtingMasModule.enable {
     environment.systemPackages.homebrew.masApps = 
       {
-        ## Writing Apps
-        Bear = 1091189122;
-        Ulysses = 1225570693;
-        "iA Writer" = 775737590;
-        "Highland 2" = 1171820258;
-        "Story Planner" = 1290342643;
-        "Grammarly for Safari" = 1462114288;
+        ## Base Apps (Installed on all systems)
+        Things = 904280696;
+        Drafts = 1435957248;
+        "1Password for Safari" = 1569813296;
+        "Kagi for Safari" = 1622835804;
+        
+        ##  Apple Apps
+        iMovie = 408981434;
+        Numbers = 409203825;
+        Keynote = 409183694;
+        Pages = 409201541;
       };
     };
+  };
   
 }

@@ -6,5 +6,5 @@
   ];
 
   baseModule.enable = true;
-  programmingPkgsModule.enable = true;
+  programmingModule.enable = true;
 }
