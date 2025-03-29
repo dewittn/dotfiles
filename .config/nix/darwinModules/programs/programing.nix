@@ -13,6 +13,6 @@
         git
         linode-cli
       ];
-  }
+  };
 
 };
