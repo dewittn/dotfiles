@@ -3,12 +3,13 @@
   # $ nix-env -qaP | grep wget
   environment.systemPackages.homebrew.masApps = 
     {
+      ## Writing Apps
+      Bear = 1091189122;
       Ulysses = 1225570693;
-      Grammarly_Safari = 1462114288;
-      Story_Planner = 1290342643
-      Highland = 1171820258
-      Bear = 1091189122
-      iA_Writer = 775737590
+      "iA Writer" = 775737590;
+      "Highland 2" = 1171820258;
+      "Story Planner" = 1290342643;
+      "Grammarly for Safari" = 1462114288;
     };
   };
 }
