@@ -1,5 +1,9 @@
 # Getting started
 
+## Sign Into App Store
+
+Open the Mac App Store and sign in.
+
 ## Install x-code
 
 ```
@@ -16,12 +20,6 @@ softwareupdate --install-rosetta
 
 ```
 curl -L https://nixos.org/nix/install | sh
-```
-
-## Install Homebrew
-
-```
-/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 ```
 
 ## Download dotfiles
