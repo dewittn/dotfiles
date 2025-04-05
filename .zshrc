@@ -26,7 +26,6 @@ zinit load atuinsh/atuin
 # Add in snippets
 zinit snippet OMZP::git
 zinit snippet OMZP::sudo
-#zinit snippet OMZP::archlinux
 #zinit snippet OMZP::aws
 #zinit snippet OMZP::kubectl
 #zinit snippet OMZP::kubectx
@@ -50,8 +49,3 @@ eval "$(zoxide init --cmd cd zsh)"
 for file in ~/.oh-my-zsh/custom/*.zinit.zsh; do
     source "$file"
 done
-
-# Set atuin as history search
-bindkey '^r' atuin-search
-bindkey '^[[3;9~' vi-beginning-of-line
-bindkey '^[[5;9~' vi-end-of-line
