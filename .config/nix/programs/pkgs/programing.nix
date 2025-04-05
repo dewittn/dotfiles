@@ -13,7 +13,6 @@
         git
         ollama
         linode-cli
-        lmstudio
       ];
   };
 
