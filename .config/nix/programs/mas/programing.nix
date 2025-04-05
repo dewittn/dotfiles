@@ -1,10 +1,10 @@
 { pkgs, lib, config, homebrew, ... }: {
 
   options = {
-    programingMasModule.enable = lib.mkEnableOption "enables programingMasModule";
+    programmingMasModule.enable = lib.mkEnableOption "enables programmingMasModule";
   };
 
-  config = lib.mkIf config.programingMasModule.enable {      
+  config = lib.mkIf config.programmingMasModule.enable {      
     environment.systemPackages.homebrew.masApps = {
         Boop = 1518425043;
         "Data Jar" = 1453273600;
