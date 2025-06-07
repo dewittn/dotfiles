@@ -8,12 +8,10 @@ fi
 if [ -f /opt/homebrew/bin/brew ]
 then
   eval "$(/opt/homebrew/bin/brew shellenv)"
-fi
-
 ## Add homebrew to $PATH (intel)
-if [ -f /usr/local/bin/brew ]
+elif [ -f /usr/local/bin/brew ]
 then
-  eval "$(/usr/local/bin/brew shellenv)"
+eval "$(/usr/local/bin/brew shellenv)"
 fi
 
 ## Add homebrew node@18 to $PATH
@@ -34,4 +32,9 @@ if [ -d $HOME/.lmstudio/bin ]
 then
   # Added by LM Studio CLI (lms)
   export PATH="$PATH:$HOME/.lmstudio/bin"
+fi
+
+if [ -d /Volumes/Extended/ollama ]
+then
+  export OLLAMA_MODELS="/Volumes/Extended/ollama"
 fi
