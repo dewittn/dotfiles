@@ -24,12 +24,13 @@ zinit light Aloxaf/fzf-tab
 zinit load atuinsh/atuin
 
 # Add in snippets
+zinit snippet OMZP::ansible
+zinit snippet OMZP::docker-compose
+zinit snippet OMZP::gh
 zinit snippet OMZP::git
-zinit snippet OMZP::sudo
-#zinit snippet OMZP::aws
-#zinit snippet OMZP::kubectl
-#zinit snippet OMZP::kubectx
+zinit snippet OMZP::gitignore
 zinit snippet OMZP::command-not-found
+zinit snippet OMZP::sudo
 
 # Load completions
 autoload -Uz compinit && compinit
@@ -49,3 +50,7 @@ eval "$(zoxide init --cmd cd zsh)"
 for file in ~/.oh-my-zsh/custom/*.zinit.zsh; do
     source "$file"
 done
+# Added by LM Studio CLI (lms)
+export PATH="$PATH:/Users/dewittn/.lmstudio/bin"
+# End of LM Studio CLI section
+
