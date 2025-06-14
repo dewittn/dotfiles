@@ -7,6 +7,7 @@ alias lt='eza --tree --level=2 --icons --git'
 alias z='zellia a'
 alias gt='gittower ./'
 alias reload='source ~/.zshrc'
+alias asr='atuin scripts run'
 
 function gi() { curl -sL https://www.toptal.com/developers/gitignore/api/$@ ;}
 
