@@ -11,7 +11,7 @@ then
 ## Add homebrew to $PATH (intel)
 elif [ -f /usr/local/bin/brew ]
 then
-eval "$(/usr/local/bin/brew shellenv)"
+  eval "$(/usr/local/bin/brew shellenv)"
 fi
 
 ## Add homebrew node@18 to $PATH
