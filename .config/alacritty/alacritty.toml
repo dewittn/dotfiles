@@ -2,12 +2,12 @@
 TERM = "xterm-256color"
 
 [window]
-dimensions= { columns = 180, lines = 40 }
+dimensions = { columns = 180, lines = 40 }
 decorations = "transparent"
-opacity = 0.9
+opacity = 0.5
 blur = true
-startup_mode = "Windowed"
-padding = {x=10, y=30}
+startup_mode = "Fullscreen"
+padding = { x = 10, y = 30 }
 dynamic_padding = false
 option_as_alt = "Both"
 
@@ -21,6 +21,6 @@ size = 16
 
 [keyboard]
 bindings = [
-{ key = "Right", mods = "Command", chars = "\u001BF" },
-{ key = "Left",  mods = "Command", chars = "\u001BB" },
+  { key = "Right", mods = "Command", chars = "\u001BF" },
+  { key = "Left", mods = "Command", chars = "\u001BB" },
 ]
