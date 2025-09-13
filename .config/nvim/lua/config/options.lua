@@ -2,4 +2,9 @@
 -- Default options that are always set: https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/options.lua
 -- Add any additional options here
 
-vim.opt.relativenumber = false
+-- vim.opt.relativenumber = false
+vim.filetype.add({ extensions = { tpl = "yaml" } })
+-- vim.cmd("set expnadtab")
+-- vim.cmd("set tabspot=2")
+-- vim.cmd("set softtabstop=2")
+-- vim.cmd("set shiftwidth=2")
