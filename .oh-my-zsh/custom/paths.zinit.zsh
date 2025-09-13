@@ -38,3 +38,19 @@ if [ -d /Volumes/Extended/ollama ]
 then
   export OLLAMA_MODELS="/Volumes/Extended/ollama"
 fi
+
+if [ -d  /opt/homebrew/opt/ruby/bin ]
+then
+  export OLLAMA_MODELS="/opt/homebrew/opt/ruby/bin"
+fi
+
+if [ -d $HOME/Library/pnpm ]
+then
+  # pnpm
+  export PNPM_HOME="$HOME/Library/pnpm"
+  case ":$PATH:" in
+    *":$PNPM_HOME:"*) ;;
+    *) export PATH="$PNPM_HOME:$PATH" ;;
+  esac
+  # pnpm end
+fi
