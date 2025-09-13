@@ -56,3 +56,7 @@ keybind = global:cmd+opt+ctrl+shift+g=toggle_quick_terminal
 theme = catppuccin-mocha
 # theme = Dark Pastel
 copy-on-select = true
+keybind = global:alt+right=unbind
+keybind = global:alt+left=unbind
+keybind = global:super+n=unbind
+keybind = global:super+t=unbind
