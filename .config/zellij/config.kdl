@@ -157,7 +157,7 @@ keybinds clear-defaults=true {
     }
     shared_except "locked" "entersearch" "renametab" "renamepane" "prompt" "tmux" {
         bind "Super g" { SwitchToMode "locked"; }
-        bind "Super l" { Quit; }
+        bind "Super d" { Quit; }
     }
     shared_except "locked" "entersearch" "renametab" "renamepane" "session" "prompt" "tmux" {
         bind "Super o" { SwitchToMode "session"; }

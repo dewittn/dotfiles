@@ -60,3 +60,4 @@ keybind = global:alt+right=unbind
 keybind = global:alt+left=unbind
 keybind = global:super+n=unbind
 keybind = global:super+t=unbind
+keybind = global:super+d=unbind
