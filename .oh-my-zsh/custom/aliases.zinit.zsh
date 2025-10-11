@@ -4,11 +4,13 @@ alias aliased='vim $HOME/.oh-my-zsh/custom/aliases.zsh'
 alias l='eza --icons --git'
 alias la='eza -lah --icons --git'
 alias lt='eza --tree --level=2 --icons --git'
-alias z='zellia a'
+alias za='zellij a'
+alias zl='zellij ls'
 alias gt='gittower ./'
 alias reload='source ~/.zshrc'
 alias asr='atuin scripts run'
 alias k='kubectl'
+alias br='bun run'
 
 dbmp () {
   atuin scripts run docker-mpb -v tag=$1 -v fileName=$2
