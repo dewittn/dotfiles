@@ -1,5 +1,5 @@
-# Set atuin as history search
-bindkey '^r' atuin-search
+# Set atuin as history search (if available)
+(( $+functions[atuin-search] )) && bindkey '^r' atuin-search
 bindkey '^[[3;9~' vi-beginning-of-line
 bindkey '^[[5;9~' vi-end-of-line
 
