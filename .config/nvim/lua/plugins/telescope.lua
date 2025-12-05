@@ -1,13 +1,41 @@
 return {
+  -- Snacks.nvim: show hidden and ignored files in picker and explorer
   {
-    "nvim-telescope/telescope.nvim",
-    -- change some options
+    "folke/snacks.nvim",
     opts = {
-      defaults = {
-        layout_strategy = "horizontal",
-        layout_config = { prompt_position = "top" },
-        sorting_strategy = "ascending",
-        winblend = 0,
+      picker = {
+        sources = {
+          files = {
+            hidden = true,
+            ignored = true,
+          },
+          grep = {
+            hidden = true,
+            ignored = true,
+          },
+          explorer = {
+            hidden = true,
+            ignored = true,
+          },
+        },
+      },
+      explorer = {
+        replace_netrw = true,
+      },
+    },
+  },
+
+  -- Neo-tree: show hidden and ignored files in explorer
+  {
+    "nvim-neo-tree/neo-tree.nvim",
+    opts = {
+      filesystem = {
+        filtered_items = {
+          visible = true,
+          hide_dotfiles = false,
+          hide_gitignored = false,
+          hide_hidden = false,
+        },
       },
     },
   },
@@ -15,14 +43,6 @@ return {
   {
     "nvim-treesitter/nvim-treesitter",
     opts = {
-      filesystem = {
-        filtered_items = {
-          visible = true,
-          show_hidden_count = true,
-          hide_dotfiles = true,
-          hide_gitignored = false,
-        },
-      },
       ensure_installed = {
         "bash",
         "html",
