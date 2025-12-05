@@ -26,7 +26,10 @@ zinit load atuinsh/atuin
 # Add in snippets
 zinit snippet OMZP::ansible
 zinit snippet OMZP::docker-compose
-zinit snippet OMZP::gh
+# Only load gh plugin if gh is installed
+if command -v gh &> /dev/null; then
+  zinit snippet OMZP::gh
+fi
 zinit snippet OMZP::git
 zinit snippet OMZP::gitignore
 zinit snippet OMZP::command-not-found
