@@ -58,7 +58,16 @@ theme = Catppuccin Macchiato
 copy-on-select = true
 keybind = global:alt+right=unbind
 keybind = global:alt+left=unbind
-keybind = global:super+n=unbind
-keybind = global:super+t=unbind
-keybind = global:super+d=unbind
+keybind = super+n=unbind
+keybind = super+t=unbind
+keybind = super+d=unbind
+keybind = super+g=unbind
+keybind = super+p=unbind
+keybind = super+h=unbind
+keybind = super+o=unbind
+keybind = super+s=unbind
 keybind = shift+enter=text:\x1b\r
+
+# Use xterm-256color for better compatibility with remote servers
+# that don't have ghostty terminfo installed
+term = xterm-256color

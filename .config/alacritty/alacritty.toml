@@ -4,9 +4,9 @@ TERM = "xterm-256color"
 [window]
 dimensions = { columns = 180, lines = 40 }
 decorations = "transparent"
-opacity = 0.5
+opacity = 0.25
 blur = true
-startup_mode = "Fullscreen"
+startup_mode = "Windowed"
 padding = { x = 10, y = 30 }
 dynamic_padding = false
 option_as_alt = "Both"
