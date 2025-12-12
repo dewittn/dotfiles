@@ -5,3 +5,4 @@ fontforge
 known_hosts*
 id_ed25519
 id_ed25519.pub
+.claude/settings.local.json
