@@ -1,13 +1,14 @@
 {
   "permissions": {
     "allow": [
+      "Bash(git status:*)",
       "Bash(git log:*)",
       "Bash(git show:*)",
       "Bash(git diff:*)",
-      "Bash(git ls-tree:*)",
       "Bash(git branch:*)",
-      "Bash(git --git-dir=:*::*)",
-      "Bash(git log:*)\nBash(git show:*)\nBash(git diff:*)\nBash(git ls-tree:*)\nBash(git branch:*)\nBash(git --git-dir=*:*)\nBash(wc:*)\nBash(find:*)\nBash(tree:*)"
+      "Bash(git ls-tree:*)",
+      "Bash(wc:*)",
+      "Bash(tree:*)"
     ],
     "deny": [
       "Read(docker-*op*.yaml)"
