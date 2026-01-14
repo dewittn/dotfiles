@@ -1,0 +1,20 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(git log:*)",
+      "Bash(git show:*)",
+      "Bash(git diff:*)",
+      "Bash(git ls-tree:*)",
+      "Bash(git branch:*)",
+      "Bash(git --git-dir=:*::*)",
+      "Bash(git log:*)\nBash(git show:*)\nBash(git diff:*)\nBash(git ls-tree:*)\nBash(git branch:*)\nBash(git --git-dir=*:*)\nBash(wc:*)\nBash(find:*)\nBash(tree:*)"
+    ],
+    "deny": [
+      "Read(docker-*op*.yaml)"
+    ]
+  },
+  "enabledPlugins": {
+    "frontend-design@claude-code-plugins": true
+  },
+  "alwaysThinkingEnabled": true
+}
