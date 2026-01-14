@@ -139,7 +139,15 @@ keybinds clear-defaults=true {
         bind "Alt ]" { NextSwapLayout; }
         bind "Alt f" { ToggleFloatingPanes; }
         bind "Alt i" { MoveTab "left"; }
-        bind "Alt n" { NewPane; }
+        bind "Alt n" {
+            NewPane {
+                floating true
+                x "10%"
+                y "10%"
+                width "80%"
+                height "80%"
+            }
+        }
         bind "Alt o" { MoveTab "right"; }
     }
     shared_except "scroll" {
@@ -152,29 +160,26 @@ keybinds clear-defaults=true {
         bind "Alt k" { MoveFocus "up"; }
         bind "Alt l" { MoveFocusOrTab "right"; }
     }
-    shared_except "locked" "entersearch" "renametab" "renamepane" "move" "prompt" "tmux" {
+    shared_except "locked" "entersearch" "renametab" "renamepane" "move" "prompt" {
         bind "Super h" { SwitchToMode "move"; }
     }
-    shared_except "locked" "entersearch" "renametab" "renamepane" "prompt" "tmux" {
+    shared_except "locked" "entersearch" "renametab" "renamepane" "prompt" {
         bind "Super g" { SwitchToMode "locked"; }
         bind "Super d" { Quit; }
     }
-    shared_except "locked" "entersearch" "renametab" "renamepane" "session" "prompt" "tmux" {
+    shared_except "locked" "entersearch" "renametab" "renamepane" "session" "prompt" {
         bind "Super o" { SwitchToMode "session"; }
     }
-    shared_except "locked" "scroll" "search" "tmux" {
-        bind "Ctrl b" { SwitchToMode "tmux"; }
-    }
-    shared_except "locked" "scroll" "entersearch" "renametab" "renamepane" "prompt" "tmux" {
+    shared_except "locked" "scroll" "entersearch" "renametab" "renamepane" "prompt" {
         bind "Super s" { SwitchToMode "scroll"; }
     }
-    shared_except "locked" "tab" "entersearch" "renametab" "renamepane" "prompt" "tmux" {
+    shared_except "locked" "tab" "entersearch" "renametab" "renamepane" "prompt" {
         bind "Super t" { SwitchToMode "tab"; }
     }
-    shared_except "locked" "pane" "entersearch" "renametab" "renamepane" "prompt" "tmux" {
+    shared_except "locked" "pane" "entersearch" "renametab" "renamepane" "prompt" {
         bind "Super p" { SwitchToMode "pane"; }
     }
-    shared_except "locked" "resize" "entersearch" "renametab" "renamepane" "prompt" "tmux" {
+    shared_except "locked" "resize" "entersearch" "renametab" "renamepane" "prompt" {
         bind "Super n" { SwitchToMode "resize"; }
     }
     shared_except "normal" "locked" "entersearch" {
@@ -183,7 +188,7 @@ keybinds clear-defaults=true {
     shared_except "normal" "locked" "entersearch" "renametab" "renamepane" {
         bind "esc" { SwitchToMode "normal"; }
     }
-    shared_among "pane" "tmux" {
+    pane {
         bind "x" { CloseFocus; SwitchToMode "normal"; }
     }
     shared_among "scroll" "search" {
@@ -193,7 +198,6 @@ keybinds clear-defaults=true {
         bind "down" { ScrollDown; }
         bind "up" { ScrollUp; }
         bind "right" { PageScrollDown; }
-        bind "Ctrl b" { PageScrollUp; }
         bind "Ctrl c" { ScrollToBottom; SwitchToMode "normal"; }
         bind "d" { HalfPageScrollDown; }
         bind "Ctrl f" { PageScrollDown; }
@@ -208,7 +212,7 @@ keybinds clear-defaults=true {
         bind "esc" { SwitchToMode "scroll"; }
         bind "enter" { SwitchToMode "search"; }
     }
-    shared_among "entersearch" "renametab" "renamepane" "prompt" "tmux" {
+    shared_among "entersearch" "renametab" "renamepane" "prompt" {
         bind "Ctrl g" { SwitchToMode "locked"; }
         bind "Ctrl h" { SwitchToMode "move"; }
         bind "Ctrl n" { SwitchToMode "resize"; }
@@ -227,29 +231,8 @@ keybinds clear-defaults=true {
     renamepane {
         bind "esc" { UndoRenamePane; SwitchToMode "pane"; }
     }
-    shared_among "session" "tmux" {
+    session {
         bind "d" { Detach; }
-    }
-    tmux {
-        bind "left" { MoveFocus "left"; SwitchToMode "normal"; }
-        bind "down" { MoveFocus "down"; SwitchToMode "normal"; }
-        bind "up" { MoveFocus "up"; SwitchToMode "normal"; }
-        bind "right" { MoveFocus "right"; SwitchToMode "normal"; }
-        bind "space" { NextSwapLayout; }
-        bind "\"" { NewPane "down"; SwitchToMode "normal"; }
-        bind "%" { NewPane "right"; SwitchToMode "normal"; }
-        bind "," { SwitchToMode "renametab"; }
-        bind "[" { SwitchToMode "scroll"; }
-        bind "Ctrl b" { Write 2; SwitchToMode "normal"; }
-        bind "c" { NewTab; SwitchToMode "normal"; }
-        bind "h" { MoveFocus "left"; SwitchToMode "normal"; }
-        bind "j" { MoveFocus "down"; SwitchToMode "normal"; }
-        bind "k" { MoveFocus "up"; SwitchToMode "normal"; }
-        bind "l" { MoveFocus "right"; SwitchToMode "normal"; }
-        bind "n" { GoToNextTab; SwitchToMode "normal"; }
-        bind "o" { FocusNextPane; }
-        bind "p" { GoToPreviousTab; SwitchToMode "normal"; }
-        bind "z" { ToggleFocusFullscreen; SwitchToMode "normal"; }
     }
 }
 
@@ -298,8 +281,8 @@ web_client {
 // 
 theme "catppuccin-macchiato"
 
-// Default size for floating panes (percentage or fixed)
-default_floating_pane_size { width "80%"; height "80%"; }
+// NOTE: default_floating_pane_size is not a valid option in Zellij 0.43.1
+// Instead, floating pane sizes are set via keybindings (see Alt+n binding)
 
 // Choose the base input mode of zellij.
 // Default: normal

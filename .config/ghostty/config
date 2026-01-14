@@ -59,6 +59,7 @@ copy-on-select = true
 keybind = global:alt+right=unbind
 keybind = global:alt+left=unbind
 keybind = super+n=unbind
+keybind = super+alt+n=new_window
 keybind = super+t=unbind
 keybind = super+d=unbind
 keybind = super+g=unbind
