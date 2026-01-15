@@ -8,14 +8,29 @@
       "Bash(git branch:*)",
       "Bash(git ls-tree:*)",
       "Bash(wc:*)",
-      "Bash(tree:*)"
+      "Bash(tree:*)",
+      "Bash(git push:*)",
+      "Bash(git add:*)",
+      "Bash(git commit:*)",
+      "Bash(cat:*)",
+      "Bash(head:*)",
+      "Bash(stow:*)",
+      "Bash(nvim:*)",
+      "Bash(chmod +x:*)"
     ],
     "deny": [
       "Read(docker-*op*.yaml)"
-    ]
+    ],
+    "ask": [],
+    "defaultMode": "default"
   },
   "enabledPlugins": {
     "frontend-design@claude-code-plugins": true
   },
-  "alwaysThinkingEnabled": true
+  "alwaysThinkingEnabled": true,
+  "autoUpdatesChannel": "latest",
+  "statusLine": {
+    "type": "command",
+    "command": "~/.claude/statusline.sh"
+  }
 }

@@ -104,3 +104,8 @@ fi
 for file in ~/.oh-my-zsh/custom/*.zinit.zsh; do
   source "$file"
 done
+
+# Added by LM Studio CLI (lms)
+export PATH="$PATH:/Users/dewittn/.lmstudio/bin"
+# End of LM Studio CLI section
+
