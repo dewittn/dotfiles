@@ -7,18 +7,10 @@ input=$(cat)
 # Extract values from JSON
 MODEL=$(echo "$input" | jq -r '.model.display_name // "Unknown"')
 DIR=$(echo "$input" | jq -r '.workspace.current_dir // "~"')
-USED=$(echo "$input" | jq -r '.context_window.used // 0')
-MAX=$(echo "$input" | jq -r '.context_window.max // 1')
+PCT=$(echo "$input" | jq -r '.context_window.used_percentage // 0' | cut -d. -f1)
 
 # Shorten directory to basename
 DIR_SHORT="${DIR##*/}"
-
-# Calculate context percentage
-if [ "$MAX" -gt 0 ] 2>/dev/null; then
-    PCT=$((USED * 100 / MAX))
-else
-    PCT=0
-fi
 
 # Get git branch if in a repo
 BRANCH=""
