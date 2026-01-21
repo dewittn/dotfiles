@@ -101,7 +101,13 @@ if command -v zoxide &> /dev/null; then
 fi
 
 # ===== Source custom configs =====
+# Source binds after plugins load (turbo) to avoid being overwritten
+zinit ice wait lucid
+zinit snippet ~/.oh-my-zsh/custom/binds.zinit.zsh
+
+# Source other custom configs immediately
 for file in ~/.oh-my-zsh/custom/*.zinit.zsh; do
+  [[ "$file" == *binds.zinit.zsh ]] && continue
   source "$file"
 done
 
