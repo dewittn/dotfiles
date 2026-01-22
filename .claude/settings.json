@@ -16,7 +16,10 @@
       "Bash(head:*)",
       "Bash(stow:*)",
       "Bash(nvim:*)",
-      "Bash(chmod +x:*)"
+      "Bash(chmod +x:*)",
+      "Bash(mkdir *)",
+      "Bash(open -a \"Marked\" :*)",
+      "Bash(ls *)"
     ],
     "deny": [
       "Read(docker-*op*.yaml)"
@@ -24,13 +27,13 @@
     "ask": [],
     "defaultMode": "default"
   },
+  "statusLine": {
+    "type": "command",
+    "command": "~/.claude/statusline.sh"
+  },
   "enabledPlugins": {
     "frontend-design@claude-code-plugins": true
   },
   "alwaysThinkingEnabled": true,
-  "autoUpdatesChannel": "latest",
-  "statusLine": {
-    "type": "command",
-    "command": "~/.claude/statusline.sh"
-  }
+  "autoUpdatesChannel": "latest"
 }
