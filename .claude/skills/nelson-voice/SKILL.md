@@ -11,13 +11,14 @@ Write new content in Nelson's voice. This skill is for generating drafts, not cl
 
 ### 1. Specificity Over Abstraction
 
-Ground abstract concepts with concrete examples, numbers, names, or references.
+Ground abstract concepts with concrete examples, numbers, names, or references. This includes **dates as narrative anchors**—specific timeframes create movement and sequence in a story.
 
 | Instead of | Write |
 |------------|-------|
 | "raised a lot of money" | "raised $364,698 from 5,258 backers" |
 | "a famous actress's memoir" | "Kate Mulgrew's memoir Born with Teeth" |
 | "a memorial wall" | "a 10-foot-high black granite wall, fashioned in the style of the Vietnam Memorial" |
+| "I spent months working on it" | "late 2007... March 2008... October 2008" |
 
 ### 2. Process Transparency
 
@@ -28,9 +29,29 @@ Show reasoning, not just conclusions. Walk readers through how you arrived at a 
 
 The reader sees the input (read the book), the evaluation (couldn't replicate it), and the honest self-assessment (not my strength).
 
-### 3. Honest Limitations
+### 3. Personal Entry Points
 
-Acknowledge constraints, caveats, and uncertainties directly. Not hedging — framing.
+Stories begin with a moment of arriving, noticing, or discovering—not with "I built X." Ground the reader in *when* you encountered the situation and *what* you observed.
+
+| Instead of | Write |
+|------------|-------|
+| "I built Inventario for S.B.C. Panamá" | "While visiting in 2007, I noticed that the business was having trouble fulfilling orders..." |
+| "I created a Kickstarter campaign" | "When I realized traditional publishing wasn't the right path, I started looking at alternatives..." |
+
+The entry point establishes context before action.
+
+### 4. Motivation Over Ownership
+
+Show *why* you did something, not that you "owned" it. Motivation reveals character; ownership claims signal credentialing.
+
+| Instead of | Write |
+|------------|-------|
+| "I owned this project from problem discovery to production deployment" | "To help the family business, I leveraged my background in software development..." |
+| "I led the initiative to improve the process" | "The team was frustrated with the delays, so I started looking for bottlenecks..." |
+
+### 5. Honest Limitations
+
+Acknowledge constraints, caveats, and uncertainties directly. Not hedging—framing.
 
 | Pattern | Example |
 |---------|---------|
@@ -39,7 +60,7 @@ Acknowledge constraints, caveats, and uncertainties directly. Not hedging — fr
 | Flag experiments | "This is going to be a bit of an experiment for me" |
 | Temper expectations | "Betting that people are going to love your project is not a good strategy" |
 
-### 4. Conversational Asides
+### 6. Conversational Asides
 
 Include brief qualifiers that anticipate reader reactions or add nuance.
 
@@ -49,14 +70,14 @@ Include brief qualifiers that anticipate reader reactions or add nuance.
 
 These feel natural, not performative. Use sparingly.
 
-### 5. Colons for Explanation
+### 7. Colons for Explanation
 
 Use colons to introduce explanations, lists, or clarifying statements.
 
 - "LLMs are really good at three things: Association, Analysis, and Summarization."
 - "Then it hit me: everything she was describing... were things I had wrestled with my entire life."
 
-### 6. Questions: Rare and Genuine
+### 8. Questions: Rare and Genuine
 
 Only use questions when genuinely wrestling with something or directly engaging the reader.
 
@@ -68,9 +89,18 @@ Only use questions when genuinely wrestling with something or directly engaging 
 - Rhetorical questions used for emphasis
 - Questions that are really statements in disguise
 
-### 7. Em Dashes: Rarely If Ever
+### 9. Em Dashes: Rarely If Ever
 
 Nelson's natural writing has almost no em dashes. Use periods, commas, or colons instead.
+
+### 10. Iteration and Continued Observation
+
+Stories rarely follow a clean arc. Show the messy middle: setbacks, failed approaches, things that didn't work the first time. Return to observation when something isn't working.
+
+**Example:**
+> "When the contractor quit in March 2008, I took over the development work and rewrote the entire system from scratch. By October 2008, I launched Inventario 2.0. But even the workflow I had developed for my rewrite was too rigid. Workers struggled to locate and restock inventory. So I kept watching."
+
+The process doesn't stop after initial immersion. When something doesn't work, observe again.
 
 ---
 
@@ -131,13 +161,49 @@ When writing portfolio pieces, case studies, or explanatory content:
 | Em dashes for emphasis | Use periods or colons |
 | Dramatic fragments for effect | Complete sentences preferred |
 | Overstated emotion | Understatement is the signature |
+| Resume-speak ("owned the project," "led the initiative," "drove results") | Credentialing language; show motivation instead |
+| Jargon dressed as insight ("ethnographic immersion," "stakeholder alignment") | Use plain language describing concrete actions |
+| Claim inflation ("generated $1.5M" vs "supported $1.5M in revenue") | Be precise about causation; don't overstate contribution |
+| Linear success narratives | Real stories have setbacks; include the messy middle |
+
+---
+
+## When to Ask for More Detail
+
+Nelson's voice requires specific material that can't be invented. If you're missing any of the following, **ask before writing**:
+
+### Entry Point
+- When did you first encounter this situation?
+- What did you notice that made you act?
+
+### Motivation
+- Why did you decide to do this? What was at stake for you personally?
+
+### Timeline and Sequence
+- What were the key dates or phases?
+- What happened between starting and finishing?
+
+### Setbacks and Iteration
+- Did anything fail or not work the first time?
+- Did you have to change your approach? Why?
+
+### People and Context
+- Who else was involved?
+- What were they experiencing?
+
+### Specifics
+- What were the actual numbers, names, or details?
+- What did people actually say or do?
+
+**Principle:** It's better to ask for the real story than to fill gaps with generic narrative. Nelson's voice depends on material only Nelson can provide.
 
 ---
 
 ## Process
 
-1. Identify context: personal/narrative or professional/informational
-2. Apply core patterns (specificity, process transparency, honest framing, asides, colons, no rhetorical questions, no em dashes)
-3. Apply context modifiers (rhythm, register, reference style)
-4. Review for anti-patterns
-5. Output draft in Nelson's voice
+1. **Check for missing material** — Do you have entry point, motivation, timeline, setbacks, and specifics? If not, ask.
+2. Identify context: personal/narrative or professional/informational
+3. Apply core patterns (entry points, motivation, specificity, process transparency, honest framing, iteration, asides, colons, no rhetorical questions, no em dashes)
+4. Apply context modifiers (rhythm, register, reference style)
+5. Review for anti-patterns
+6. Output draft in Nelson's voice
