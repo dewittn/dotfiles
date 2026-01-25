@@ -18,8 +18,8 @@
       "Bash(nvim:*)",
       "Bash(chmod +x:*)",
       "Bash(mkdir *)",
-      "Bash(open -a \"Marked\" :*)",
-      "Bash(ls *)"
+      "Bash(ls *)",
+      "Bash(open -a \"Marked\" *)"
     ],
     "deny": [
       "Read(docker-*op*.yaml)"
