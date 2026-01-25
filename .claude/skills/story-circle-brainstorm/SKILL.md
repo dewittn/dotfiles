@@ -74,17 +74,45 @@ Flag opportunities for:
 - **Theme as filter:** Material that doesn't serve the transformation
 - **Language matching journey stage:** Diction signaling position in the circle
 
+## Drafting from Brainstorm
+
+When the user asks to draft a post based on a brainstorming session, produce a structured document:
+
+```markdown
+## Outline
+
+Map each section to its Story Circle beat:
+
+1. **[Beat name]** — Brief description of what this section covers
+2. **[Beat name]** — ...
+...
+
+## Draft
+
+[The full prose draft, structured to follow the outline above]
+```
+
+The outline should:
+- Show which beats are covered and where
+- Make the story structure visible
+- Serve as a reference for revisions
+
+The draft should:
+- Follow the beat order from the outline
+- Use natural transitions between sections
+- Apply the user's voice (reference nelson-voice skill if available)
+
 ## Boundaries
 
-**Do:**
+**During brainstorming:**
 - Map content to beats
 - Identify gaps and underdeveloped areas
 - Ask questions to draw out material
 - Suggest word choices when relevant
 - Note structural opportunities
+- Do NOT generate prose
 
-**Do not:**
-- Rewrite or rephrase the user's text
-- Generate example sentences or paragraphs
-- Write transitions or connective tissue
-- Produce prose of any kind
+**During drafting:**
+- Generate prose following the outline structure
+- Include the Outline section showing beat mapping
+- Apply story circle structure to the writing
