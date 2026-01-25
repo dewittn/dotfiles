@@ -35,7 +35,9 @@ After scanning, ask the user these questions. Wait for answers before proceeding
 1. **What is this project?** (Confirm your detection or let them correct)
 2. **Is this production code or experimental/personal?**
 3. **Do you deploy this? If so, how?** (Manual, CI/CD, which platform)
-4. **How often do you work on this codebase?** (Daily, weekly, occasionally)
+4. **How much context should CLAUDE.md capture?**
+   - **Lightweight** — I know this project well, just need basics
+   - **Comprehensive** — Document everything so I can return after months away
 
 ### Conditional questions:
 
@@ -52,7 +54,7 @@ Based on discovery + answers, recommend ONE of these workflow tiers:
 **For**: Documentation, experimental code, static sites with no CI/CD, rarely-changed configs
 
 - Direct commits to main (no PRs)
-- No review agents
+- No review workflow needed
 - Simple CLAUDE.md with basic project context
 - No test requirements
 
@@ -60,23 +62,24 @@ Based on discovery + answers, recommend ONE of these workflow tiers:
 
 **For**: Active projects, CMS themes, personal tools you rely on, infrastructure that affects staging
 
-- Feature branch → PR → main (or dev)
-- Pre-commit reviewer agent (lightweight)
-- Docs maintainer agent
-- CLAUDE.md with conventions and common tasks
+- Direct commits or feature branches (project preference)
+- Use `/review` command before significant commits
+- Document-maintainer agent for keeping docs current
+- CLAUDE.md with conventions, commands, and deployment steps
 - Tests encouraged but not enforced
+- Reference `/cicd-patterns` skill if using Docker Swarm deployment
 
 ### Tier 3: Production
 
 **For**: Deployed applications, infrastructure touching production, code handling user data, published libraries
 
-- Full git-flow: feature → PR → dev → PR → main
-- Pre-commit reviewer agent
-- Security reviewer agent
-- Test enforcer agent
+- Feature branches with review before merge
+- Use `/review` command (runs security, quality, and test coverage checks in parallel)
+- All review agents available: security-reviewer, pre-commit-reviewer, test-enforcer
 - CI/CD integration
-- Comprehensive CLAUDE.md with security considerations
+- Comprehensive CLAUDE.md with security considerations and deployment details
 - Tests required for new features
+- Reference `/cicd-patterns` skill for deployment configuration
 
 ## Phase 4: Generate Configurations
 
@@ -93,13 +96,22 @@ Tailored to this specific project. Include:
 - What NOT to do (based on project type)
 - Tier-appropriate workflow reminders
 
-### 2. Agent recommendations
+### 2. Agent and skill recommendations
 
-List which agents should be:
+**Available agents** (invoke on-demand via `/review` or directly):
+- security-reviewer — Security vulnerability scanning
+- pre-commit-reviewer — Code quality and linting
+- test-enforcer — Test coverage analysis
+- code-simplifier — Post-implementation cleanup
+- document-maintainer — Documentation updates
+- history-search — Git archaeology before refactors
+- playwright — Browser automation and screenshots
 
-- **Enabled**: Agents that apply to this project
-- **Disabled**: Agents to skip (with reason)
-- **Project-specific**: Any custom agents needed
+**Available skills** (reference knowledge):
+- `/cicd-patterns` — Docker Swarm deployment patterns
+- `/review` — Run all reviewers in parallel
+
+List which are relevant to this project and why.
 
 ### 3. Workflow summary
 
@@ -137,10 +149,9 @@ Structure your response as:
 ## Proposed CLAUDE.md
 [Full content in code block]
 
-## Agent Configuration
-- Enable: [list]
-- Disable: [list]
-- Custom: [if any]
+## Relevant Agents/Skills
+- [List agents and skills useful for this project]
+- [Explain why each is relevant]
 
 ## Workflow Summary
 [One paragraph]
@@ -218,6 +229,8 @@ Use these conventions based on detected project type:
 > 1. This appears to be a Hugo static site. Is that correct?
 > 2. Is this a production site (live on the web) or experimental?
 > 3. I see GitHub Actions — does this auto-deploy on push to main?
-> 4. How often do you update this site?
+> 4. How much context should CLAUDE.md capture?
+>    - Lightweight (you know this project well)
+>    - Comprehensive (document everything for returning after time away)
 
 [Wait for answers, then continue with recommendation]
