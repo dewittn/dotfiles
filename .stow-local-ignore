@@ -16,6 +16,7 @@ _darcs
 \.gitmodules
 
 .+~          # emacs backup files
+.*\.bak      # backup files
 \#.*\#       # emacs autosave files
 
 .*tpl
