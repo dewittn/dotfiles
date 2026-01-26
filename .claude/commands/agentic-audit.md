@@ -84,7 +84,7 @@ dev branch exists?
 **For**: Active projects with deployment but no staging/testing gate
 
 - Direct commits to main
-- Use `/review` command before significant commits
+- Use `/review-code` command before significant commits
 - CLAUDE.md with conventions, commands, and deployment steps
 - Tests encouraged but not enforced
 - Reference `/cicd-patterns` skill if using Docker Swarm deployment
@@ -96,7 +96,7 @@ dev branch exists?
 **For**: Projects where changes must be tested before going to production
 
 - Feature branch → dev (test) → main (production)
-- Use `/review` command before merging to dev
+- Use `/review-code` command before merging to dev
 - All review agents available: security-reviewer, pre-commit-reviewer, test-enforcer
 - Comprehensive CLAUDE.md with deployment details and branch workflow
 - Tests required for new features
@@ -128,7 +128,8 @@ Tailored to this specific project. Include:
 - playwright — Browser automation and screenshots
 
 **Available skills** (reference knowledge):
-- `/review` — Run all reviewers in parallel
+- `/review-code` — Run all reviewers in parallel (security, quality, tests)
+- `/review-plan` — Analyze plan against file history before implementing
 - `/cicd-patterns` — Docker Swarm deployment patterns
 - `/docs-style` — Documentation conventions (auto-loads on README edits)
 
