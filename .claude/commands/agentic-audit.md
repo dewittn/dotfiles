@@ -13,8 +13,17 @@ First, silently gather information about this project. DO NOT write any files ye
 - **Existing configs**: .github/workflows/, .gitlab-ci.yml, Dockerfile, docker-compose.yml, ansible/, etc.
 - **Current CLAUDE.md**: Does one exist? What does it say?
 - **Test presence**: Are there test files? Test commands in package.json/Makefile?
-- **Git workflow**: Check branch names, recent commit patterns, any existing PR templates
+- **Dev branch**: Run `git branch -a | grep -E '(^|\/)dev$'` — this is the primary workflow signal
 - **Project size**: Rough line count, number of files, complexity indicators
+
+### Workflow Signal: Dev Branch
+
+The presence of a `dev` branch is the primary indicator for workflow tier:
+
+- **dev branch exists** → Project needs testing before production → **Tier 3**
+- **no dev branch** → Direct commits to main are acceptable → **Tier 1 or 2**
+
+This reflects a decision already made about the project's rigor requirements.
 
 ### Detect project category:
 
@@ -33,51 +42,63 @@ After scanning, ask the user these questions. Wait for answers before proceeding
 ### Required questions:
 
 1. **What is this project?** (Confirm your detection or let them correct)
-2. **Is this production code or experimental/personal?**
-3. **Do you deploy this? If so, how?** (Manual, CI/CD, which platform)
-4. **How much context should CLAUDE.md capture?**
+2. **How much context should CLAUDE.md capture?**
    - **Lightweight** — I know this project well, just need basics
    - **Comprehensive** — Document everything so I can return after months away
 
-### Conditional questions:
+### Auto-detected (confirm if uncertain):
 
-- If web app: "Does this handle user data or authentication?"
-- If infrastructure: "Does this touch production systems?"
-- If library: "Is this published/used by others?"
+- **Workflow tier**: Based on dev branch presence (see Phase 1)
+- **Deployment**: Based on CI/CD configs found
+- **Production status**: Based on deployment configs and branch structure
 
 ## Phase 3: Recommendation
 
 Based on discovery + answers, recommend ONE of these workflow tiers:
 
+### Tier Selection Logic
+
+```
+dev branch exists?
+  YES → Tier 3 (Production)
+  NO  → Has CI/CD or deployment configs?
+          YES → Tier 2 (Standard)
+          NO  → Tier 1 (Minimal)
+```
+
 ### Tier 1: Minimal
 
-**For**: Documentation, experimental code, static sites with no CI/CD, rarely-changed configs
+**Signal**: No dev branch, no CI/CD
 
-- Direct commits to main (no PRs)
+**For**: Documentation, experimental code, static sites, rarely-changed configs
+
+- Direct commits to main
 - No review workflow needed
 - Simple CLAUDE.md with basic project context
 - No test requirements
 
 ### Tier 2: Standard
 
-**For**: Active projects, CMS themes, personal tools you rely on, infrastructure that affects staging
+**Signal**: No dev branch, but has CI/CD or deployment
 
-- Direct commits or feature branches (project preference)
+**For**: Active projects with deployment but no staging/testing gate
+
+- Direct commits to main
 - Use `/review` command before significant commits
-- Document-maintainer agent for keeping docs current
 - CLAUDE.md with conventions, commands, and deployment steps
 - Tests encouraged but not enforced
 - Reference `/cicd-patterns` skill if using Docker Swarm deployment
 
 ### Tier 3: Production
 
-**For**: Deployed applications, infrastructure touching production, code handling user data, published libraries
+**Signal**: Has dev branch (requires testing before production)
 
-- Feature branches with review before merge
-- Use `/review` command (runs security, quality, and test coverage checks in parallel)
+**For**: Projects where changes must be tested before going to production
+
+- Feature branch → dev (test) → main (production)
+- Use `/review` command before merging to dev
 - All review agents available: security-reviewer, pre-commit-reviewer, test-enforcer
-- CI/CD integration
-- Comprehensive CLAUDE.md with security considerations and deployment details
+- Comprehensive CLAUDE.md with deployment details and branch workflow
 - Tests required for new features
 - Reference `/cicd-patterns` skill for deployment configuration
 
@@ -103,13 +124,13 @@ Tailored to this specific project. Include:
 - pre-commit-reviewer — Code quality and linting
 - test-enforcer — Test coverage analysis
 - code-simplifier — Post-implementation cleanup
-- document-maintainer — Documentation updates
 - history-search — Git archaeology before refactors
 - playwright — Browser automation and screenshots
 
 **Available skills** (reference knowledge):
-- `/cicd-patterns` — Docker Swarm deployment patterns
 - `/review` — Run all reviewers in parallel
+- `/cicd-patterns` — Docker Swarm deployment patterns
+- `/docs-style` — Documentation conventions (auto-loads on README edits)
 
 List which are relevant to this project and why.
 
@@ -171,40 +192,36 @@ Use these conventions based on detected project type:
 - Build: `hugo` or `hugo server`
 - No tests typically needed
 - Watch for: template syntax, frontmatter consistency
-- Usually Tier 1 unless it has CI/CD
 
 ### Ghost Themes
 
 - Build: `npm run build` or `gulp`
 - Test with GScan: `npx gscan .`
 - Watch for: Ghost API compatibility, handlebars syntax
-- Usually Tier 2
 
 ### WordPress Themes/Plugins
 
 - May have PHP linting
 - Watch for: security (escaping, nonces), WordPress coding standards
-- Tier 2 or 3 depending on deployment
 
 ### Ansible Playbooks
 
 - Lint: `ansible-lint`
 - Test: `molecule` if present
 - Watch for: idempotency, secrets handling, privilege escalation
-- Tier 2 or 3 (Tier 3 if touching production)
 
 ### Docker/Infrastructure
 
 - Lint: `hadolint` for Dockerfiles
 - Watch for: secrets in images, non-root users, pinned versions
-- Tier based on what it deploys to
 
 ### Node.js Applications
 
 - Build: check package.json scripts
 - Test: `npm test` or similar
 - Watch for: dependency security, environment handling
-- Tier 2 or 3 based on deployment
+
+**Note**: Tier is determined by dev branch presence, not project type.
 
 ---
 
@@ -220,16 +237,17 @@ Use these conventions based on detected project type:
 >
 > - **Type**: Hugo static site
 > - **Framework**: Hugo with custom theme
-> - **Existing CI**: GitHub Actions workflow for deployment
+> - **Dev branch**: No
+> - **CI/CD**: GitHub Actions workflow for deployment
 > - **Tests**: None
 > - **Current CLAUDE.md**: None
+>
+> **Auto-detected tier**: Tier 2 (Standard) — has CI/CD but no dev branch
 >
 > ## Questions
 >
 > 1. This appears to be a Hugo static site. Is that correct?
-> 2. Is this a production site (live on the web) or experimental?
-> 3. I see GitHub Actions — does this auto-deploy on push to main?
-> 4. How much context should CLAUDE.md capture?
+> 2. How much context should CLAUDE.md capture?
 >    - Lightweight (you know this project well)
 >    - Comprehensive (document everything for returning after time away)
 
