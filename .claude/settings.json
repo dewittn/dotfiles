@@ -19,7 +19,9 @@
       "Bash(chmod +x:*)",
       "Bash(mkdir *)",
       "Bash(ls *)",
-      "Bash(open -a \"Marked\" *)"
+      "Bash(open -a \"Marked\" *)",
+      "Bash(gh issue *)",
+      "Bash(gh pr create:*)"
     ],
     "deny": [
       "Read(docker-*op*.yaml)"
