@@ -24,7 +24,9 @@
     "deny": [
       "Read(docker-*op*.yaml)"
     ],
-    "ask": [],
+    "ask": [
+      "Bash(docker volume rm *)"
+    ],
     "defaultMode": "default"
   },
   "statusLine": {

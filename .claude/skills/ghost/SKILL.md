@@ -122,7 +122,7 @@ Header partials open containers that `content.hbs` closes:
 ```
 
 ### Ghost doesn't support multiple replicas
-Single instance only. Use `order: start-first` for zero-downtime deploys. Scale via CDN caching, not replicas.
+Always use `replicas: 1`. Multiple instances cause 405 errors, session logout, and theme sync issues (in-memory sessions, no Redis support). Scale via CDN caching, not replicas. Use `order: start-first` for zero-downtime deploys.
 
 ### Image sizes defined in package.json
 ```json

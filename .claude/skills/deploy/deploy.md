@@ -148,46 +148,10 @@ Production deployments happen automatically when changes are pushed to `main`. M
 - Rollbacks
 - Staging environment testing
 
-## Ghost Replica Limitation
+## Related Skills
 
-**Ghost does NOT support multiple replicas.** Always use `replicas: 1`.
-
-Ghost explicitly prohibits horizontal scaling. Running multiple instances causes:
-- 405 Method Not Allowed errors
-- Admin session logout (in-memory sessions don't sync)
-- Content/theme changes invisible across nodes
-- Requires constant service restarts
-
-**Why this happens:**
-- Sessions stored in-memory only (no Redis/external store support)
-- Internal state caching doesn't sync across instances
-- Theme activation only affects single node
-
-**The correct scaling approach:**
-- Single Ghost instance with `order: start-first` for zero-downtime updates
-- External MySQL 8 database
-- S3 storage adapter for images (already configured)
-- CDN caching layer (Cloudflare) for traffic scaling
-
-Ghost(Pro) handles 1.5B+ requests/month using single instances per site with aggressive caching—not replicas.
-
-## Critical Safety Rules
-
-**NEVER delete production volumes without explicit user permission.**
-
-- `docker volume rm` on production = **data loss requiring backup restore**
-- Stacks and networks can be safely removed and recreated
-- Volumes contain persistent data (database, content, backups)
-
-Safe to remove:
-- `docker stack rm <stackName>` ✓
-- `docker network rm` ✓
-
-**DANGEROUS - requires explicit permission:**
-- `docker volume rm` ✗
-- `docker volume prune` ✗
-
-If a volume needs to be removed, **always ask the user first** and confirm they understand data will be lost.
+- `/docker` — Context safety, volume protection (enforced via permission rules)
+- `/ghost` — Ghost replica limitation, theme development patterns
 
 ## Security
 
