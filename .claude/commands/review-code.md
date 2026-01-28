@@ -4,11 +4,12 @@ Run a comprehensive review of recent changes. Use this after implementation is c
 
 ## Process
 
-Run these three agents **in parallel** using the Task tool:
+Run these four agents **in parallel** using the Task tool:
 
 1. **security-reviewer** — Scan for vulnerabilities (injection, XSS, secrets, auth issues)
 2. **pre-commit-reviewer** — Check code quality, run linters, find debug artifacts
 3. **test-enforcer** — Identify missing test coverage and edge cases
+4. **docs-compliance-reviewer** — Check changes against documented rules and decisions
 
 ## Instructions
 
@@ -33,6 +34,9 @@ Run these three agents **in parallel** using the Task tool:
 
 ### Test Coverage
 [Key findings from test-enforcer, or "Coverage looks good"]
+
+### Documentation Compliance
+[Key findings from docs-compliance-reviewer, or "No conflicts with documented rules"]
 
 ### Action Items
 - [ ] [Specific items that should be addressed]

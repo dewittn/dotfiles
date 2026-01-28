@@ -123,6 +123,7 @@ Tailored to this specific project. Include:
 - security-reviewer — Security vulnerability scanning
 - pre-commit-reviewer — Code quality and linting
 - test-enforcer — Test coverage analysis
+- docs-compliance-reviewer — Check changes against documented rules/decisions
 - code-simplifier — Post-implementation cleanup
 - history-search — Git archaeology before refactors
 - playwright — Browser automation and screenshots
