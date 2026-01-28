@@ -150,6 +150,38 @@ function getValue(key) {
 }
 ```
 
+### Single-Line If Statements (JavaScript)
+
+For simple guard clauses and assignments, prefer single-line if statements. This improves readability by keeping related logic compact.
+
+```javascript
+// Preferred - single line for simple operations
+if (welcomeScreen.show() == false) return context.cancel();
+if (!this.#settings) this.#settings = this.#services.get('cpSettings');
+if (name == undefined) return handleError();
+
+// Avoid - unnecessary braces for simple statements
+if (welcomeScreen.show() == false) {
+  return context.cancel();
+}
+
+if (!this.#settings) {
+  this.#settings = this.#services.get('cpSettings');
+}
+```
+
+**When to use multi-line:** If the body has multiple statements or the line becomes too long, use braces.
+
+```javascript
+// Multi-line when body is complex
+if (!this.#settings) {
+  this.#settings = this.#services.get('cpSettings');
+  this.#settingsLoaded = true;
+}
+```
+
+This is primarily a JavaScript preference - other languages may have different conventions.
+
 ### Avoid If-Else When Possible
 
 Use if-return guard clauses. Reserve `else` for true binary choices.
@@ -173,6 +205,56 @@ if (error) {
 ### Maximum Nesting: 3 Levels
 
 If you're deeper than 3 levels, extract a function or use guard clauses.
+
+### Extract Truthiness Checks into Named Methods
+
+When a conditional checks complex logic, extract it into a method whose name describes what it's checking. This makes if statements read like natural language.
+
+```javascript
+// Preferred - descriptive getter encapsulates the check
+get statusIsNotSet() {
+  return this.status == "";
+}
+
+get destinationIsNotSet() {
+  return this.destination == "" || this.destination == undefined;
+}
+
+get activeDocInPipeline() {
+  return this.db.docIsInPipeline(this.#activeDoc);
+}
+
+// Usage reads like English
+if (this.#activeDoc.statusIsNotSet) {
+  this.#activeDoc.status = this.statuses.select(this.#activeDoc.title);
+}
+
+if (this.activeDocInPipeline) {
+  return this.ui.displayAppMessage("info", docExistsMessage);
+}
+```
+
+```javascript
+// Avoid - inline complex logic
+if (this.#activeDoc.status == "" || this.#activeDoc.status == undefined) {
+  this.#activeDoc.status = this.statuses.select(this.#activeDoc.title);
+}
+
+if (this.db.docIsInPipeline(this.#activeDoc)) {
+  return this.ui.displayAppMessage("info", docExistsMessage);
+}
+```
+
+**Naming conventions for truthiness methods:**
+- `is...` / `isNot...` - state checks (`isValid`, `isNotSet`)
+- `has...` - possession checks (`hasPermission`, `hasRecords`)
+- `can...` - capability checks (`canProcess`, `canEdit`)
+- `...IsNotSet` / `...IsUndefined` - specific null/empty checks
+
+This pattern is especially valuable when:
+- The same check appears in multiple places
+- The logic involves multiple conditions (`||`, `&&`)
+- The check's purpose isn't immediately obvious from the code
 
 ---
 
@@ -477,6 +559,182 @@ Don't extract until you need to. Three similar lines is often better than a help
 ### Backwards-Compatibility Clutter
 
 Don't keep dead code, unused exports, or `// removed` comments. Delete cleanly.
+
+---
+
+## Annotated Example
+
+This excerpt from `ContentPipeline.js` demonstrates multiple patterns working together. Comments marked with `// PATTERN:` highlight specific style choices.
+
+```javascript
+// PATTERN: Conditional require - check before loading
+if (typeof ServiceContainer == "undefined") require("core/ServiceContainer.js");
+
+class ContentPipeline {
+  // PATTERN: Static configuration - externalized, not hardcoded
+  static basePath = "/Library/Data/cp/";
+  static settingsFile = "cp/settings.yaml";
+
+  // PATTERN: Private fields with # prefix
+  #fs;
+  #ui;
+  #settings;
+  #services;
+  #activeDoc;
+
+  constructor(table = "Content") {
+    this.#tableName = table;
+    this.#services = ServiceContainer.getInstance();
+    this.#activeDoc = null;
+    this.#registerServices(table);
+    this.#loadWorkspace();
+  }
+
+  // PATTERN: Data-driven service registration
+  // Configuration determines behavior, not hardcoded branches
+  #registerServices(table) {
+    if (!this.#services.has('cpSettings')) {
+      this.#services.register('cpSettings', () => {
+        if (typeof Settings == "undefined") require("libraries/Settings.js");
+        return new Settings(this.settingsFile);  // Settings loaded from YAML file
+      }, true);
+    }
+
+    if (!this.#services.has('cpUI')) {
+      this.#services.register('cpUI', (c) => {
+        if (typeof DraftsUI == "undefined") require("cp/ui/DraftsUI.js");
+        const settings = c.get('cpSettings');
+        return new DraftsUI(settings.ui);  // UI configured from settings
+      }, true);
+    }
+  }
+
+  // PATTERN: Lazy initialization via getters
+  // Dependencies created on first access, not at construction
+  // PATTERN: Single-line if for simple assignments
+  get settings() {
+    if (!this.#settings) this.#settings = this.#services.get('cpSettings');
+    return this.#settings;
+  }
+
+  get ui() {
+    if (!this.#ui) this.#ui = this.#services.get('cpUI');
+    return this.#ui;
+  }
+
+  // PATTERN: Explicit dependency injection
+  // Dependencies passed as object, not implicitly available
+  #getDependencies() {
+    return {
+      ui: this.ui,
+      fileSystem: this.fs,
+      settings: this.settings,
+      tableName: this.#tableName,
+      textUtilities: this.text,
+    };
+  }
+
+  // PATTERN: Truthiness getters - encapsulate checks with descriptive names
+  // Makes if statements read like natural language
+  get activeDocIsUndefined() {
+    return this.#activeDoc == undefined;
+  }
+
+  get activeDocInPipeline() {
+    return this.db.docIsInPipeline(this.#activeDoc);
+  }
+
+  // PATTERN: Section markers for visual organization
+  // **************
+  // * openDoc()
+  // * Open content in Drafts or Ulysses
+  // **************
+  openDoc(docID, docIDType) {
+    // PATTERN: Destructuring settings from configuration
+    const { docNotFound, recentDocsNotSaved } = this.settings.openDoc;
+
+    // PATTERN: Guard clause - handle undefined early
+    // Note: Multi-line here because the body spans multiple lines
+    if (this.#activeDoc == undefined) {
+      this.#activeDoc = this.document_factory.load({ docID, docIDType });
+    }
+
+    // PATTERN: Early return with error context
+    // Error objects include debugging information
+    if (this.#activeDoc == undefined) {
+      return this.ui.displayAppMessage("error", docNotFound, {
+        errorMessage: docNotFound,
+        activeDoc: this.#activeDoc,
+      });
+    }
+
+    // PATTERN: Guard clause instead of nested if
+    if (this.recentRecordsUpdated != true) {
+      this.ui.displayAppMessage("info", recentDocsNotSaved, {
+        recentRecordsUpdated: false,
+        activeDoc: this.#activeDoc,
+      });
+    }
+
+    this.#activeDoc.open();
+  }
+
+  // PATTERN: Data-driven menu building
+  // UI structure comes from settings, not hardcoded
+  welcome() {
+    const { menuPicker, menuSettings, errorMessage } = this.ui.settings("welcome");
+
+    this.ui.utilities.addRecordColomsToMenuPicker(
+      menuPicker,
+      menuSettings,
+      this.recent.records,
+    );
+
+    const welcomeScreen = this.ui.buildMenu(menuSettings);
+
+    // PATTERN: Early return on cancel
+    if (welcomeScreen.show() == false) return context.cancel();
+
+    const nextFunction = welcomeScreen.buttonPressed;
+    this.#functionToRunNext(nextFunction);
+  }
+
+  // PATTERN: Private helper keeps public methods clean
+  #functionToRunNext(name, args) {
+    const errorMessage = "Function name missing!";
+
+    // PATTERN: Guard clause
+    if (name == undefined) {
+      return this.ui.displayAppMessage("error", errorMessage, {
+        errorMessage: errorMessage,
+        class: "ContentPipeline",
+        function: "#functionToRunNext()",
+        name: name,
+      });
+    }
+
+    if (Array.isArray(args) == false) args = [args];
+    return this[name].apply(this, args);
+  }
+}
+```
+
+### Patterns Demonstrated
+
+| Pattern | Description |
+|---------|-------------|
+| Conditional require | Check before loading modules |
+| Static configuration | Settings externalized to files |
+| Private fields | `#` prefix for encapsulation |
+| Data-driven services | Registration via configuration |
+| Lazy initialization | Getters create on first access |
+| Single-line if | Compact guard clauses and assignments |
+| Truthiness getters | Named methods for boolean checks |
+| Explicit dependencies | Pass as object, not global |
+| Section markers | Visual organization |
+| Guard clauses | Early returns, flat control flow |
+| Error context | Debug info in error objects |
+| Data-driven UI | Menu structure from settings |
 
 ---
 
