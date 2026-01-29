@@ -4,12 +4,13 @@ Run a comprehensive review of recent changes. Use this after implementation is c
 
 ## Process
 
-Run these four agents **in parallel** using the Task tool:
+Run these five agents **in parallel** using the Task tool:
 
 1. **security-reviewer** — Scan for vulnerabilities (injection, XSS, secrets, auth issues)
 2. **pre-commit-reviewer** — Check code quality, run linters, find debug artifacts
 3. **test-enforcer** — Identify missing test coverage and edge cases
 4. **docs-compliance-reviewer** — Check changes against documented rules and decisions
+5. **cicd-reviewer** — Validate workflows and Docker stack templates
 
 ## Instructions
 
@@ -17,7 +18,7 @@ Run these four agents **in parallel** using the Task tool:
    - Check `git status` and `git diff` to see what's changed
    - Focus on modified/added files, not the entire codebase
 
-2. Launch all three agents in parallel with the Task tool:
+2. Launch all five agents in parallel with the Task tool:
    - Each agent should receive the list of files to review
    - Each agent produces its own report
 
@@ -37,6 +38,9 @@ Run these four agents **in parallel** using the Task tool:
 
 ### Documentation Compliance
 [Key findings from docs-compliance-reviewer, or "No conflicts with documented rules"]
+
+### CI/CD
+[Key findings from cicd-reviewer, or "No issues found"]
 
 ### Action Items
 - [ ] [Specific items that should be addressed]

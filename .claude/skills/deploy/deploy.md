@@ -141,6 +141,26 @@ healthcheck:
 
 **Agent behavior:** When editing a Docker stack template, proactively check if `update_config`, `rollback_config`, and `healthcheck` are configured. If missing, suggest adding them. Ghost stacks are already configured—focus on other services.
 
+### Testing Healthchecks Locally
+
+**Always test healthchecks before deploying.** Minimal images may lack expected tools.
+
+```bash
+# 1. Build and run locally
+docker --context orbstack build -t test-image .
+docker --context orbstack run --rm -d --name test-health -p 3333:3000 test-image
+
+# 2. Test the healthcheck command inside the container
+docker --context orbstack exec test-health nc -z localhost 3000
+
+# 3. Clean up
+docker --context orbstack rm -f test-health
+```
+
+If the exec fails with "executable file not found", the image lacks that tool.
+
+**Static sites (Hugo):** Consider omitting healthchecks entirely — the `lipanski/docker-static-website` image has no shell, wget, nc, or curl. If the container starts, it's working. See `/hugo` skill for details.
+
 ## CI/CD Note
 
 Production deployments happen automatically when changes are pushed to `main`. Manual deployment is typically only needed for:

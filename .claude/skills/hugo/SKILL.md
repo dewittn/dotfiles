@@ -1,11 +1,17 @@
 ---
 name: hugo
-description: Hugo static site development patterns. Consult when working on Hugo projects for dev server, builds, and common workflows.
+description: Hugo static site development. **Always consult this skill when working on any Hugo project** — starting dev servers, building sites, reviewing pages, or making changes.
 ---
 
 # Hugo Development
 
-Lightweight orientation for Hugo static site development. Consult when starting dev servers, building sites, or working with Hugo projects.
+**IMPORTANT:** Always consult this skill when working on any Hugo project. This includes:
+- Starting or managing the dev server
+- Building the site for any environment
+- Reviewing pages with Playwright
+- Making content or template changes
+
+This skill provides standardized patterns that may differ from or extend what's in a project's CLAUDE.md.
 
 ## Dev Server
 
@@ -101,8 +107,31 @@ content/
   es/
 ```
 
+## Docker Deployment (lipanski/docker-static-website)
+
+Hugo sites commonly use `lipanski/docker-static-website` for serving static files. This minimal image has gotchas:
+
+### Custom Error Pages (E404)
+
+The `E404:404.html` directive in `httpd.conf` requires explicit config path:
+
+```dockerfile
+# REQUIRED for E404 to work
+CMD ["/busybox-httpd", "-f", "-v", "-p", "3000", "-c", "/home/static/httpd.conf"]
+```
+
+Without the `-c` flag, httpd ignores the config file and E404 fails with:
+`httpd: config error 'E404:404.html' in 'httpd.conf'`
+
+### Healthchecks
+
+The image is scratch-style with **no shell, wget, nc, or curl**. Healthchecks using these tools will fail.
+
+For static sites, healthchecks are often unnecessary — if the container starts, it's serving. Consider omitting them from the stack template.
+
 ## Agent Behavior
 
 1. **Starting dev server** — Always use `run_in_background: true`
 2. **Before building** — Check project CLAUDE.md for environment names
 3. **Docker builds** — Verify correct `ENVIRONMENT` arg for target deployment
+4. **Docker deployment** — If using `lipanski/docker-static-website`, ensure CMD includes `-c` flag for httpd.conf

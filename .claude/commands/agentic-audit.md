@@ -124,6 +124,7 @@ Tailored to this specific project. Include:
 - pre-commit-reviewer — Code quality and linting
 - test-enforcer — Test coverage analysis
 - docs-compliance-reviewer — Check changes against documented rules/decisions
+- cicd-reviewer — Validate workflows and Docker stack templates
 - code-simplifier — Post-implementation cleanup
 - history-search — Git archaeology before refactors
 - playwright — Browser automation and screenshots

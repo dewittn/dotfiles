@@ -1,3 +1,8 @@
+---
+trigger:
+  files: [".github/workflows/*.yml", "docker-stack*.yaml.tpl", "docker-bake.hcl"]
+---
+
 # Coto Studio CI/CD Patterns
 
 Reference guide for Coto Studio's Docker Swarm deployment pipeline. Apply these patterns when creating or modifying CI/CD configuration.
@@ -12,16 +17,18 @@ push to main/dev → check-base-image (scheduled) → docker-build-image → doc
 
 Reusable workflows live in `Coto-Studio/workflows/.github/workflows/`:
 - `check-base-image-v3.yml` - Scheduled/nightly checks for base image updates
-- `docker-build-image-v3.yml` - Multi-arch build, push to GHCR
-- `docker-build-image-v4.yml` - Build with `docker buildx bake`
-- `docker-stack-deploy-v3.yml` - Deploy via Tailscale + 1Password
+- `docker-build-image-v5.yml` - Build with `docker buildx bake` (requires `docker-bake.hcl`)
+- `docker-build-image-v3.yml` - Legacy multi-arch build, push to GHCR
+- `docker-stack-deploy-v5.yml` - Deploy via Tailscale + 1Password, staging support
+- `docker-stack-deploy-v3.yml` - Legacy deploy (production only)
 
 ## GitHub Workflow Configuration
 
 **Required:** `.github/workflows/` directory with deployment workflow
 
 **Workflow calls:**
-- Reference correct reusable workflow versions (prefer v3)
+- Reference correct reusable workflow versions (v5 latest, v3 legacy)
+- v5 requires `docker-bake.hcl` for builds, supports `inputs.environment` for staging
 - Job dependencies: `deploy` needs `build`
 - Secrets passed: `OP_SERVICE_ACCOUNT_TOKEN: ${{ secrets.OP_SERVICE_ACCOUNT_TOKEN }}`
 
