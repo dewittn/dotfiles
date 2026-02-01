@@ -4,6 +4,14 @@ Reference for Hugo static site builds, dev servers, and Docker deployment.
 
 ## Dev Server
 
+**Before starting a server**, check if one is already running:
+
+```bash
+pgrep -f 'hugo server' || hugo server -D --bind 0.0.0.0
+```
+
+Or start manually after checking:
+
 ```bash
 hugo server -D --bind 0.0.0.0
 ```

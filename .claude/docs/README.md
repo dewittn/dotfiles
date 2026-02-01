@@ -6,8 +6,11 @@ Reference documentation for infrastructure, platforms, and coding patterns.
 
 | Document | Topics |
 |----------|--------|
-| [docker-contexts.md](infrastructure/docker-contexts.md) | Docker context switching, local vs remote operations, volume safety |
-| [deployment.md](infrastructure/deployment.md) | Docker Swarm stacks, 1Password integration, CI/CD pipelines, rollbacks |
+| [docker-contexts.md](infrastructure/docker-contexts.md) | Context switching, local vs remote, orbstack vs coto-v3 |
+| [volume-safety.md](infrastructure/volume-safety.md) | Volume deletion warnings, data loss prevention |
+| [swarm-stacks.md](infrastructure/swarm-stacks.md) | Stack naming, templates, manual deploy, rollback |
+| [healthchecks.md](infrastructure/healthchecks.md) | Healthcheck config, minimal image gotchas, testing |
+| [cicd-pipelines.md](infrastructure/cicd-pipelines.md) | GitHub Actions, reusable workflows, 1Password |
 
 ## Platforms
 
@@ -21,13 +24,4 @@ Reference documentation for infrastructure, platforms, and coding patterns.
 
 | Document | Topics |
 |----------|--------|
-| [style-guide.md](coding/style-guide.md) | Code style patterns, control flow, data-driven design, language-specific patterns |
-
-## When to Consult
-
-- **Docker commands** → `infrastructure/docker-contexts.md`
-- **Deploying to production/staging** → `infrastructure/deployment.md`
-- **Ghost theme development** → `platforms/ghost-themes.md`
-- **Hugo site development** → `platforms/hugo-development.md`
-- **Browser automation** → `platforms/playwright-automation.md`
-- **Code style decisions** → `coding/style-guide.md`
+| [style-guide.md](coding/style-guide.md) | Code style patterns, control flow, data-driven design |

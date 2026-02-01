@@ -1,4 +1,17 @@
 {
+  "hooks": {
+    "UserPromptSubmit": [
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "echo \"Don't forget to check the docs, they are here to help us avoid mistakes.\""
+          }
+        ]
+      }
+    ]
+  },
   "permissions": {
     "allow": [
       "Bash(git status:*)",
@@ -21,7 +34,9 @@
       "Bash(ls *)",
       "Bash(open -a \"Marked\" *)",
       "Bash(gh issue *)",
-      "Bash(gh pr create:*)"
+      "Bash(gh pr:*)",
+      "Bash(gh workflow:*)",
+      "Bash(gh run:*)"
     ],
     "deny": [
       "Read(docker-*op*.yaml)"

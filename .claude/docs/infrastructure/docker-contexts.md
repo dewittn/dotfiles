@@ -52,17 +52,6 @@ docker context use $ORIGINAL_CONTEXT
 
 **Always restore context after remote operations** to avoid accidentally running local commands on the remote server.
 
-## Volume Safety
-
-| Action | Safe? | Notes |
-|--------|-------|-------|
-| `docker stack rm` | Yes | Removes services, keeps data |
-| `docker network rm` | Yes | Can recreate |
-| `docker volume rm` | **NO** | Data loss — ask user first |
-| `docker volume prune` | **NO** | Data loss — ask user first |
-
-**Never delete remote volumes without explicit user permission.**
-
 ## Quick Reference
 
 | Task | Local (orbstack) | Remote (coto-v3) |
