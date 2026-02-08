@@ -13,5 +13,5 @@ Documentation at ~/.claude/docs/ captures patterns pre-training gets wrong.
 | infrastructure/cicd-pipelines.md | GitHub Actions, reusable workflows |
 | platforms/ghost-themes.md | Templates, routes.yaml, member access |
 | platforms/hugo-development.md | Dev server, builds, Docker deployment |
-| platforms/playwright-automation.md | MCP tools, viewports, workflows |
+| platforms/playwright-automation.md | playwright-cli commands, viewports, browser install, workflows |
 | coding/style-guide.md | Style patterns, control flow, data-driven design |

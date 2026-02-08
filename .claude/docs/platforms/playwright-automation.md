@@ -1,73 +1,109 @@
 # Playwright Browser Automation
 
-Reference for browser automation via Playwright MCP tools.
+Reference for browser automation via `playwright-cli`.
 
-## Available MCP Tools
+## Setup
 
-| Tool | Purpose |
-|------|---------|
-| `mcp__playwright__browser_navigate` | Go to URLs |
-| `mcp__playwright__browser_resize` | Set viewport dimensions |
-| `mcp__playwright__browser_snapshot` | Get accessibility tree (use for finding element refs) |
-| `mcp__playwright__browser_take_screenshot` | Capture images |
-| `mcp__playwright__browser_click` | Click elements |
-| `mcp__playwright__browser_type` | Type text into fields |
-| `mcp__playwright__browser_fill_form` | Fill multiple form fields |
-| `mcp__playwright__browser_press_key` | Keyboard input |
-| `mcp__playwright__browser_hover` | Hover over elements |
-| `mcp__playwright__browser_select_option` | Select dropdown options |
-| `mcp__playwright__browser_wait_for` | Wait for text/elements |
-| `mcp__playwright__browser_evaluate` | Run JavaScript |
-| `mcp__playwright__browser_console_messages` | Get console output |
-| `mcp__playwright__browser_network_requests` | Monitor network |
-| `mcp__playwright__browser_close` | Close browser |
-| `mcp__playwright__browser_install` | Install browser (run first if needed) |
+Run `/playwright-setup` in any project to install skills, permissions, and verify browsers.
+
+## Required Permissions
+
+Add to `.claude/settings.json`:
+
+```json
+"Skill(playwright-cli)",
+"Bash(playwright-cli:*)"
+```
+
+## Browser Installation
+
+Chrome works out of the box. WebKit requires a one-time install:
+
+```bash
+# Install webkit (one-time, global)
+node ~/.bun/install/global/node_modules/playwright-core/cli.js install webkit
+```
+
+**Do NOT use `bunx playwright install`** — it installs to a transient temp directory.
+
+Browsers live in `~/Library/Caches/ms-playwright/` and are shared across all projects.
+
+## Common Commands
+
+| Command | Purpose |
+|---------|---------|
+| `playwright-cli open <url>` | Open browser and navigate |
+| `playwright-cli open <url> --browser=webkit` | Open in Safari/WebKit |
+| `playwright-cli screenshot` | Capture viewport |
+| `playwright-cli screenshot --filename=name.png` | Capture with specific name |
+| `playwright-cli snapshot` | Get accessibility tree (element refs) |
+| `playwright-cli click <ref>` | Click element by ref |
+| `playwright-cli fill <ref> "text"` | Fill input by ref |
+| `playwright-cli resize <w> <h>` | Set viewport size |
+| `playwright-cli eval "js expression"` | Run JavaScript |
+| `playwright-cli console` | Get console messages |
+| `playwright-cli close` | Close browser |
 
 ## Standard Viewports
 
 | Name | Dimensions | Use Case |
 |------|------------|----------|
-| Desktop | 1440x900 | Large screens |
+| Desktop | 1280x800 | Standard desktop |
+| Large Desktop | 1440x900 | Large screens |
 | Tablet | 768x1024 | iPad portrait |
 | Mobile | 375x812 | iPhone |
 
 ## Workflow Patterns
 
 ### Screenshot Batch
-1. Navigate to URL
-2. For each viewport: resize, wait for load, screenshot
-3. Return summary table of captured files
+1. `playwright-cli open <url>`
+2. For each viewport: `resize`, `screenshot --filename=<name>.png`
+3. `close`
+4. Clean up screenshot files when done
 
 ### Form Testing
-1. Navigate to form page
-2. Get snapshot to identify field refs
-3. Fill fields using refs from snapshot
-4. Submit and verify result
+1. `open` the form page
+2. `snapshot` to get element refs
+3. `fill` fields using refs from snapshot
+4. `click` submit button
+5. `snapshot` or `screenshot` to verify result
+
+### Cross-Browser Testing
+1. Test in Chrome first (default)
+2. `close`, then `open --browser=webkit` for Safari
+3. Compare screenshots or behavior
 
 ### E2E Flow
-1. Start at entry point
-2. Take snapshot before each interaction
-3. Perform action using element refs from snapshot
+1. `open` entry point
+2. `snapshot` before each interaction
+3. Perform action using element refs
 4. Verify expected state
 5. Continue to next step
 
-### Visual Regression
-1. Capture baseline screenshots (branch A)
-2. Capture comparison screenshots (branch B)
-3. Compare and report differences
-
 ## Key Patterns
 
-**Always snapshot before interacting** — The accessibility tree provides element refs needed for clicks/typing.
-
-**Resize before screenshot** — Set viewport dimensions before capturing.
-
-**Wait for stability** — Use `browser_wait_for` after navigation or actions that trigger loading.
+- **Always snapshot before interacting** — refs from snapshot are needed for clicks/fills
+- **Resize before screenshot** — set viewport first
+- **Clean up screenshots** — delete generated .png files after reviewing
+- **Close when done** — `playwright-cli close` frees resources
 
 ## Error Handling
 
 | Error | Solution |
 |-------|----------|
-| Browser not installed | Run `mcp__playwright__browser_install` first |
-| Element not found | Take snapshot, check available refs |
-| Page won't load | Check URL, look at console messages |
+| Browser not installed | Install via playwright-core CLI (see above) |
+| Element not found | Run `snapshot`, check available refs |
+| Page won't load | Check URL, run `console` for errors |
+| Session already open | Run `close` first, or use named sessions (`-s=name`) |
+
+## Named Sessions
+
+For parallel browser testing:
+
+```bash
+playwright-cli -s=chrome open http://localhost:3000
+playwright-cli -s=safari open http://localhost:3000 --browser=webkit
+playwright-cli -s=chrome screenshot --filename=chrome.png
+playwright-cli -s=safari screenshot --filename=safari.png
+playwright-cli close-all
+```

@@ -1,9 +1,9 @@
 ---
 name: playwright
-description: Playwright MCP reference for browser automation. Consult when taking screenshots, testing forms, or running E2E flows.
+description: Playwright CLI reference for browser automation. Consult when taking screenshots, testing forms, or running E2E flows.
 ---
 
-# Playwright MCP Reference
+# Playwright CLI Reference
 
 **Read first:** `~/.claude/docs/platforms/playwright-automation.md`
 
@@ -11,12 +11,17 @@ description: Playwright MCP reference for browser automation. Consult when takin
 
 - Taking screenshots across viewports
 - Testing forms or user flows
-- Running E2E automation
+- Cross-browser testing (Chrome + WebKit/Safari)
 - Visual regression testing
 
 ## Agent Behavior
 
-1. **Always snapshot before interacting** — The accessibility tree provides element refs
-2. **Resize before screenshot** — Set viewport dimensions first
-3. **Wait for stability** — Use `browser_wait_for` after navigation
-4. **Browser not installed** — Run `mcp__playwright__browser_install` first
+1. **Use `playwright-cli` commands** via Bash, not MCP tools
+2. **Always snapshot before interacting** — refs are needed for clicks/fills
+3. **Resize before screenshot** — set viewport dimensions first
+4. **Clean up screenshots** — delete generated files after reviewing
+5. **Close when done** — run `playwright-cli close` to free resources
+
+## Setup
+
+If `playwright-cli` commands fail with "not installed", run `/playwright-setup` to configure the project.
