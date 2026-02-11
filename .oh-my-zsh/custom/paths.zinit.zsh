@@ -55,8 +55,14 @@ elif [[ -d $HOME/.local/share/pnpm ]]; then
   [[ ":$PATH:" != *":$PNPM_HOME:"* ]] && export PATH="$PNPM_HOME:$PATH"
 fi
 
+## Bun
+[[ -d $HOME/.bun/bin ]] && export PATH="$PATH:$HOME/.bun/bin"
+
 ## Cargo/Rust
 [[ -f $HOME/.cargo/env ]] && source "$HOME/.cargo/env"
 
 ## Local bin (common on Linux)
 [[ -d $HOME/.local/bin ]] && [[ ":$PATH:" != *":$HOME/.local/bin:"* ]] && export PATH="$HOME/.local/bin:$PATH"
+
+## Claude Code
+export CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS=1
