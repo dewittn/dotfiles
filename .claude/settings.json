@@ -1,4 +1,24 @@
 {
+  "permissions": {
+    "allow": [
+      "Bash(git *)",
+      "Bash(wc *)",
+      "Bash(tree *)",
+      "Bash(mkdir *)",
+      "Bash(ls *)",
+      "Bash(chmod +x *)",
+      "Bash(stow *)",
+      "Bash(open -a \"Marked\" *)",
+      "Bash(gh *)"
+    ],
+    "deny": [
+      "Read(docker-*op*.yaml)"
+    ],
+    "ask": [
+      "Bash(docker volume rm *)"
+    ],
+    "defaultMode": "default"
+  },
   "hooks": {
     "UserPromptSubmit": [
       {
@@ -11,40 +31,6 @@
         ]
       }
     ]
-  },
-  "permissions": {
-    "allow": [
-      "Bash(git status:*)",
-      "Bash(git log:*)",
-      "Bash(git show:*)",
-      "Bash(git diff:*)",
-      "Bash(git branch:*)",
-      "Bash(git ls-tree:*)",
-      "Bash(wc:*)",
-      "Bash(tree:*)",
-      "Bash(git push:*)",
-      "Bash(git add:*)",
-      "Bash(git commit:*)",
-      "Bash(cat:*)",
-      "Bash(head:*)",
-      "Bash(stow:*)",
-      "Bash(nvim:*)",
-      "Bash(chmod +x:*)",
-      "Bash(mkdir *)",
-      "Bash(ls *)",
-      "Bash(open -a \"Marked\" *)",
-      "Bash(gh issue *)",
-      "Bash(gh pr:*)",
-      "Bash(gh workflow:*)",
-      "Bash(gh run:*)"
-    ],
-    "deny": [
-      "Read(docker-*op*.yaml)"
-    ],
-    "ask": [
-      "Bash(docker volume rm *)"
-    ],
-    "defaultMode": "default"
   },
   "statusLine": {
     "type": "command",
