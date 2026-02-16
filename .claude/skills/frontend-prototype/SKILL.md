@@ -5,21 +5,9 @@ description: Use when creating new visual designs, overhauling existing UI, or m
 
 # Frontend Prototype
 
-Mock significant design changes in static HTML before applying them to the project. This is the frontend equivalent of `/feature-plan` — a place to refine design decisions before they enter the codebase.
+Mock significant design changes in static HTML before applying them to the project. The frontend equivalent of `/feature-plan` — refine design decisions before they enter the codebase.
 
 **Read first:** `~/.claude/docs/planning/frontend-design.md`
-
-## When to Invoke
-
-- Creating a new visual design or look
-- Overhauling existing UI or design system
-- Significant layout or component changes across multiple pages
-- When the `frontend-design` plugin is about to do major generative work
-
-Do NOT invoke for:
-- Minor adjustments (font tweaks, color changes within existing system)
-- Bug fixes to existing CSS
-- Content updates that don't change the design
 
 ## Phase 1: Prototype in Static HTML
 
@@ -67,64 +55,13 @@ For smaller projects, the handoff document alone is sufficient.
 
 ## Phase 4: Write Handoff Document
 
-Create a handoff document in the prototype directory:
+Create `HANDOFF.md` in the prototype directory using the template at [references/handoff-template.md](references/handoff-template.md).
 
 ```
 <project>/tmp/prototype/
   HANDOFF.md
   index.html
   ...
-```
-
-### Handoff Document Structure
-
-```markdown
-# Design Handoff: [Project/Feature Name]
-
-**Date**: YYYY-MM-DD
-**Status**: Approved / Needs revision
-
-## Approved Direction
-
-[Brief description of what was approved and why]
-
-## Design Decisions
-
-### Colors
-- Primary: #xxx
-- Accent: #xxx
-- Background: #xxx
-- Text: #xxx
-[List the intentional palette — curate, don't dump every value]
-
-### Typography
-- Headings: [family, weight]
-- Body: [family, size, line-height]
-- [Other notable type treatments]
-
-### Spacing
-- [Notable spacing patterns, base unit if established]
-
-### Components
-- [Key component patterns and their visual rules]
-
-### Responsive Behavior
-- [How layout changes across breakpoints]
-- [Any breakpoint-specific decisions]
-
-## Screenshots
-
-[Reference to captured screenshots at each viewport]
-
-## What Was Rejected
-
-[Design directions explored but not chosen — important context for
-why the approved direction looks the way it does]
-
-## Implementation Notes
-
-[Anything the implementing agent needs to know — constraints,
-gotchas, patterns to follow, files to reference]
 ```
 
 ## Integration

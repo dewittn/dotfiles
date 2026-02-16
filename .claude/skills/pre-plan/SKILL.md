@@ -9,14 +9,6 @@ Front-load context gathering and design decisions so implementation can run unin
 
 **Read first:** `~/.claude/docs/coding/style-guide.md`
 
-## When to Invoke
-
-- Entering plan mode or discussing implementation strategy
-- User describes a feature, refactor, or multi-file change
-- Any task where you would normally jump straight to planning
-
-Do NOT invoke for single-file fixes, typos, or tasks with explicit step-by-step instructions from the user.
-
 ## Stage 0: Check for Feature Doc
 
 Before gathering context, check the project's `docs/` directory for a feature doc (files matching `feature-plan-001-*.md`) that covers the work being planned.
@@ -128,27 +120,13 @@ If the operator asks for more detail on any point, provide it. Do not proceed un
 
 ## Integration
 
-This skill replaces the former `/review-plan` command by moving its history-search work earlier in the process.
+This skill handles HOW. The feature doc (from `/feature-plan`) defines WHAT and WHY. If a feature doc exists, use its constraints and decisions — don't re-ask questions it already answers. Respect its implementation order when defining commit checkpoints.
 
-### Workflow Chain
+Works with: `/feature-plan` command, history-search agent, code-styling skill, style guide (`~/.claude/docs/coding/style-guide.md`), domain docs (`~/.claude/docs/`).
 
-```
-/feature-plan → Feature Doc → pre-plan → Implementation Plan → Build
-```
-
-The feature doc (from `/feature-plan`) defines WHAT and WHY. This skill handles HOW. If a feature doc exists, use its constraints and decisions — don't re-ask questions it already answers. If a feature doc has an implementation order, respect it when defining commit checkpoints.
-
-### Works With
-
-- **`/feature-plan` command** — Produces the feature doc that feeds Stage 0
-- **history-search agent** — Used in Stage 1 for git archaeology
-- **code-styling skill** — Referenced for pattern consistency
-- **Style guide** (`~/.claude/docs/coding/style-guide.md`) — Source of truth for code patterns
-- **Domain docs** (`~/.claude/docs/`) — Project-specific conventions
+See `~/.claude/docs/planning/README.md` for the full workflow overview.
 
 ## Notes
 
 - History findings are advisory, not blocking. Red flags mean "understand before proceeding," not "don't proceed."
-- If a file has been reverted multiple times, there's likely a reason the code is the way it is.
-- High churn files deserve extra scrutiny — they're often more complex than they appear.
-- Co-modified files are hidden dependencies — if A always changes with B, your plan should probably touch both.
+- Co-modified files are hidden dependencies — if A always changes with B, the plan should probably touch both.
