@@ -25,3 +25,11 @@ Reference documentation for infrastructure, platforms, and coding patterns.
 | Document | Topics |
 |----------|--------|
 | [style-guide.md](coding/style-guide.md) | Code style patterns, control flow, data-driven design |
+
+## Planning
+
+Domain-specific planning guides, consulted by the **pre-plan** skill during Stage 1.
+
+| Document | Topics |
+|----------|--------|
+| *Guides not yet created* | Agentic systems, frontend/UI, infrastructure |

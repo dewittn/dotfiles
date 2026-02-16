@@ -15,3 +15,4 @@ Documentation at ~/.claude/docs/ captures patterns pre-training gets wrong.
 | platforms/hugo-development.md | Dev server, builds, Docker deployment |
 | platforms/playwright-automation.md | playwright-cli commands, viewports, browser install, workflows |
 | coding/style-guide.md | Style patterns, control flow, data-driven design |
+| planning/ | Domain-specific planning guides (when created) |
