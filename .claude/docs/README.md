@@ -28,8 +28,11 @@ Reference documentation for infrastructure, platforms, and coding patterns.
 
 ## Planning
 
-Domain-specific planning guides, consulted by the **pre-plan** skill during Stage 1.
+Workflow documentation and domain-specific planning guides. See [planning/README.md](planning/README.md) for the full workflow overview.
 
 | Document | Topics |
 |----------|--------|
-| *Guides not yet created* | Agentic systems, frontend/UI, infrastructure |
+| [README.md](planning/README.md) | Workflow chain overview, when to use each stage |
+| [frontend-design.md](planning/frontend-design.md) | Design contracts, W3C DTCG tokens, Playwright validation |
+| *agentic-systems.md* | Agentic/LLM systems (not yet created) |
+| *infrastructure.md* | Infrastructure/DevOps (not yet created) |
