@@ -5,7 +5,7 @@ How features move from idea to implementation.
 ## The Workflow Chain
 
 ```
-/feature-plan → Feature Doc → pre-plan → Implementation Plan → Build
+/feature-plan → Feature Doc → pre-plan → Implementation Plan → Build → /review-code → Commit
                                  ↑
             frontend-prototype → Handoff Doc (for design-heavy work)
 ```
@@ -48,6 +48,18 @@ Each stage has a specific job. Not every project needs every stage — match the
 
 **Trigger:** Auto-fires when entering plan mode or discussing implementation strategy. Checks for feature docs and handoff documents before planning.
 
+### /review-code (Command, Manual)
+
+**What it does:** Runs five parallel review agents (security, code quality, test coverage, docs compliance, CI/CD) against recent changes.
+
+**When to use:** After implementation is complete and working, before the final commit.
+
+**When to skip:** Trivial changes, documentation-only edits, config tweaks.
+
+**Deliverable:** Consolidated review summary with action items and a READY TO COMMIT / ADDRESS ISSUES FIRST verdict.
+
+**Invoke:** `/review-code`
+
 ## Common Paths
 
 ### Full workflow (large feature with design)
@@ -57,6 +69,7 @@ Each stage has a specific job. Not every project needs every stage — match the
 frontend-prototype → Handoff Doc
 pre-plan → Implementation Plan (reads both docs)
 Build
+/review-code → Commit
 ```
 
 ### Feature without design work
@@ -65,6 +78,7 @@ Build
 /feature-plan → Feature Doc
 pre-plan → Implementation Plan (reads feature doc)
 Build
+/review-code → Commit
 ```
 
 ### Well-defined task, no feature doc needed
@@ -72,6 +86,7 @@ Build
 ```
 pre-plan → Implementation Plan
 Build
+/review-code → Commit
 ```
 
 ### Simple change

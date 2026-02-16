@@ -43,14 +43,18 @@ Read the project's CLAUDE.md for project-specific conventions.
 
 If domain-specific planning guides exist at `~/.claude/docs/planning/`, read those too. Multiple guides may apply to the same project.
 
-### Codebase Patterns
+### Codebase Exploration
 
-Identify existing patterns relevant to the planned work:
+Launch **Explore agents** in parallel (via the Task tool) to investigate the codebase. Keep exploration in separate contexts to avoid bloating the planning window.
+
+Target different agents at different concerns:
 
 - How similar features are currently implemented
-- Naming conventions in the affected area
+- Naming conventions and architectural patterns in the affected area
 - Configuration patterns (data-driven vs hardcoded)
 - Test patterns if tests exist
+
+Each agent should return a focused summary of findings, not raw file contents. Run these alongside the history-search agents.
 
 ## Stage 2: Build the Plan
 
@@ -63,6 +67,8 @@ Identify logical commit points — not just "commit when done." Each major step 
 - What gets committed at each checkpoint
 - A short commit message for each
 - Which checkpoints are safe rollback points
+
+The final checkpoint should include running `/review-code` before the last commit. This is the quality gate.
 
 ### Documentation Deliverables
 
@@ -122,7 +128,7 @@ If the operator asks for more detail on any point, provide it. Do not proceed un
 
 This skill handles HOW. The feature doc (from `/feature-plan`) defines WHAT and WHY. If a feature doc exists, use its constraints and decisions — don't re-ask questions it already answers. Respect its implementation order when defining commit checkpoints.
 
-Works with: `/feature-plan` command, history-search agent, code-styling skill, style guide (`~/.claude/docs/coding/style-guide.md`), domain docs (`~/.claude/docs/`).
+Works with: `/feature-plan` command, `/review-code` command, history-search agent, Explore agents, code-styling skill, style guide (`~/.claude/docs/coding/style-guide.md`), domain docs (`~/.claude/docs/`).
 
 See `~/.claude/docs/planning/README.md` for the full workflow overview.
 
