@@ -87,5 +87,5 @@ Domain-specific reference docs consulted during planning.
 | Guide | When to Read |
 |-------|-------------|
 | [frontend-design.md](frontend-design.md) | Frontend/UI work, design systems, design contracts |
-| *agentic-systems.md* | Agentic/LLM systems (not yet created) |
-| *infrastructure.md* | Infrastructure/DevOps (not yet created) |
+| [agentic-systems.md](agentic-systems.md) | LLM agents, tool use, AI pipelines, intelligence boundaries |
+| [infrastructure.md](infrastructure.md) | Docker, deployment, CI/CD, server config, operational systems |

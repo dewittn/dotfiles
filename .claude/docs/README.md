@@ -34,5 +34,5 @@ Workflow documentation and domain-specific planning guides. See [planning/README
 |----------|--------|
 | [README.md](planning/README.md) | Workflow chain overview, when to use each stage |
 | [frontend-design.md](planning/frontend-design.md) | Design contracts, W3C DTCG tokens, Playwright validation |
-| *agentic-systems.md* | Agentic/LLM systems (not yet created) |
-| *infrastructure.md* | Infrastructure/DevOps (not yet created) |
+| [agentic-systems.md](planning/agentic-systems.md) | LLM agents, tool use, AI pipelines, intelligence boundaries |
+| [infrastructure.md](planning/infrastructure.md) | Docker, deployment, CI/CD, server config, operational systems |

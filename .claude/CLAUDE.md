@@ -17,3 +17,5 @@ Documentation at ~/.claude/docs/ captures patterns pre-training gets wrong.
 | coding/style-guide.md | Style patterns, control flow, data-driven design |
 | planning/README.md | Workflow chain overview, when to use each stage |
 | planning/frontend-design.md | Design contracts, W3C DTCG tokens, Playwright validation |
+| planning/agentic-systems.md | LLM agents, tool use, intelligence boundaries |
+| planning/infrastructure.md | Docker, deployment, CI/CD, config hierarchy, observability |
