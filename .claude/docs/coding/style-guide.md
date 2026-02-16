@@ -306,6 +306,31 @@ const menuItems = [
 menuItems.forEach(item => createMenuItem(item))
 ```
 
+### Externalize User-Facing Content
+
+Prompts, templates, report formats, and user-facing messages belong in config/template files — not inline in code. The test: **would you want to tweak the wording without changing program logic?** If yes, externalize it.
+
+```python
+# Good - template loaded from file, editable without touching code
+system_prompt = load_prompt("review-scoring")
+banner = load_template("cli-banner", phase="pipeline", count=companies)
+
+# Avoid - user-facing content buried in code
+SYSTEM_PROMPT = """\
+You are a job review agent. Score each listing on 6 dimensions...
+"""  # 130 lines of prompt text inline
+
+click.echo(f"\n{'='*60}")
+click.echo("  Running pipeline")
+click.echo(f"{'='*60}\n")
+```
+
+**Keep inline:** strings that change only when the surrounding code changes.
+- Logger messages (`logger.info`, `logger.warning`) — developer-facing, read alongside code
+- Structured error returns (`{"error": f"Unknown ATS: {ats}"}`) — machine-consumed API contracts
+- JSON schemas and tool definitions — tightly coupled to their handler implementation
+- Raise/exit messages (`raise ValueError(...)`) — developer/operator errors, fix is in the code
+
 ---
 
 ## CSS & Styling
