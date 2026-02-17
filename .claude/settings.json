@@ -50,7 +50,6 @@
   },
   "enabledPlugins": {
     "frontend-design@claude-code-plugins": true,
-    "feature-dev@claude-code-plugins": true,
     "document-skills@anthropic-agent-skills": true
   },
   "alwaysThinkingEnabled": true,
