@@ -12,6 +12,9 @@ Conventions that override or extend default commit behavior. Only includes rules
 ### NEVER use -C — this is the #1 rule
 **Do not use `git commit -C`, `-c`, or `--reuse-message` under any circumstances.** Always write a fresh commit message by analyzing the actual staged changes with `git diff --staged`. Previous commit messages are almost never accurate for the new commit. This rule has no exceptions unless the user explicitly says "reuse the last commit message."
 
+### NEVER use git -C \<path\>
+**Do not use `git -C <path>` to prefix git commands.** Always run git commands directly from the current working directory. The `-C` flag is redundant when you're already in the project directory and causes unnecessary permission prompts.
+
 ### Handle GPG signing failures
 If `git commit` fails with a GPG signing error (e.g., "gpg failed to sign the data"), the user is away from their computer and cannot authenticate 1Password.
 

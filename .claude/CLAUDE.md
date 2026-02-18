@@ -7,6 +7,7 @@ Documentation at ~/.claude/docs/ captures patterns pre-training gets wrong.
 These override default behavior. They exist because Claude repeatedly gets them wrong.
 
 - **NEVER use `git commit -C`** — Always write a fresh commit message based on the actual changes. The `-C` flag reuses old messages which are often wrong for the new commit.
+- **NEVER use `git -C <path>`** — Always run git commands directly from the current working directory. The `-C` flag is redundant when already in the project directory and triggers unnecessary permission prompts.
 - **Use `skill-creator` when editing or creating skills** — Any work on `.claude/skills/`, `.claude/commands/`, or SKILL.md files MUST consult the skill-creator skill for structure, frontmatter, and progressive disclosure patterns.
 
 ## Index
