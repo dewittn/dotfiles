@@ -19,6 +19,10 @@
 1. [Feature] — [rationale, dependency notes]
 2. [Feature] — [rationale]
 
+## Next Step
+
+When ready to implement, invoke `/pre-plan` to create the implementation plan. Pre-plan will use this document's constraints and implementation order as its starting point.
+
 ## Notes
 
 [Anything that came up in conversation that doesn't fit neatly into a feature
