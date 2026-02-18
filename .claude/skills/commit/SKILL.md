@@ -1,6 +1,6 @@
 ---
 name: commit
-description: Git commit conventions and safety rules. Use before any git commit — covers branch-aware push behavior, GPG signing failure handling, versioning, and PR workflow. Fires when the user asks to commit, or when you are about to create a git commit as part of any workflow.
+description: "Git commit conventions and safety rules. MUST be used before any git commit. CRITICAL: NEVER use git commit -C (reuse message) — always write a fresh message. Covers branch-aware push, GPG signing failures, versioning, and PR workflow. Fires when the user asks to commit or when creating a git commit as part of any workflow."
 ---
 
 # Commit
@@ -9,8 +9,8 @@ Conventions that override or extend default commit behavior. Only includes rules
 
 ## Rules
 
-### Never use -C
-Write a fresh commit message based on the actual changes. Do not reuse previous messages with `git commit -C` unless the user explicitly requests it.
+### NEVER use -C — this is the #1 rule
+**Do not use `git commit -C`, `-c`, or `--reuse-message` under any circumstances.** Always write a fresh commit message by analyzing the actual staged changes with `git diff --staged`. Previous commit messages are almost never accurate for the new commit. This rule has no exceptions unless the user explicitly says "reuse the last commit message."
 
 ### Handle GPG signing failures
 If `git commit` fails with a GPG signing error (e.g., "gpg failed to sign the data"), the user is away from their computer and cannot authenticate 1Password.

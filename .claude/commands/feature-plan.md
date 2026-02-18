@@ -22,6 +22,8 @@ If the feature is small and well-defined, keep the process proportional. Not eve
 
 ## Phase 1: Capture the Raw Idea
 
+**Start the clock.** Before the conversation begins, create the feature doc file with just the header and date. This gives us a filesystem creation timestamp for tracking how long planning takes.
+
 The operator's description is passed as the argument to this command. They may describe one feature or several. They may mix problems with solutions, or jump between abstraction levels. That's fine.
 
 Your job in this phase:
@@ -106,6 +108,20 @@ Check for existing `feature-plan-*` docs to determine the next number. Feature d
 ### Document Structure
 
 Use the template at [references/feature-plan-template.md](references/feature-plan-template.md).
+
+## Phase 5: Log the Time
+
+When the operator signals the feature doc is complete, log the planning session:
+
+1. Check the feature doc's filesystem timestamps — created = start, last modified = end
+2. Ask: **"This session took about [duration]. Want me to log it?"**
+3. If yes, append a line to `~/.claude/docs/planning/planning-log.md`:
+
+```
+| YYYY-MM-DD | project-name | feature-name | duration |
+```
+
+Create the log file with a header row if it doesn't exist. The planning log is persistent and feeds into quarterly reviews for capacity planning.
 
 ## Guiding Principles
 

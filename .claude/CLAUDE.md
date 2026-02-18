@@ -2,6 +2,13 @@
 
 Documentation at ~/.claude/docs/ captures patterns pre-training gets wrong.
 
+## Hard Rules
+
+These override default behavior. They exist because Claude repeatedly gets them wrong.
+
+- **NEVER use `git commit -C`** — Always write a fresh commit message based on the actual changes. The `-C` flag reuses old messages which are often wrong for the new commit.
+- **Use `skill-creator` when editing or creating skills** — Any work on `.claude/skills/`, `.claude/commands/`, or SKILL.md files MUST consult the skill-creator skill for structure, frontmatter, and progressive disclosure patterns.
+
 ## Index
 
 | Path | Topics |

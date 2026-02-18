@@ -1,9 +1,11 @@
 ---
 name: pre-plan
-description: Front-load planning decisions before implementation. Use when entering plan mode, discussing how to implement a feature, or when the user describes work that will require multiple files or architectural decisions. Fires BEFORE writing a plan, not after. Also suggest running /feature-plan first if the user is describing a loose idea without a feature doc.
+description: "MANDATORY when entering plan mode or creating any implementation plan. This skill MUST be used before writing a plan — it front-loads context gathering through parallel agents and enforces operator alignment before implementation begins. Triggers: entering plan mode, discussing how to implement a feature, user describes work requiring multiple files or architectural decisions. Also suggest /feature-plan first if the user has a loose idea without a feature doc."
 ---
 
 # Pre-Plan
+
+**This skill is NOT optional.** Every implementation plan MUST go through this process. Do not write a plan, create commit checkpoints, or begin implementation without completing all stages below. Skipping this skill leads to plans that miss hidden dependencies, ignore project conventions, and waste operator time on rework.
 
 Front-load context gathering and design decisions so implementation can run uninterrupted.
 
