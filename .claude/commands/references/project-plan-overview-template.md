@@ -22,6 +22,10 @@
 |-------|--------|----------|
 | [Facet Name] | Not Started | — |
 
+## Priority
+
+[How does this project rank against other active work? What's the realistic time commitment?]
+
 ## Key Decisions
 
 [Decisions made during planning that affect multiple facets. These are the "load-bearing" choices.]
