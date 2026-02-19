@@ -32,7 +32,8 @@ Workflow documentation and domain-specific planning guides. See [planning/README
 
 | Document | Topics |
 |----------|--------|
-| [README.md](planning/README.md) | Workflow chain overview, when to use each stage |
+| [README.md](planning/README.md) | Workflow chain overview, tool table, common paths |
+| [methodology.md](planning/methodology.md) | Zoom hierarchy, artifact flow, quality gates, commit rules |
 | [frontend-design.md](planning/frontend-design.md) | Design contracts, W3C DTCG tokens, Playwright validation |
 | [agentic-systems.md](planning/agentic-systems.md) | LLM agents, tool use, AI pipelines, intelligence boundaries |
 | [infrastructure.md](planning/infrastructure.md) | Docker, deployment, CI/CD, server config, operational systems |

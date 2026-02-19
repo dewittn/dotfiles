@@ -23,7 +23,8 @@ These override default behavior. They exist because Claude repeatedly gets them 
 | platforms/hugo-development.md | Dev server, builds, Docker deployment |
 | platforms/playwright-automation.md | playwright-cli commands, viewports, browser install, workflows |
 | coding/style-guide.md | Style patterns, control flow, data-driven design |
-| planning/README.md | Workflow chain overview, when to use each stage |
+| planning/README.md | Workflow chain overview, tool table, common paths |
+| planning/methodology.md | Zoom hierarchy, artifact flow, quality gates, commit rules |
 | planning/frontend-design.md | Design contracts, W3C DTCG tokens, Playwright validation |
 | planning/agentic-systems.md | LLM agents, tool use, intelligence boundaries |
 | planning/infrastructure.md | Docker, deployment, CI/CD, config hierarchy, observability |
