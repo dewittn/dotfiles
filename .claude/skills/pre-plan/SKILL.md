@@ -1,68 +1,72 @@
 ---
 name: pre-plan
-description: "MANDATORY when entering plan mode or creating any implementation plan. This skill MUST be used before writing a plan — it front-loads context gathering through parallel agents and enforces operator alignment before implementation begins. Triggers: entering plan mode, discussing how to implement a feature, user describes work requiring multiple files or architectural decisions. Also suggest /feature-plan first if the user has a loose idea without a feature doc."
+description: >
+  Walk through a feature doc section by section for operator alignment, then enter plan mode
+  for implementation planning. Runs BEFORE plan mode, not during it.
+  Triggers: auto-trigger when discussing implementing a feature that has a feature doc,
+  explicit /pre-plan invocation, or when the user describes work requiring multiple files
+  or architectural decisions. Also suggest /feature-plan first if the user has a loose idea
+  without a feature doc.
 ---
 
 # Pre-Plan
 
 **This skill is NOT optional.** Every implementation plan MUST go through this process. Do not write a plan, create commit checkpoints, or begin implementation without completing all stages below. Skipping this skill leads to plans that miss hidden dependencies, ignore project conventions, and waste operator time on rework.
 
-Front-load context gathering and design decisions so implementation can run uninterrupted.
+Walk through the feature doc section by section for operator alignment, then enter plan mode for implementation planning.
 
 **Read first:** `~/.claude/docs/coding/style-guide.md`
 
-## Stage 0: Check for Feature Doc
+## Stage 0: Locate Feature Doc
 
-Before gathering context, check `~/.claude/docs/projects/<name>/features/` for a feature doc (files matching `NNN-*.md`) that covers the work being planned, where `<name>` is derived from the current working directory's folder name.
+Check `~/.claude/docs/projects/<name>/features/` for a feature doc (files matching `NNN-*.md`) that covers the work being planned, where `<name>` is derived from the current working directory's folder name.
 
-- **If a feature doc exists**: Read it. Use its constraints, inputs/outputs, and implementation order to guide the plan. Skip questions the feature doc already answers.
-- **If no feature doc exists**: Assess whether one would help. If the user is describing a loose or multi-part idea rather than a well-defined task, suggest: **"This sounds like it could benefit from `/feature-plan` first to nail down what we're building. Want to do that before we plan the implementation?"** This is not a hard gate — if the user wants to proceed directly, continue to Stage 1.
+- **If a feature doc exists**: Read it. Use it to guide the section-by-section review in Stage 1.
+- **If no feature doc exists**: Assess whether one would help. If the user is describing a loose or multi-part idea rather than a well-defined task, suggest: **"This sounds like it could benefit from `/feature-plan` first to nail down what we're building. Want to do that before we plan the implementation?"** This is not a hard gate — if the user wants to proceed directly, skip Stage 1 and go to Stage 2 with whatever context is available.
 
-## Stage 1: Gather Context (Silent)
-
-Before writing any plan, gather information in parallel. Do not output results yet.
-
-### History Search
-
-Run the **history-search** agent on files likely to be affected:
-
-- Recent modification history and churn
-- Reverts or bug fixes (code may be that way for a reason)
-- Files commonly co-modified (hidden dependencies)
-- Warning signs in commit messages
-
-Run history-search on multiple files in parallel using the Task tool.
-
-### Domain Context
-
-Based on the project type, read relevant docs from `~/.claude/docs/`:
-
-- **Infrastructure work** — Read infrastructure docs (docker-contexts, volume-safety, swarm-stacks, healthchecks, cicd-pipelines)
-- **Platform work** — Read platform docs (ghost-themes, hugo-development, playwright-automation)
-- **Code changes** — Read coding/style-guide.md
-
-Read the project's CLAUDE.md for project-specific conventions.
-
-If domain-specific planning guides exist at `~/.claude/docs/planning/`, read those too. Multiple guides may apply to the same project.
+Also read:
+- Project plan from `~/.claude/docs/projects/<name>/` for conventions
+- Domain docs from `~/.claude/docs/` based on project type
+- The project's CLAUDE.md for project-specific conventions
 
 Explicitly exclude `~/.claude/docs/projects/<name>/scenarios/` from context gathering.
 
-### Codebase Exploration
+## Stage 1: Section-by-Section Review
 
-Launch **Explore agents** in parallel (via the Task tool) to investigate the codebase. Keep exploration in separate contexts to avoid bloating the planning window.
+For each feature section in the doc, walk through this cycle:
 
-Target different agents at different concerns:
+1. **Read the section** — absorb what the feature spec asks for
+2. **Gather targeted context** — run history-search agents and Explore agents (via the Task tool) scoped to that section's concerns. Not whole-codebase sweeps — targeted investigation of the files and patterns relevant to this specific feature.
+3. **Present interpretation** — "Given this feature spec and this codebase, here's what I'd build." Explain how the spec maps to code changes, what existing patterns apply, and any gaps or ambiguities found.
+4. **Pause for operator review** — confirm or redirect. Do not proceed to the next section until the operator confirms this section's interpretation.
 
+### Context Gathering Per Section
+
+For each section, gather only what's relevant:
+
+**History search** (via history-search agent):
+- Recent modification history and churn on affected files
+- Reverts or bug fixes (code may be that way for a reason)
+- Files commonly co-modified (hidden dependencies)
+
+**Codebase exploration** (via Explore agents):
 - How similar features are currently implemented
-- Naming conventions and architectural patterns in the affected area
+- Naming conventions and patterns in the affected area
 - Configuration patterns (data-driven vs hardcoded)
-- Test patterns if tests exist
 
-Each agent should return a focused summary of findings, not raw file contents. Run these alongside the history-search agents.
+Run history-search and Explore agents in parallel for each section. Each agent returns a focused summary, not raw file contents.
 
-## Stage 2: Build the Plan
+### Rules
 
-Structure the plan with these required sections. If any section is missing, add it before proceeding.
+- Section review is mandatory. No skipping, no batching multiple sections.
+- The pause between sections is mandatory. Each section gets confirmed before moving on.
+- Domain docs from `~/.claude/docs/planning/` may apply — read relevant guides based on project type.
+
+## Stage 2: Enter Plan Mode
+
+After all sections are reviewed and confirmed, enter plan mode for implementation planning.
+
+Build the plan with these required sections:
 
 ### Commit Checkpoints
 
@@ -72,7 +76,7 @@ Identify logical commit points — not just "commit when done." Each major step 
 - A short commit message for each
 - Which checkpoints are safe rollback points
 
-The final checkpoint should include running `/review-code` before the last commit. This is the quality gate.
+The final checkpoint should include running `/review-code` before the last commit.
 
 ### Documentation Deliverables
 
@@ -101,11 +105,9 @@ If the plan establishes a new pattern or convention, list **every** place in the
 - Apply the pattern exhaustively in this plan, or
 - Flag remaining locations as follow-up work with specific file paths
 
-Do not apply principles locally and hope they spread. Be explicit about scope.
-
 ### History Findings
 
-Surface anything from Stage 1 that affects the plan:
+Surface anything from the section reviews that affects the plan:
 
 - Files with high churn or recent reverts (extra scrutiny needed)
 - Co-modified files not yet in the plan (hidden dependencies)
@@ -140,3 +142,4 @@ See `~/.claude/docs/planning/README.md` for the full workflow overview.
 
 - History findings are advisory, not blocking. Red flags mean "understand before proceeding," not "don't proceed."
 - Co-modified files are hidden dependencies — if A always changes with B, the plan should probably touch both.
+- The section-by-section review is feedback on spec quality — did the feature plan generate enough context? Over time, this feedback loop improves spec writing.
