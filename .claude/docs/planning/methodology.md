@@ -65,6 +65,22 @@ After context gathering and plan drafting, pre-plan presents the implementation 
 
 After implementation is complete, five parallel review agents (security, code quality, test coverage, docs compliance, CI/CD) evaluate the changes. The review produces a verdict: READY TO COMMIT or ADDRESS ISSUES FIRST. This gates the final commit.
 
+## Scenarios
+
+Behavioral specifications that validate whether built software does what the spec described.
+
+### Directory Convention
+
+Scenarios live at `~/.claude/docs/projects/<name>/scenarios/NNN-feature-name/scenario-description.md`, organized by feature number matching the feature plan they validate.
+
+### Holdout Principle
+
+Scenarios live outside project repos so coding agents can't see them during implementation. This separation is intentional — scenarios are the "holdout set" that validates agent output without influencing it. Pre-plan must explicitly exclude `~/.claude/docs/projects/<name>/scenarios/` from context gathering.
+
+### Format
+
+Not yet formalized. Current convention: natural language Given/When/Then markdown. No automation — scenarios are manually written and manually evaluated.
+
 ## Commit Rules
 
 The commit skill enforces safety rules at the very end of the chain:

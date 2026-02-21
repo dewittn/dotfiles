@@ -45,6 +45,8 @@ Read the project's CLAUDE.md for project-specific conventions.
 
 If domain-specific planning guides exist at `~/.claude/docs/planning/`, read those too. Multiple guides may apply to the same project.
 
+Explicitly exclude `~/.claude/docs/projects/<name>/scenarios/` from context gathering.
+
 ### Codebase Exploration
 
 Launch **Explore agents** in parallel (via the Task tool) to investigate the codebase. Keep exploration in separate contexts to avoid bloating the planning window.
