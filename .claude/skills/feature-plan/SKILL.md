@@ -45,6 +45,16 @@ Use the bundled scripts for tracking planning duration. Do not generate date/dur
 
 ## Workflow
 
+### Phase 0: Check the Inbox
+
+Before starting a fresh conversation, check `~/.claude/docs/projects/inbox/` for pending items.
+
+- **If inbox items exist**: List them. For each item, read project README summaries from `~/.claude/docs/projects/*/README.md` to suggest which project it belongs to. Always ask the operator before filing — no silent auto-sorting.
+- **If an item matches the current project**: Offer to use it as the seed for this feature planning session.
+- **If items don't match any project**: Surface them cleanly. They may need a project plan first.
+- **After a feature doc is written from an inbox item**: Delete the inbox item.
+- **If no inbox items exist or operator wants to start fresh**: Continue to Phase 1.
+
 ### Phase 1: Capture the Raw Idea
 
 1. Run `start-timer.sh` immediately
