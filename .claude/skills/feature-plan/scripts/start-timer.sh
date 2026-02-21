@@ -8,7 +8,7 @@ set -euo pipefail
 
 DOCS_DIR="${1:?Usage: start-timer.sh <docs-dir> <NNN> <feature-slug>}"
 NUM="${2:?Usage: start-timer.sh <docs-dir> <NNN> <feature-slug>}"
-SLUG="${3:?Usage: start-timer.sh <docs-dir> <feature-slug>}"
+SLUG="${3:?Usage: start-timer.sh <docs-dir> <NNN> <feature-slug>}"
 
 STARTED_FILE="${DOCS_DIR}/.feature-plan-${NUM}-${SLUG}.started"
 

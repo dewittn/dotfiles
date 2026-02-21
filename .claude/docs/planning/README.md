@@ -12,10 +12,10 @@ How features move from idea to implementation.
                               └──────────────────────────────────→┘
 ```
 
-The refined pipeline adds scenario validation between feature planning and implementation:
+The planned pipeline will add scenario validation between feature planning and implementation (not yet implemented):
 
 ```
-/feature-plan → /scenario → pre-plan → plan mode → build
+/feature-plan → /scenario (planned) → pre-plan → plan mode → build
 ```
 
 Each stage has a specific job. Not every project needs every stage — match the process to the scope. See [methodology.md](methodology.md) for how the stages relate (zoom hierarchy, artifact flow, quality gates).
