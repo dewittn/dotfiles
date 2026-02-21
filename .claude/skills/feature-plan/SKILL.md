@@ -25,7 +25,7 @@ Use the bundled scripts for tracking planning duration. Do not generate date/dur
 **Start timer** (run at the very beginning, before any conversation):
 ```bash
 ~/.claude/skills/feature-plan/scripts/start-timer.sh <docs-dir> <NNN> <feature-slug>
-# Example: ~/.claude/skills/feature-plan/scripts/start-timer.sh ./docs 001 hybrid-memory-search
+# Example: ~/.claude/skills/feature-plan/scripts/start-timer.sh ~/.claude/docs/projects/my-tool/features 001 hybrid-memory-search
 ```
 
 **Log duration and clean up** (run when operator signals completion):
@@ -37,7 +37,11 @@ Use the bundled scripts for tracking planning duration. Do not generate date/dur
 ~/.claude/skills/feature-plan/scripts/log-duration.sh <docs-dir> <NNN> <feature-slug> --log <project-name>
 ```
 
-To determine `<NNN>`: check for existing `feature-plan-*` docs in the project's `docs/` directory. Use the next number.
+**Project name**: Derive `<name>` from the current working directory's folder name (same convention as `/project-plan`).
+
+**Feature numbering**: Check `~/.claude/docs/projects/<name>/features/` for existing docs (files matching `NNN-*.md`). Use the next sequential number.
+
+**Project context**: Read the project plan README at `~/.claude/docs/projects/<name>/README.md` when it exists. If no project plan exists, proceed without project context — feature planning is not gated on project planning.
 
 ## Workflow
 
@@ -65,7 +69,7 @@ Ask 2-3 questions at a time, not all at once. Focus on:
 
 Draft the feature doc using the template at [references/feature-plan-template.md](references/feature-plan-template.md). Share it. Incorporate operator feedback. Each "wait, actually..." is a design decision being surfaced — slow down and explore it.
 
-Feature docs live at: `docs/feature-plan-NNN-feature-name.md`
+Feature docs live at: `~/.claude/docs/projects/<name>/features/NNN-feature-name.md`
 
 ### Phase 4: Dependency Mapping
 

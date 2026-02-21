@@ -1,7 +1,7 @@
 #!/bin/bash
 # Reads a .started timestamp file, calculates duration, optionally logs it, and cleans up.
 # Usage: log-duration.sh <docs-dir> <NNN> <feature-slug> [--log <project-name>]
-# Example: log-duration.sh ./docs 001 hybrid-memory-search --log wfid-manuscript-v2
+# Example: log-duration.sh ~/.claude/docs/projects/my-tool/features 001 hybrid-memory-search --log my-tool
 #
 # Without --log: prints duration and deletes .started file
 # With --log: also appends to ~/.claude/docs/planning/planning-log.md

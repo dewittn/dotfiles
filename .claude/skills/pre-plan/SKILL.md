@@ -13,7 +13,7 @@ Front-load context gathering and design decisions so implementation can run unin
 
 ## Stage 0: Check for Feature Doc
 
-Before gathering context, check the project's `docs/` directory for a feature doc (files matching `feature-plan-001-*.md`) that covers the work being planned.
+Before gathering context, check `~/.claude/docs/projects/<name>/features/` for a feature doc (files matching `NNN-*.md`) that covers the work being planned, where `<name>` is derived from the current working directory's folder name.
 
 - **If a feature doc exists**: Read it. Use its constraints, inputs/outputs, and implementation order to guide the plan. Skip questions the feature doc already answers.
 - **If no feature doc exists**: Assess whether one would help. If the user is describing a loose or multi-part idea rather than a well-defined task, suggest: **"This sounds like it could benefit from `/feature-plan` first to nail down what we're building. Want to do that before we plan the implementation?"** This is not a hard gate — if the user wants to proceed directly, continue to Stage 1.

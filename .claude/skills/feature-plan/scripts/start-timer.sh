@@ -1,7 +1,7 @@
 #!/bin/bash
 # Creates a .started timestamp file for tracking feature planning duration.
 # Usage: start-timer.sh <docs-dir> <NNN> <feature-slug>
-# Example: start-timer.sh ./docs 001 hybrid-memory-search
+# Example: start-timer.sh ~/.claude/docs/projects/my-tool/features 001 hybrid-memory-search
 # Creates: docs/.feature-plan-001-hybrid-memory-search.started
 
 set -euo pipefail
