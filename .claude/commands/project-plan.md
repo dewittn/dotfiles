@@ -41,6 +41,17 @@ Before anything else, check `~/.claude/docs/projects/` for existing project dire
 
 This only happens on the first invocation. The goal is to understand the project broadly and discover which facets need planning.
 
+### Explore the Codebase (first run only)
+
+Before asking questions, learn what the code already tells you:
+
+1. Read project README, CLAUDE.md, package manifests (package.json, Cargo.toml, go.mod, etc.), and config files
+2. Explore directory structure to understand how the codebase is organized
+3. Draft initial technical context from what the code reveals, using the template at [references/project-plan-technical-template.md](references/project-plan-technical-template.md)
+4. Present the draft to the operator for review and gap-filling
+
+This step is skipped on returning sessions — if project plan documents already exist, treat it as a conversational update.
+
 ### Capture the Vision
 
 Start with the operator's description and explore:
@@ -78,7 +89,9 @@ Create `~/.claude/docs/projects/<project-name>/README.md` using the template at 
 
 This document captures the project vision and serves as the hub for all facet documents.
 
-After writing the global doc, ask: **"Want to dive into one of these facets now, or let this sit?"**
+Write technical context to `~/.claude/docs/projects/<project-name>/technical.md` using the template at [references/project-plan-technical-template.md](references/project-plan-technical-template.md). If codebase exploration produced a draft, use it as the starting point.
+
+After writing both documents, ask: **"Want to dive into one of these facets now, or let this sit?"**
 
 ## Phase 2: Facet Deep-Dive
 

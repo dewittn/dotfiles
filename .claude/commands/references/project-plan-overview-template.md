@@ -3,37 +3,25 @@
 **Date**: YYYY-MM-DD
 **Status**: Planning
 
-## Vision
+## What This Is
 
-[1-3 sentences. What is this project and why does it exist?]
+[One sentence. What does the project do?]
 
-## Target Audience
+## Why It Exists
 
-[Who is this for? Be specific.]
+[2-3 sentences. What problem does it solve? What's the motivation?]
 
-## Ambition Level
+## Current Goals
 
-[Side project / Serious tool / Commercial product / Open source library / etc.]
-[What does success look like?]
+- [Active focus area 1]
+- [Active focus area 2]
+
+## Tools & Skills
+
+[List of Claude skills, commands, or automation this project contains, if any]
 
 ## Planning Status
 
 | Facet | Status | Document |
 |-------|--------|----------|
 | [Facet Name] | Not Started | — |
-
-## Priority
-
-[How does this project rank against other active work? What's the realistic time commitment?]
-
-## Key Decisions
-
-[Decisions made during planning that affect multiple facets. These are the "load-bearing" choices.]
-
-## Open Questions
-
-[Project-level questions that don't belong to any single facet.]
-
-## Notes
-
-[Anything that came up during planning that doesn't fit elsewhere — design philosophy, things explicitly ruled out, inspirations, competitive analysis.]
