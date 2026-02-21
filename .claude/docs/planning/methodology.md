@@ -14,15 +14,15 @@ Use when starting a new project or rethinking foundations. The project plan sets
 
 ### Feature Level — /feature-plan
 
-WHAT and WHY for a single feature. Produces `docs/feature-plan-NNN-name.md` in the project repo. Scoped to one capability — not the whole system.
+WHAT and WHY for a single feature. Produces `~/.claude/docs/projects/<name>/features/NNN-feature-name.md` outside the project repo. Scoped to one capability — not the whole system.
 
-Use when an idea needs thinking through before building. Reads project-level docs for context when they exist.
+Use when an idea needs thinking through before building. Reads project-level docs for context when they exist. Checks the inbox (`~/.claude/docs/projects/inbox/`) for raw ideas that may seed the session.
 
 ### Implementation Level — pre-plan
 
-HOW to build a specific feature or change. Produces an implementation plan with commit checkpoints, documentation deliverables, and operator alignment confirmation.
+HOW to build a specific feature or change. Runs BEFORE plan mode — walks through the feature doc section by section for operator alignment, then enters plan mode for implementation planning.
 
-Use for any multi-file change. Reads feature docs and handoff docs as input. This is where abstract plans become concrete steps.
+Use for any multi-file change. Reads feature docs and handoff docs as input. The section-by-section review catches misinterpretation early and provides spec quality feedback before implementation planning begins.
 
 ## Artifact Flow
 
@@ -35,7 +35,7 @@ Each tool produces artifacts that downstream tools consume.
         └─ read by pre-plan              (for conventions)
 
 /feature-plan
-  └─→ docs/feature-plan-NNN-name.md      (feature doc)
+  └─→ ~/.claude/docs/projects/<name>/features/NNN-feature-name.md  (feature doc)
         └─ read by pre-plan              (Stage 0 input)
 
 frontend-prototype
@@ -55,11 +55,15 @@ commit
 
 ## Quality Gates
 
-Two hard stops require explicit operator approval before work continues.
+Three alignment mechanisms ensure operator and agent stay in sync.
+
+### pre-plan Stage 1 — Section-by-Section Review
+
+Before plan mode, pre-plan walks through each feature section individually. For each section: gather targeted context, present interpretation, pause for operator confirmation. This catches misinterpretation at the section level before it compounds across features.
 
 ### pre-plan Stage 3 — Operator Alignment
 
-After context gathering and plan drafting, pre-plan presents the implementation approach for operator review. No code is written until the operator confirms the plan matches their intent. This catches misunderstandings before they become wasted work.
+After the section review and plan drafting, pre-plan presents the full implementation approach for operator review. No code is written until the operator confirms the plan matches their intent.
 
 ### /review-code — Quality Check
 
