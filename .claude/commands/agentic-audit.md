@@ -127,7 +127,6 @@ Tailored to this specific project. Include:
 - cicd-reviewer — Validate workflows and Docker stack templates
 - code-simplifier — Post-implementation cleanup
 - history-search — Git archaeology before refactors
-- playwright — Browser automation and screenshots
 
 **Available skills** (reference knowledge):
 - `/review-code` — Run all reviewers in parallel (security, quality, tests)
