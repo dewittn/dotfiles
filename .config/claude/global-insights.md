@@ -51,6 +51,64 @@ When evaluating fit for opportunities:
 - **Output Over Outcome:** Methodology Over Category explains *why* Output Over Outcome matters—judging by execution quality (not vanity metrics) is correct because the value is in the process, not the category
 - **Discounting Integration Work:** Implementation (step 4) is one phase; the value is in steps 1-3
 - **Option C Blind Spot:** Understanding methodology-over-category helps see paths that don't fit output categories but do fit the methodology
+- **Specification as Core Skill:** The methodology-over-category mismatch may be shrinking as the market shifts toward valuing specification and judgment over implementation
+
+---
+
+## Specification as Core Skill
+
+### Universal Pattern
+As AI handles more implementation, the ability to define problems precisely, immerse deeply in domains, and write specifications clear enough for machines to execute is becoming the primary value-creating skill. Nelson's methodology (steps 1-3: define, immerse, recognize patterns) IS this skill. He's been practicing it for 20+ years across domains.
+
+### Why This Matters
+The methodology-over-category insight explains a structural mismatch — Nelson organized by process, opportunities organized by output. This pattern adds *trajectory*: the market is beginning to move toward valuing specification and judgment over implementation. Nelson doesn't need the entire industry to shift. He needs companies already operating this way — and they exist now.
+
+**Important caveat:** This trajectory is emerging, not guaranteed. The timeline is uncertain and most of the industry is still in early stages. This insight is worth acting on, not betting everything on.
+
+### How to Recognize It
+- Framing AI tool work as "getting better at Claude Code" instead of "building specification fluency"
+- Treating the planning system as project management rather than deliberate skill development
+- Missing that writing better specs is a portable, marketable capability — not just a workflow preference
+
+### How to Respond
+Reframe the work:
+- "Getting better at Claude Code" → "Building fluency in specification-driven development"
+- "My planning system" → "A deliberate practice framework for the skill that's becoming the whole job"
+- "Learning to use AI tools" → "Developing the judgment layer that AI can't replace"
+- "I need to scramble to get up to speed with AI" → "I need to build the system that demonstrates I can operate at a high level"
+
+The last reframe is critical. "Scrambling to catch up" is defensive and reactive. "Building the framework" is the methodology applied to itself. When Nelson encounters a new domain (including AI), the methodology is always the same: define the problem, immerse, recognize patterns, prototype, create feedback loops, refine. AI isn't an exception to the methodology — it's the latest domain the methodology applies to.
+
+### The Planning System as Deliberate Practice
+Nelson's planning tools (`/project-plan` → `/feature-plan` → `pre-plan` → `/review-code` → `commit`) form a specification pipeline. Each level produces artifacts that constrain the next. Quality gates (operator alignment, code review) are where human judgment intervenes. This maps to directing agents with specs and evaluating outcomes — not writing code, not reviewing diffs line-by-line, but defining what should exist and verifying that it does.
+
+### Domain Manifestations
+- **Career:** The planning system is evidence of specification fluency — a demonstrable, practiced skill
+- **Creative:** Directing AI from detailed briefs (story outlines, craft notes) is the same specification skill
+- **Infrastructure:** Ansible playbooks, Docker configs, CI/CD pipelines have always been specification work — declaring desired state, not writing imperative steps
+- **Any AI collaboration:** Every session where Nelson defines the problem, provides context, and evaluates output is practice
+
+### The Signaling Dimension
+**Discovered:** February 2026, analyzing AI scare trade implications
+
+Having specification fluency isn't enough. The market needs to SEE it demonstrated in a business context. Personal productivity and business operations send different signals — the former shows preference, the latter shows value creation.
+
+The artifact that signals judgment isn't published code or writing alone. It's applied work with real stakes — "I evaluated AI against a real workflow, here's what it handles, here's where it breaks, here's the implementation plan." That specificity is what the market responds to.
+
+**How to recognize it:**
+- Treating GitHub repos or blog posts as sufficient signal for specification skill
+- Conflating "I use AI daily" with "I can demonstrate AI judgment in a business context"
+- Assuming the right audience will connect the dots without being shown
+
+**How to respond:**
+- Ask: "Where is this skill demonstrated in a context the market can evaluate?"
+- Reframe: Published code shows capability. Applied business judgment shows the thing that's actually scarce.
+- The unified story matters: methodology + AI fluency told as one narrative, not two separate claims
+
+### Relationship to Other Patterns
+- **Methodology Over Category:** Adds trajectory — the structural mismatch between methodology and category may be narrowing as the market shifts
+- **Discounting Integration Work:** Writing a good spec IS integration — assembling understanding from multiple domains into a coherent directive
+- **Option C Blind Spot:** Companies operating at advanced levels of AI-assisted development are an Option C that may not be visible through traditional job search channels
 
 ---
 
