@@ -39,7 +39,7 @@ Use the bundled scripts for tracking planning duration. Do not generate date/dur
 
 **Project name**: Derive `<name>` from the current working directory's folder name (same convention as `/project-plan`).
 
-**Feature numbering**: Check `~/.claude/docs/projects/<name>/features/` for existing docs (files matching `NNN-*.md`). Use the next sequential number.
+**Feature numbering**: Check BOTH `~/.claude/docs/projects/<name>/features/` AND `~/.claude/docs/projects/<name>/features/complete/` for existing docs (files matching `NNN-*.md`). Find the highest NNN across both directories and increment. Numbering is a global sequence — completed features do not free up their numbers.
 
 **Project context**: Read the project plan README at `~/.claude/docs/projects/<name>/README.md` when it exists. If no project plan exists, proceed without project context — feature planning is not gated on project planning.
 
@@ -79,6 +79,10 @@ Ask 2-3 questions at a time, not all at once. Focus on:
 
 Draft the feature doc using the template at [references/feature-plan-template.md](references/feature-plan-template.md). Share it. Incorporate operator feedback. Each "wait, actually..." is a design decision being surfaced — slow down and explore it.
 
+When creating the feature doc:
+1. Run `date +%Y-%m-%d` to get today's date (never generate dates manually)
+2. Set frontmatter: `status: draft`, `date` and `last-updated` both set to today's date from the shell command
+
 Feature docs live at: `~/.claude/docs/projects/<name>/features/NNN-feature-name.md`
 
 ### Phase 4: Dependency Mapping
@@ -90,6 +94,7 @@ Identify which features depend on others, which are independent, and suggest imp
 When operator signals completion:
 1. Run `log-duration.sh` (with `--log` flag if operator wants it logged)
 2. Report the duration
+3. Update the feature doc frontmatter: set `status: feature-planned` and `last-updated` to today's date (via `date +%Y-%m-%d`)
 
 ## Guiding Principles
 
