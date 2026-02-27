@@ -81,6 +81,7 @@ Planning artifacts live in `~/.claude/docs/projects/<name>/`:
 │   ├── README.md             # Executive summary
 │   ├── technical.md          # Codebase context
 │   ├── features/             # Feature docs (NNN-name.md)
+│   │   └── complete/         # Completed feature docs
 │   ├── scenarios/            # Behavioral specs (holdout set)
 │   └── <facet>.md            # Facet documents
 ```
