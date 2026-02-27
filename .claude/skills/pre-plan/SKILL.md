@@ -94,7 +94,7 @@ For each feature section in the doc, walk through this cycle:
    | Summary table | Multiple items with shared attributes |
    | Change map | Where in the system changes land |
 
-   Use box-drawing characters (`─ │ ├ └ →`) for ASCII diagrams per `docs/planning/README.md`. See `references/visual-formats.md` for examples of each format.
+   Use box-drawing characters (`─ │ ├ └ →`) for ASCII diagrams. See `references/visual-formats.md` for examples of each format.
 4. **Pause for operator review** — confirm or redirect. Do not proceed to the next section until the operator confirms this section's interpretation.
 5. **Update the feature doc** — After the operator confirms a section:
    - Mark the section heading `[reviewed]` (replace `[pending]` or `[in-review]`)
