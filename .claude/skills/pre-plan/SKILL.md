@@ -78,6 +78,23 @@ Identify logical commit points — not just "commit when done." Each major step 
 
 The final checkpoint should include running `/review-code` before the last commit.
 
+### Verification Gates
+
+Assign a gate to every task using the TDD skill's gate definitions:
+
+| Task produces... | Gate |
+|------------------|------|
+| Testable behavior (functions, APIs, logic) | Red-Green-Refactor |
+| Config/infrastructure with a validator | Command & Confirm |
+| Skills, prompts, subjective quality | Evals |
+| Docs, planning, non-executable | Human Review |
+
+For Command & Confirm: include the specific command and expected output in the plan.
+For Evals: include evaluation criteria.
+Tag each step heading: `## Step 1a: Create Tables [Red-Green-Refactor]`
+
+Include a summary table of all tasks with gate assignments for quick scanning.
+
 ### Documentation Deliverables
 
 Specify which documentation will be created or updated:
@@ -123,6 +140,7 @@ Before clearing context or beginning execution, describe the plan from the **ope
 - What can they configure without touching code?
 - Where will they look when something breaks?
 - What files will they need to read or edit?
+- Are the gate assignments correct? (Show the summary table for review)
 
 Diagrams, pseudocode, and rough sketches are encouraged at this step. The goal is shared understanding, not polished documentation.
 
@@ -134,7 +152,7 @@ If the operator asks for more detail on any point, provide it. Do not proceed un
 
 This skill handles HOW. The feature doc (from `/feature-plan`) defines WHAT and WHY. If a feature doc exists, use its constraints and decisions — don't re-ask questions it already answers. Respect its implementation order when defining commit checkpoints.
 
-Works with: `/feature-plan` command, `/review-code` command, history-search agent, Explore agents, code-styling skill, style guide (`~/.claude/docs/coding/style-guide.md`), domain docs (`~/.claude/docs/`).
+Works with: `/feature-plan` command, `/review-code` command, tdd skill, history-search agent, Explore agents, code-styling skill, style guide (`~/.claude/docs/coding/style-guide.md`), domain docs (`~/.claude/docs/`).
 
 See `~/.claude/docs/planning/README.md` for the full workflow overview.
 
