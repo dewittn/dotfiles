@@ -26,7 +26,25 @@ Check `~/.claude/docs/projects/<name>/features/` for a feature doc (files matchi
 After reading the feature doc, check the YAML frontmatter `status` field:
 
 - **`feature-planned`**: Fresh start. Run `date +%Y-%m-%d` for today's date. Update frontmatter: set `status: pre-planning`, set `last-updated` to today's date (add the field if absent). Mark all feature section headings (`###` level under `## Features`) with `[pending]` tag appended to the heading text. Proceed to Stage 1 from the first section.
-- **`pre-planning`**: Resuming an interrupted session. Read heading tags to find section statuses. Present a brief summary of `[reviewed]` sections, then pick up at the first `[pending]` section. Do not re-review completed sections.
+- **`pre-planning`**: Resuming an interrupted session. Read heading tags to find section statuses. Present a structured resumption summary (generated display, not stored in the doc):
+
+  ```
+  ## Resuming Pre-Plan: [Feature Name]
+
+  | Section | Status |
+  |---------|--------|
+  | Feature 1 | reviewed |
+  | Feature 2 | reviewed |
+  | Feature 3 | pending |
+
+  Picking up at: **Feature 3 — [Section Name]**
+  ```
+
+  Heading tags are the single source of truth for status; enriched section bodies are the decision record. Do not add a progress table to the doc.
+
+  If all sections are `[reviewed]`, skip Stage 1 and go directly to Stage 2.
+
+  Do not re-review completed sections.
 - **`planned`**: Pre-planning already complete. Tell the operator: "This feature doc has already been pre-planned. Ready to implement, or do you want to re-review?"
 - **`draft`**: Feature planning not yet complete. Suggest running `/feature-plan` first.
 - **`implementing`** or **`complete`**: Already past pre-planning. Tell the operator the current status.
