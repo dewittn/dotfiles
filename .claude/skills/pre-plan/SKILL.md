@@ -22,6 +22,22 @@ Walk through the feature doc section by section for operator alignment, then ent
 Check `~/.claude/docs/projects/<name>/features/` for a feature doc (files matching `NNN-*.md`) that covers the work being planned, where `<name>` is derived from the current working directory's folder name.
 
 - **If a feature doc exists**: Read it. Use it to guide the section-by-section review in Stage 1.
+
+After reading the feature doc, check the YAML frontmatter `status` field:
+
+- **`feature-planned`**: Fresh start. Run `date +%Y-%m-%d` for today's date. Update frontmatter: set `status: pre-planning`, set `last-updated` to today's date (add the field if absent). Mark all feature section headings (`###` level under `## Features`) with `[pending]` tag appended to the heading text. Proceed to Stage 1 from the first section.
+- **`pre-planning`**: Resuming an interrupted session. Read heading tags to find section statuses. Present a brief summary of `[reviewed]` sections, then pick up at the first `[pending]` section. Do not re-review completed sections.
+- **`planned`**: Pre-planning already complete. Tell the operator: "This feature doc has already been pre-planned. Ready to implement, or do you want to re-review?"
+- **`draft`**: Feature planning not yet complete. Suggest running `/feature-plan` first.
+- **`implementing`** or **`complete`**: Already past pre-planning. Tell the operator the current status.
+
+Heading tag format:
+```
+### Feature A [pending]
+### Feature B [in-review]
+### Feature C [reviewed]
+```
+
 - **If no feature doc exists**: Assess whether one would help. If the user is describing a loose or multi-part idea rather than a well-defined task, suggest: **"This sounds like it could benefit from `/feature-plan` first to nail down what we're building. Want to do that before we plan the implementation?"** This is not a hard gate — if the user wants to proceed directly, skip Stage 1 and go to Stage 2 with whatever context is available.
 
 Also read:
@@ -39,6 +55,11 @@ For each feature section in the doc, walk through this cycle:
 2. **Gather targeted context** — run history-search agents and Explore agents (via the Task tool) scoped to that section's concerns. Not whole-codebase sweeps — targeted investigation of the files and patterns relevant to this specific feature.
 3. **Present interpretation** — "Given this feature spec and this codebase, here's what I'd build." Explain how the spec maps to code changes, what existing patterns apply, and any gaps or ambiguities found.
 4. **Pause for operator review** — confirm or redirect. Do not proceed to the next section until the operator confirms this section's interpretation.
+5. **Update the feature doc** — After the operator confirms a section:
+   - Mark the section heading `[reviewed]` (replace `[pending]` or `[in-review]`)
+   - Enrich the section content: update Architecture with codebase findings, resolve answered Open Questions, add specifics discovered during review
+   - Update `last-updated` in frontmatter (via `date +%Y-%m-%d`)
+   - When beginning a new section's review, mark its heading `[in-review]`
 
 ### Context Gathering Per Section
 
@@ -147,6 +168,14 @@ Diagrams, pseudocode, and rough sketches are encouraged at this step. The goal i
 Ask the operator: **"Does this match what you're picturing?"**
 
 If the operator asks for more detail on any point, provide it. Do not proceed until they confirm alignment.
+
+### Completion Updates
+
+When pre-plan finishes (all sections reviewed, plan confirmed by operator):
+1. Update feature doc frontmatter: set `status: planned`, `last-updated` via `date +%Y-%m-%d`
+2. Include these as steps in the plan output:
+   - **Before build starts**: update feature doc `status: implementing`, update `last-updated`
+   - **Final commit checkpoint**: update feature doc `status: complete`, update `last-updated`, move doc from `features/NNN-name.md` to `features/complete/NNN-name.md` (create `complete/` directory if needed)
 
 ## Integration
 
