@@ -11,7 +11,7 @@ description: >
 
 # TDD
 
-Verification gates for implementation tasks. Every task has a "done" criterion — the gate tells you what it is and how to prove it.
+Verification gates for implementation tasks. Every task has a "done" criterion — the gate defines what it is and how to prove it.
 
 ## Verification Gates
 
@@ -41,7 +41,7 @@ No production code without a failing test first. The test is the spec.
 ```
 # Write parse_config implementation
 # Write tests after the fact
-# Tests pass on first run (they test what you wrote, not what you need)
+# Tests pass on first run (they test what was written, not what is needed)
 # Ship it
 ```
 
@@ -80,12 +80,12 @@ Do not skip steps. Do not mark a task complete before running verification.
 When a test or verification that should pass fails unexpectedly, stop guessing and follow this sequence:
 
 1. **Investigate** — Read error messages, logs, stack traces. What actually happened?
-2. **Analyze** — What patterns do you see? What changed since it last worked?
+2. **Analyze** — What patterns are visible? What changed since it last worked?
 3. **Hypothesize** — Form a specific theory about the root cause
 4. **Test** — Verify the hypothesis with a targeted check (not a random fix)
 5. **Fix** — Apply the fix that addresses the root cause
 
-**3-fix escalation rule:** If three attempted fixes fail, stop. The problem is likely architectural, not a local bug. Present the situation to the operator with your findings and ask whether to continue or rethink the approach.
+**3-fix escalation rule:** If three attempted fixes fail, stop. The problem is likely architectural, not a local bug. Present the situation to the operator with findings and ask whether to continue or rethink the approach.
 
 ## Multi-Component Diagnostic
 
@@ -110,7 +110,7 @@ The operator can also exempt specific tasks during pre-plan alignment. Exemption
 
 ## Rationalizations
 
-When you catch yourself forming a reason to skip a gate, read `references/rationalizations.md`. Common excuses are cataloged with rebuttals.
+When a rationalization forms for skipping a gate, read `references/rationalizations.md`. Common excuses are cataloged with rebuttals.
 
 ## Integration
 

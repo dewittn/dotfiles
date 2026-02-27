@@ -30,6 +30,7 @@ Raw ideas land in the **inbox** (`~/.claude/docs/projects/inbox/`) and get picke
 | /feature-plan | Command | Manual | Feature doc at `~/.claude/docs/projects/<name>/features/NNN-feature-name.md` |
 | frontend-prototype | Skill | Auto (design work) | Static HTML in `tmp/prototype/` + `HANDOFF.md` |
 | pre-plan | Skill | Auto (discussing implementation) or manual | Section-by-section review, then implementation plan with commit checkpoints |
+| tdd | Skill | Auto (code tasks) + plan tags | Verification gate enforcement during build phase |
 | /review-code | Command | Manual | Review summary with READY TO COMMIT / ADDRESS ISSUES verdict |
 | commit | Skill | Auto (git commit) | Committed + pushed code with safety enforcement |
 

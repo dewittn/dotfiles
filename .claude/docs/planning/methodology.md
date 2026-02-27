@@ -55,7 +55,7 @@ commit
 
 ## Quality Gates
 
-Three alignment mechanisms ensure operator and agent stay in sync.
+Four quality gates ensure operator and agent stay in sync.
 
 ### pre-plan Stage 1 — Section-by-Section Review
 
@@ -64,6 +64,13 @@ Before plan mode, pre-plan walks through each feature section individually. For 
 ### pre-plan Stage 3 — Operator Alignment
 
 After the section review and plan drafting, pre-plan presents the full implementation approach for operator review. No code is written until the operator confirms the plan matches their intent.
+
+### TDD Verification Gates — Build Phase
+
+During implementation, each task carries a verification gate assigned during pre-plan:
+Red-Green-Refactor, Command & Confirm, Evals, or Human Review.
+Evals currently falls back to Human Review until eval tooling is configured.
+The TDD skill enforces gate compliance. See `~/.claude/skills/tdd/SKILL.md`.
 
 ### /review-code — Quality Check
 
