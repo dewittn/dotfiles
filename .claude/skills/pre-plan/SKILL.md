@@ -54,6 +54,17 @@ For each feature section in the doc, walk through this cycle:
 1. **Read the section** — absorb what the feature spec asks for
 2. **Gather targeted context** — run history-search agents and Explore agents (via the Task tool) scoped to that section's concerns. Not whole-codebase sweeps — targeted investigation of the files and patterns relevant to this specific feature.
 3. **Present interpretation** — "Given this feature spec and this codebase, here's what I'd build." Explain how the spec maps to code changes, what existing patterns apply, and any gaps or ambiguities found.
+
+   **Default to tables for structured information.** Use these substitutions:
+
+   | Instead of... | Use... |
+   |---------------|--------|
+   | "We'll modify X to do Y, and also update Z to..." | File change table: File / Change / Reason |
+   | "The current behavior is A, but we want B..." | Before/after comparison table |
+   | "This feature depends on X, which requires Y..." | Dependency table with status column |
+   | "The inputs are A and B, producing output C..." | Input/output table |
+
+   Reserve narrative for rationale, tradeoffs, and open questions — information that needs explanation, not structure.
 4. **Pause for operator review** — confirm or redirect. Do not proceed to the next section until the operator confirms this section's interpretation.
 5. **Update the feature doc** — After the operator confirms a section:
    - Mark the section heading `[reviewed]` (replace `[pending]` or `[in-review]`)
@@ -118,6 +129,8 @@ Include a summary table of all tasks with gate assignments for quick scanning.
 
 ### Documentation Deliverables
 
+Present as a table: **File / Change / Reason**.
+
 Specify which documentation will be created or updated:
 
 - README updates if the interface or setup changes
@@ -127,6 +140,8 @@ Specify which documentation will be created or updated:
 Documentation is a deliverable, not an afterthought. If it's not in the plan, it won't get written.
 
 ### Human-Touchable Artifacts
+
+Present as a table: **File / Location / Purpose**.
 
 List every file the operator might need to read, edit, or inspect between runs. For each one:
 
@@ -144,6 +159,8 @@ If the plan establishes a new pattern or convention, list **every** place in the
 - Flag remaining locations as follow-up work with specific file paths
 
 ### History Findings
+
+Present as a table: **File / Finding / Impact**.
 
 Surface anything from the section reviews that affects the plan:
 
