@@ -25,6 +25,7 @@ description: |
   <Task tool call to pre-commit-reviewer agent>
   </example>
 tools: [Read, Glob, Grep, Bash]
+skills: [code-styling]
 model: sonnet
 color: yellow
 ---
@@ -148,6 +149,16 @@ Flag when imports are clearly disorganized:
 
 **Note:** Many projects handle this via linters. Only flag obvious issues.
 
+### 7. Large Files
+
+Run the file length check script from the code-styling skill on changed files:
+
+```bash
+bash <code-styling-skill-path>/scripts/check-file-lengths.sh [changed files...]
+```
+
+Report any warnings. This is a single, predictable bash call — not agent-generated detection.
+
 ## Output Format
 
 ```markdown
@@ -192,6 +203,7 @@ Flag when imports are clearly disorganized:
 - Console statements (unless intentional logging)
 - Large commented-out code blocks
 - Functions over 50 lines
+- Files over 600 lines (from check-file-lengths.sh)
 - Linter warnings
 
 **Suggestions (consider):**
