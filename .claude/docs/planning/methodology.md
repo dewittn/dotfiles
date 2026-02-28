@@ -36,7 +36,8 @@ Each tool produces artifacts that downstream tools consume.
 
 /feature-plan
   └─→ ~/.claude/docs/projects/<name>/features/NNN-feature-name.md  (feature doc)
-        └─ read by pre-plan              (Stage 0 input)
+        ├─ read by pre-plan              (Stage 0 input)
+        └─ written back by pre-plan      (status updates, section enrichment)
 
 frontend-prototype
   └─→ tmp/prototype/ + HANDOFF.md        (design artifacts)
@@ -44,7 +45,8 @@ frontend-prototype
         └─ read by pre-plan              (design input)
 
 pre-plan
-  └─→ implementation plan                (drives build phase)
+  ├─→ implementation plan                (drives build phase)
+  └─→ enriched feature doc               (status + section updates written back)
 
 /review-code
   └─→ review summary                     (gates final commit)
@@ -53,6 +55,34 @@ commit
   └─→ committed + pushed code            (enforces safety rules)
 ```
 
+## Document Lifecycle
+
+Feature docs carry YAML frontmatter with a `status` field that tracks where the document is in the planning chain. Each tool advances the status when it finishes its work.
+
+```
+draft → feature-planned → pre-planning → planned → implementing → complete
+  │          │                  │            │            │            │
+  │     /feature-plan      pre-plan      pre-plan     build        build
+  │       sets this       Stage 0        Stage 3      start        final
+  │                       sets this      sets this    sets this    sets this
+  └── initial state                                                  │
+                                                                     ▼
+                                                          features/complete/
+```
+
+| Status | Set by | Meaning |
+|--------|--------|---------|
+| `draft` | Template default | Feature planning not yet complete |
+| `feature-planned` | `/feature-plan` | Feature defined, ready for implementation planning |
+| `pre-planning` | pre-plan Stage 0 | Section-by-section review in progress |
+| `planned` | pre-plan Stage 3 | Implementation plan confirmed by operator |
+| `implementing` | Build phase start | Code work underway |
+| `complete` | Build phase end | Feature delivered; doc archived to `features/complete/` |
+
+Frontmatter also carries `date` (creation) and `last-updated` (set via `date +%Y-%m-%d` at each transition).
+
+During pre-plan Stage 1, individual feature sections are tracked with heading tags (`[pending]`, `[in-review]`, `[reviewed]`). These tags enable session resumption — if a pre-planning session is interrupted, the next session reads the heading tags to skip already-reviewed sections and pick up where it left off.
+
 ## Quality Gates
 
 Four quality gates ensure operator and agent stay in sync.
@@ -60,6 +90,10 @@ Four quality gates ensure operator and agent stay in sync.
 ### pre-plan Stage 1 — Section-by-Section Review
 
 Before plan mode, pre-plan walks through each feature section individually. For each section: gather targeted context, present interpretation, pause for operator confirmation. This catches misinterpretation at the section level before it compounds across features.
+
+After the operator confirms a section, pre-plan enriches the feature doc — updating Architecture with codebase findings, resolving answered Open Questions, and marking the heading `[reviewed]`. This enrichment means the feature doc improves as a side effect of implementation planning.
+
+If a session is interrupted mid-review, the heading tags (`[pending]`/`[in-review]`/`[reviewed]`) serve as the resumption point. The next session presents a summary of completed sections and picks up at the first `[pending]` section without re-reviewing.
 
 ### pre-plan Stage 3 — Operator Alignment
 
