@@ -45,6 +45,8 @@ No production code without a failing test first. The test is the spec.
 # Ship it
 ```
 
+For testing philosophy, good/bad test patterns, and the anti-horizontal-slice rule, see [references/testing-craft.md](references/testing-craft.md). For mocking guidelines, see [references/mocking.md](references/mocking.md). For designing testable interfaces, see [references/interface-design.md](references/interface-design.md).
+
 ### Command & Confirm (strong expectation)
 
 Config, infrastructure, and artifacts with a validator. The plan includes a specific command and expected output.
@@ -118,3 +120,4 @@ When a rationalization forms for skipping a gate, read `references/rationalizati
 - **commit** skill handles the commit after verification passes
 - **/review-code** is the final quality gate after all tasks complete — separate scope from per-task verification
 - **code-styling** applies during the Refactor phase of Red-Green-Refactor
+- **Reference guides** — `references/` contains craft guidance for testing philosophy, mocking, interface design, and refactoring. Read the relevant file when working through a Red-Green-Refactor gate.
