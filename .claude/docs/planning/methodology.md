@@ -18,11 +18,11 @@ WHAT and WHY for a single feature. Produces `~/.claude/docs/projects/<name>/feat
 
 Use when an idea needs thinking through before building. Reads project-level docs for context when they exist. Checks the inbox (`~/.claude/docs/projects/inbox/`) for raw ideas that may seed the session.
 
-### Implementation Level — pre-plan
+### Implementation Level — pre-plan → /build
 
-HOW to build a specific feature or change. Runs BEFORE plan mode — walks through the feature doc section by section for operator alignment, then enters plan mode for implementation planning.
+HOW to build a specific feature or change. Two phases: **pre-plan** enriches the feature doc through section-by-section review with operator alignment, then **`/build`** creates an implementation plan and executes it in a fresh session.
 
-Use for any multi-file change. Reads feature docs and handoff docs as input. The section-by-section review catches misinterpretation early and provides spec quality feedback before implementation planning begins.
+Use pre-plan for any multi-file change. It reads feature docs and handoff docs as input, gathers codebase context, and writes findings back to the feature doc. The enriched doc becomes the handoff artifact for `/build`.
 
 ## Artifact Flow
 
@@ -45,8 +45,13 @@ frontend-prototype
         └─ read by pre-plan              (design input)
 
 pre-plan
-  ├─→ implementation plan                (drives build phase)
-  └─→ enriched feature doc               (status + section updates written back)
+  ├─→ enriched feature doc               (status + section updates written back)
+  └─→ feature branch                     (pushed to remote for /build)
+
+/build
+  ├─→ implementation plan                (created in plan mode)
+  ├─→ committed code on feature branch   (with verification gates passed)
+  └─→ pull request                       (to dev or main)
 
 /review-code
   └─→ review summary                     (gates final commit)
@@ -62,8 +67,8 @@ Feature docs carry YAML frontmatter with a `status` field that tracks where the 
 ```
 draft → feature-planned → pre-planning → planned → implementing → complete
   │          │                  │            │            │            │
-  │     /feature-plan      pre-plan      pre-plan     build        build
-  │       sets this       Stage 0        Stage 3      start        final
+  │     /feature-plan      pre-plan      pre-plan     /build       /build
+  │       sets this       Stage 0       completion    start        final
   │                       sets this      sets this    sets this    sets this
   └── initial state                                                  │
                                                                      ▼
@@ -75,9 +80,9 @@ draft → feature-planned → pre-planning → planned → implementing → comp
 | `draft` | Template default | Feature planning not yet complete |
 | `feature-planned` | `/feature-plan` | Feature defined, ready for implementation planning |
 | `pre-planning` | pre-plan Stage 0 | Section-by-section review in progress |
-| `planned` | pre-plan Stage 3 | Implementation plan confirmed by operator |
-| `implementing` | Build phase start | Code work underway |
-| `complete` | Build phase end | Feature delivered; doc archived to `features/complete/` |
+| `planned` | pre-plan completion | Enriched and ready for `/build` |
+| `implementing` | `/build` start | Code work underway |
+| `complete` | `/build` finish | Feature delivered; doc archived to `features/complete/` |
 
 Frontmatter also carries `date` (creation) and `last-updated` (set via `date +%Y-%m-%d` at each transition).
 
@@ -95,9 +100,9 @@ After the operator confirms a section, pre-plan enriches the feature doc — upd
 
 If a session is interrupted mid-review, the heading tags (`[pending]`/`[in-review]`/`[reviewed]`) serve as the resumption point. The next session presents a summary of completed sections and picks up at the first `[pending]` section without re-reviewing.
 
-### pre-plan Stage 3 — Operator Alignment
+### /build — Operator Alignment
 
-After the section review and plan drafting, pre-plan presents the full implementation approach for operator review. No code is written until the operator confirms the plan matches their intent.
+After entering plan mode, `/build` presents the full implementation approach for operator review. No code is written until the operator confirms the plan matches their intent.
 
 ### TDD Verification Gates — Build Phase
 
