@@ -1,8 +1,8 @@
 ---
 name: pre-plan
 description: >
-  Walk through a feature doc section by section for operator alignment, then enter plan mode
-  for implementation planning. Runs BEFORE plan mode, not during it.
+  Walk through a feature doc section by section for operator alignment, producing an enriched
+  feature doc that a fresh /build session can execute from. Runs BEFORE /build, not during it.
   Triggers: auto-trigger when discussing implementing a feature that has a feature doc,
   explicit /pre-plan invocation, or when the user describes work requiring multiple files
   or architectural decisions. Also suggest /feature-plan first if the user has a loose idea
@@ -11,9 +11,9 @@ description: >
 
 # Pre-Plan
 
-**This skill is NOT optional.** Every implementation plan MUST go through this process. Do not write a plan, create commit checkpoints, or begin implementation without completing all stages below. Skipping this skill leads to plans that miss hidden dependencies, ignore project conventions, and waste operator time on rework.
+**This skill is NOT optional.** Every feature MUST go through this process before building. Do not begin implementation without completing all stages below. Skipping this skill leads to builds that miss hidden dependencies, ignore project conventions, and waste operator time on rework.
 
-Walk through the feature doc section by section for operator alignment, then enter plan mode for implementation planning.
+Walk through the feature doc section by section for operator alignment, producing an enriched feature doc that a fresh `/build` session can execute from.
 
 **Read first:** `~/.claude/docs/coding/style-guide.md`
 
@@ -25,7 +25,7 @@ Check `~/.claude/docs/projects/<name>/features/` for a feature doc (files matchi
 
 After reading the feature doc, check the YAML frontmatter `status` field:
 
-- **`feature-planned`**: Fresh start. Run `date +%Y-%m-%d` for today's date. Update frontmatter: set `status: pre-planning`, set `last-updated` to today's date (add the field if absent). Mark all feature section headings (`###` level under `## Features`) with `[pending]` tag appended to the heading text. Proceed to Stage 1 from the first section.
+- **`feature-planned`**: Fresh start. Run `date +%Y-%m-%d` for today's date. Update frontmatter: set `status: pre-planning`, set `last-updated` to today's date (add the field if absent). Proceed to Stage 1 from the first section. (Section headings already have `[pending]` tags from the feature-plan template.)
 - **`pre-planning`**: Resuming an interrupted session. Read heading tags to find section statuses. Present a structured resumption summary (generated display, not stored in the doc):
 
   ```
@@ -42,10 +42,10 @@ After reading the feature doc, check the YAML frontmatter `status` field:
 
   Heading tags are the single source of truth for status; enriched section bodies are the decision record. Do not add a progress table to the doc.
 
-  If all sections are `[reviewed]`, skip Stage 1 and go directly to Stage 2.
+  If all sections are `[reviewed]`, skip Stage 1 and go directly to Completion.
 
   Do not re-review completed sections.
-- **`planned`**: Pre-planning already complete. Tell the operator: "This feature doc has already been pre-planned. Ready to implement, or do you want to re-review?"
+- **`planned`**: Pre-planning already complete. Tell the operator: "This feature doc has been pre-planned and is ready for `/build`. Want to re-review instead?"
 - **`draft`**: Feature planning not yet complete. Suggest running `/feature-plan` first.
 - **`implementing`** or **`complete`**: Already past pre-planning. Tell the operator the current status.
 
@@ -56,7 +56,7 @@ Heading tag format:
 ### Feature C [reviewed]
 ```
 
-- **If no feature doc exists**: Assess whether one would help. If the user is describing a loose or multi-part idea rather than a well-defined task, suggest: **"This sounds like it could benefit from `/feature-plan` first to nail down what we're building. Want to do that before we plan the implementation?"** This is not a hard gate — if the user wants to proceed directly, skip Stage 1 and go to Stage 2 with whatever context is available.
+- **If no feature doc exists**: Assess whether one would help. If the user is describing a loose or multi-part idea rather than a well-defined task, suggest: **"This sounds like it could benefit from `/feature-plan` first to nail down what we're building. Want to do that before we plan the implementation?"** This is not a hard gate — if the user wants to proceed directly, skip Stage 1 and go to Completion with whatever context is available.
 
 Also read:
 - Project plan from `~/.claude/docs/projects/<name>/` for conventions
@@ -124,111 +124,22 @@ Run history-search and Explore agents in parallel for each section. Each agent r
 - The pause between sections is mandatory. Each section gets confirmed before moving on.
 - Domain docs from `~/.claude/docs/planning/` may apply — read relevant guides based on project type.
 
-## Stage 2: Enter Plan Mode
+## Completion
 
-After all sections are reviewed and confirmed, enter plan mode for implementation planning.
+When all sections are reviewed and confirmed:
 
-Build the plan with these required sections:
-
-### Commit Checkpoints
-
-Identify logical commit points — not just "commit when done." Each major step or feature boundary is a commit. State:
-
-- What gets committed at each checkpoint
-- A short commit message for each
-- Which checkpoints are safe rollback points
-
-The final checkpoint should include running `/review-code` before the last commit.
-
-### Verification Gates
-
-Assign a gate to every task using the TDD skill's gate definitions:
-
-| Task produces... | Gate |
-|------------------|------|
-| Testable behavior (functions, APIs, logic) | Red-Green-Refactor |
-| Config/infrastructure with a validator | Command & Confirm |
-| Skills, prompts, subjective quality | Evals |
-| Docs, planning, non-executable | Human Review |
-
-For Command & Confirm: include the specific command and expected output in the plan.
-For Evals: include evaluation criteria.
-Tag each step heading: `## Step 1a: Create Tables [Red-Green-Refactor]`
-
-Include a summary table of all tasks with gate assignments for quick scanning.
-
-### Documentation Deliverables
-
-Present as a table: **File / Change / Reason**.
-
-Specify which documentation will be created or updated:
-
-- README updates if the interface or setup changes
-- Architecture docs if the structure is new or significantly changed
-- Inline comments only where intent isn't obvious from the code
-
-Documentation is a deliverable, not an afterthought. If it's not in the plan, it won't get written.
-
-### Human-Touchable Artifacts
-
-Present as a table: **File / Location / Purpose**.
-
-List every file the operator might need to read, edit, or inspect between runs. For each one:
-
-- Is it in a human-friendly format (markdown, YAML, env vars — not buried in code)?
-- Is it in a predictable, clearly named location?
-- Does it follow the style guide's "externalize user-facing content" pattern?
-
-If the operator will touch it, optimize it for the operator, not the code.
-
-### Principle Propagation
-
-If the plan establishes a new pattern or convention, list **every** place in the codebase that pattern applies — not just the first instance. Either:
-
-- Apply the pattern exhaustively in this plan, or
-- Flag remaining locations as follow-up work with specific file paths
-
-### History Findings
-
-Present as a table: **File / Finding / Impact**.
-
-Surface anything from the section reviews that affects the plan:
-
-- Files with high churn or recent reverts (extra scrutiny needed)
-- Co-modified files not yet in the plan (hidden dependencies)
-- Past decisions that the plan should respect or explicitly override
-
-## Stage 3: Operator Alignment Gate
-
-**This is a hard stop. Do not proceed to implementation until the operator confirms.**
-
-Before clearing context or beginning execution, describe the plan from the **operator's perspective**:
-
-- What will the operator see when they run this?
-- What can they configure without touching code?
-- Where will they look when something breaks?
-- What files will they need to read or edit?
-- Are the gate assignments correct? (Show the summary table for review)
-
-Diagrams, pseudocode, and rough sketches are encouraged at this step. The goal is shared understanding, not polished documentation.
-
-Ask the operator: **"Does this match what you're picturing?"**
-
-If the operator asks for more detail on any point, provide it. Do not proceed until they confirm alignment.
-
-### Completion Updates
-
-When pre-plan finishes (all sections reviewed, plan confirmed by operator):
 1. Update feature doc frontmatter: set `status: planned`, `last-updated` via `date +%Y-%m-%d`
-2. Include these as steps in the plan output:
-   - **Before build starts**: update feature doc `status: implementing`, update `last-updated`
-   - **Final commit checkpoint**: update feature doc `status: complete`, update `last-updated`, move doc from `features/NNN-name.md` to `features/complete/NNN-name.md` (create `complete/` directory if needed)
+2. Create feature branch: `feature/NNNN-name` (base: `dev` if it exists, `main` otherwise)
+   - NNNN is the zero-padded feature number, name is the feature slug from the doc filename
+3. Push branch to remote: `git push -u origin feature/NNNN-name`
+
+The enriched feature doc is the handoff artifact. A fresh session runs `/build` to plan and implement.
 
 ## Integration
 
 This skill handles HOW. The feature doc (from `/feature-plan`) defines WHAT and WHY. If a feature doc exists, use its constraints and decisions — don't re-ask questions it already answers. Respect its implementation order when defining commit checkpoints.
 
-Works with: `/feature-plan` command, `/review-code` command, tdd skill, history-search agent, Explore agents, code-styling skill, style guide (`~/.claude/docs/coding/style-guide.md`), domain docs (`~/.claude/docs/`).
+Works with: `/feature-plan` command, `/build` skill, `/review-code` command, tdd skill, history-search agent, Explore agents, code-styling skill, style guide (`~/.claude/docs/coding/style-guide.md`), domain docs (`~/.claude/docs/`).
 
 See `~/.claude/docs/planning/README.md` for the full workflow overview.
 
