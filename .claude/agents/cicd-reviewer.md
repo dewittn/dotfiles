@@ -2,7 +2,7 @@
 name: cicd-reviewer
 description: |
   Use this agent to review CI/CD workflows and Docker stack templates. Trigger when:
-  - Running /review-code (always included in the review suite)
+  - Running /review-code (when CI/CD artifacts are detected)
   - User asks to "check workflows", "review CI/CD", or "validate pipeline"
 
   The agent checks workflows against Coto Studio patterns and suggests upgrades. It is READ-ONLY and does not make changes.
