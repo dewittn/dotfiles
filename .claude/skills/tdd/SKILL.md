@@ -2,7 +2,7 @@
 name: tdd
 description: >
   Verification gates for implementation tasks. Auto-trigger on code-producing tasks during
-  the build phase (after pre-plan Stage 3 approval). Also invoked via gate tags in pre-plan
+  the build phase (after /build operator alignment). Also invoked via gate tags in plan
   output ([Red-Green-Refactor], [Command & Confirm], [Evals], [Human Review]).
   Does NOT apply to docs, planning artifacts, or prototype work — those get Human Review
   or are exempt. Use when writing code, creating config, or implementing any task that
@@ -116,7 +116,7 @@ When a rationalization forms for skipping a gate, read `references/rationalizati
 
 ## Integration
 
-- **pre-plan** assigns gates to tasks during Stage 2 planning
+- **pre-plan** assigns gates to tasks during section-by-section review; **/build** incorporates them into the implementation plan
 - **commit** skill handles the commit after verification passes
 - **/review-code** is the final quality gate after all tasks complete — separate scope from per-task verification
 - **code-styling** applies during the Refactor phase of Red-Green-Refactor

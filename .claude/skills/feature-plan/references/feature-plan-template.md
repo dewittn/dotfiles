@@ -10,7 +10,7 @@ last-updated: YYYY-MM-DD
 
 ## Features
 
-### [Feature Name]
+### [Feature Name] [pending]
 - **What it does**: 2-3 sentences, plain language
 - **Why it matters**: What problem it solves or what capability it adds
 - **Inputs and outputs**: What goes in, what comes out
@@ -29,7 +29,7 @@ last-updated: YYYY-MM-DD
 
 ## Next Step
 
-When ready to implement, invoke `/pre-plan` to create the implementation plan.
+When ready to implement, run `pre-plan` to enrich this document with codebase findings, then `/build` to plan and execute the implementation.
 
 ## Notes
 
