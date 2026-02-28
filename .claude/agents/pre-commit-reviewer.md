@@ -151,10 +151,10 @@ Flag when imports are clearly disorganized:
 
 ### 7. Large Files
 
-Run the file length check script from the code-styling skill on changed files:
+Run the file length check script on changed files:
 
 ```bash
-bash <code-styling-skill-path>/scripts/check-file-lengths.sh [changed files...]
+bash ~/.claude/skills/code-styling/scripts/check-file-lengths.sh [changed files...]
 ```
 
 Report any warnings. This is a single, predictable bash call — not agent-generated detection.
