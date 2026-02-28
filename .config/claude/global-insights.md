@@ -105,6 +105,51 @@ The artifact that signals judgment isn't published code or writing alone. It's a
 - Reframe: Published code shows capability. Applied business judgment shows the thing that's actually scarce.
 - The unified story matters: methodology + AI fluency told as one narrative, not two separate claims
 
+### The Scaffolding Pattern
+**Discovered:** February 2026, analyzing Nate Jones's four-layer prompting framework against Nelson's existing tooling.
+
+Not all work is equally spec-able. The key question: **can the agent verify its own output against the spec?** Hugo site metadata either renders correctly or it doesn't — that's fully spec-able. A portfolio narrative about lived experience requires Nelson as the verification layer — the agent can't check its own facts against memories it doesn't have.
+
+Nelson's creative work follows a sandwiched pattern: **spec the setup, do the creative work, spec the teardown.** The Craft Notes pipeline is the clearest example — an outline skill eliminates planning boilerplate, Nelson records and edits the episode (creative, human-only), then a transcript skill eliminates post-production boilerplate. The specs don't replace the creative work. They clear the runway around it.
+
+This is analogous to `rails generate scaffold` — it didn't write the application, it eliminated the boilerplate so you could start at the interesting part. Nelson's skills and docs infrastructure function as scaffolding generators for the mechanical layers surrounding creative and judgment-heavy work.
+
+**Implication for automation targets:** Nelson's remaining un-automated work is mostly creative/judgment-heavy. The gains from specification engineering come not from automating the core work but from specifying the mechanical setup and teardown around it. Infrastructure deployment (DNS, SSL, Traefik routing, Docker service config) is the highest-leverage scaffolding target because it's multi-step, mechanical, and currently requires Nelson's time but not his judgment.
+
+**How to recognize the boundary:**
+- If the agent can verify its own output → fully spec-able (scaffolding, deployment, checks)
+- If only Nelson can verify → spec the surrounding mechanical work, keep the creative core human
+- If Nelson is editing LLM output more than writing fresh → the task is on the wrong side of the boundary
+
+### Three Categories of AI-Assisted Work
+**Discovered:** February 2026, clarifying where agentic systems fit versus simpler AI use.
+
+Not all AI-assisted work is the same. Three categories, each with different economics and different spec requirements:
+
+1. **Pure automation** — deterministic, no judgment. Drafts scripts, iOS shortcuts, cron jobs, CI/CD pipelines. No LLM needed. Output is predictable from input. Nelson already does a lot of this.
+
+2. **LLM-assisted transformation** — intelligence in a single bounded step. Transcript-to-blog-post, outline generation, text summarization. The LLM adds value but isn't deciding what to do next. One smart call, clear input/output. This is where most of Nelson's current AI collaboration lives — the sandwich pattern (spec the setup, creative work, spec the teardown).
+
+3. **Agentic systems** — multi-step, decision-making. The agent makes judgment calls at each stage, and each step's output shapes the next. The job search pipeline is the existing example: search, fetch, evaluate, with decisions at every transition. Infrastructure deployment (DNS, SSL, routing, service config) is the high-value target because small judgment calls embedded in mechanical sequences currently keep the whole process manual.
+
+**The key question for identifying agentic targets:** Where in your current manual work are small judgment calls keeping an otherwise mechanical process from being automated? Those embedded decisions are what distinguish agentic work from pure automation.
+
+### Blast Radius Gates Agentic Investment
+**Discovered:** February 2026, same conversation.
+
+The path to agentic automation is gated by two things most frameworks understate: **blast radius** and **prerequisite infrastructure**.
+
+A bad PowerPoint gets thrown away. A misconfigured DNS record or deleted Docker service takes production websites down. The safety engineering required before letting an agent touch production infrastructure is substantial — not a weekend project. Nelson's job search pipeline (Docker isolation, content scanning, URL validation, write hooks, security architecture doc) demonstrates both the capability and the real cost of doing this responsibly.
+
+**Prerequisite infrastructure matters.** You can't automate what doesn't have an API. A DNS provider that requires manual login blocks agentic automation regardless of how good the spec is. Switching to an API-accessible provider is the foundational move that unlocks the agentic layer. The Coto infrastructure project is exactly this work — building the API surface, safety boundaries, and verification checkpoints that make multi-step agentic automation possible and safe.
+
+**Implication for frameworks like Nate Jones's four layers:** The framework assumes the audience's work is 70% procedural and 30% creative. For someone whose work is mostly creative/judgment-heavy AND who manages production infrastructure, the path to agentic systems is necessarily slower and more careful. That caution is engineering judgment, not a gap. Nelson should capture procedural work in specs where it exists, but shouldn't force-fit agentic patterns onto work that's better served by the sandwich pattern or pure automation.
+
+**How to recognize misapplication:**
+- Trying to build agentic systems for tasks that are really single-step transformations
+- Pointing agents at production infrastructure without safety boundaries
+- Feeling "behind" because agentic automation isn't simple to set up — it shouldn't be for high-stakes work
+
 ### Relationship to Other Patterns
 - **Methodology Over Category:** Adds trajectory — the structural mismatch between methodology and category may be narrowing as the market shifts
 - **Discounting Integration Work:** Writing a good spec IS integration — assembling understanding from multiple domains into a coherent directive
