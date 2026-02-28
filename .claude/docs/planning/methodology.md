@@ -1,6 +1,6 @@
 # Planning Methodology
 
-How the six planning tools relate to each other — zoom levels, artifact flow, and quality gates.
+How the planning tools relate to each other — zoom levels, artifact flow, and quality gates.
 
 ## Zoom Hierarchy
 

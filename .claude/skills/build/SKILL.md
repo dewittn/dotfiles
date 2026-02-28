@@ -38,7 +38,7 @@ Run `date +%Y-%m-%d` for today's date. Update frontmatter: set `status: implemen
 
 ## Step 2: Checkout Branch
 
-Checkout the feature branch created by pre-plan: `feature/NNNN-name`.
+Checkout the feature branch created by pre-plan: `feature/NNNN-name`. Skip this step if already on the correct branch (e.g., when running inside a worktree).
 
 If the branch doesn't exist locally, fetch and track it from the remote.
 
