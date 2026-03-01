@@ -78,6 +78,17 @@ partials/
 - Intent-revealing - `isValidKey()` not `check()`
 - Domain language when appropriate to the project
 
+### File Length
+
+Aim for roughly 600 lines per file. Files beyond this threshold hurt readability and, in agentic workflows, consume excessive context window when an LLM reads or edits them.
+
+This is a guideline, not a hard rule — 620 lines in a well-organized file is fine; 400 lines of tangled logic is not. The check-file-lengths script (bundled with the code-styling skill) flags files over 600 lines. Projects with ESLint can also enforce via the `max-lines` rule; similar rules exist in other ecosystems.
+
+When a file grows past the threshold, look for natural split points:
+- Distinct responsibilities that could be separate modules
+- Configuration or data that could move to external files
+- Groups of related functions that form a cohesive unit
+
 ---
 
 ## Control Flow
