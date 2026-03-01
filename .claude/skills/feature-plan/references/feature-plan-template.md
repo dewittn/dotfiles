@@ -19,6 +19,10 @@ last-updated: YYYY-MM-DD
 
 [Repeat for each feature]
 
+## Out of Scope
+
+[Explicit boundaries — what this feature does NOT do. Remove this section if no meaningful boundaries surfaced during planning.]
+
 ## Implementation Order
 
 1. [Feature] — [rationale, dependency notes]
@@ -33,4 +37,4 @@ When ready to implement, run `pre-plan` to enrich this document with codebase fi
 
 ## Notes
 
-[Design philosophy, things explicitly ruled out, context the implementation planner will need.]
+[Design philosophy, context the implementation planner will need.]

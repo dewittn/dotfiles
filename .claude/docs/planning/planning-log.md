@@ -11,3 +11,4 @@
 | 2026-03-01 | dotfiles | rename-human-review-gate-to-usage | ~17 min |
 | 2026-03-01 | dotfiles | quick-build | ~8 min |
 | 2026-03-01 | dotfiles | pain-prompt-strengthening | ~5 min |
+| 2026-03-01 | dotfiles | feature-plan-out-of-scope | ~4 min |
