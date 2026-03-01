@@ -107,8 +107,7 @@ After entering plan mode, `/build` presents the full implementation approach for
 ### TDD Verification Gates — Build Phase
 
 During implementation, each task carries a verification gate assigned during pre-plan:
-Red-Green-Refactor, Command & Confirm, Evals, or Human Review.
-Evals currently falls back to Human Review until eval tooling is configured.
+Red-Green-Refactor, Command & Confirm, or Usage.
 The TDD skill enforces gate compliance. See `~/.claude/skills/tdd/SKILL.md`.
 
 ### /review-code — Quality Check
