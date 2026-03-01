@@ -66,6 +66,13 @@ Match depth to complexity. Not every feature needs four rounds of clarification.
 
 ### Phase 2: Clarifying Questions
 
+Start with the triggering pain:
+
+1. If Phase 1 already surfaced a specific incident, failure, or frustration — confirm it: "It sounds like you're building this because [X] wasn't working. Anything to add?"
+2. If not — ask directly: "What broke, what was annoying, or what failed that made this worth doing?"
+
+Feed the answer into the Context line of the feature doc. Then continue with clarifying questions:
+
 Ask 2-3 questions at a time, not all at once. Focus on:
 
 - **Placement**: Where does this sit in the existing system? What triggers it? What does it produce?
