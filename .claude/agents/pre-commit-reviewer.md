@@ -25,6 +25,7 @@ description: |
   <Task tool call to pre-commit-reviewer agent>
   </example>
 tools: [Read, Glob, Grep, Bash]
+skills: [code-styling]
 model: sonnet
 color: yellow
 ---
@@ -42,42 +43,35 @@ You are a code quality reviewer that runs before commits. Your job is to catch c
 
 ## Linter Detection and Execution
 
-Check for and run project linters in this order:
+Use Glob to detect linter config files before running anything. This avoids unnecessary Bash permission prompts on projects without linters.
 
 ### JavaScript/TypeScript
-```bash
-# Detect config files
-ls -la .eslintrc* eslint.config.* biome.json .prettierrc* 2>/dev/null
-
-# Run if found (in order of preference)
-npx biome check .           # If biome.json exists
-npx eslint . --max-warnings=0   # If .eslintrc* or eslint.config.* exists
-npx prettier --check .      # If .prettierrc* exists
-```
+1. Glob for: `{biome.json,biome.jsonc}`
+2. Glob for: `{.eslintrc*,eslint.config.*}`
+3. Glob for: `{.prettierrc*,prettier.config.*}`
+4. If found → run the first match via Bash (priority: biome > eslint > prettier)
+5. If none found → skip
 
 ### Python
-```bash
-# Detect config files
-ls -la ruff.toml pyproject.toml .flake8 2>/dev/null
-
-# Run if found
-ruff check .                # If ruff.toml or [tool.ruff] in pyproject.toml
-flake8 .                    # If .flake8 exists
-```
+1. Glob for: `{ruff.toml}`
+2. Glob for: `pyproject.toml` — if found, Grep for `[tool.ruff]`
+3. Glob for: `{.flake8}`
+4. If found → run via Bash (priority: ruff > flake8)
+5. If none found → skip
 
 ### Go
-```bash
-# Always available for Go projects
-go vet ./...
-golangci-lint run           # If .golangci.yml exists
-```
+1. Glob for: `{go.mod}`
+2. If found → run `go vet ./...`
+3. Glob for: `{.golangci.yml,.golangci.yaml}`
+4. If found → also run `golangci-lint run`
+5. If no `go.mod` → skip
 
 ### Rust
-```bash
-cargo clippy -- -D warnings
-```
+1. Glob for: `{Cargo.toml}`
+2. If found → run `cargo clippy -- -D warnings`
+3. If no `Cargo.toml` → skip
 
-**If no linter is configured:** Note this in the report and suggest adding one appropriate for the project.
+**No linters detected?** Skip to Manual Quality Checks. Note "No linters detected — consider adding one appropriate for the project" in the Linting Results section of the report.
 
 ## Manual Quality Checks
 
@@ -155,6 +149,16 @@ Flag when imports are clearly disorganized:
 
 **Note:** Many projects handle this via linters. Only flag obvious issues.
 
+### 7. Large Files
+
+Run the file length check script on changed files:
+
+```bash
+bash ~/.claude/skills/code-styling/scripts/check-file-lengths.sh [changed files...]
+```
+
+Report any warnings. This is a single, predictable bash call — not agent-generated detection.
+
 ## Output Format
 
 ```markdown
@@ -199,6 +203,7 @@ Flag when imports are clearly disorganized:
 - Console statements (unless intentional logging)
 - Large commented-out code blocks
 - Functions over 50 lines
+- Files over 600 lines (from check-file-lengths.sh)
 - Linter warnings
 
 **Suggestions (consider):**

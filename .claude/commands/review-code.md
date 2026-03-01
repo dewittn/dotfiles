@@ -4,27 +4,43 @@ Run a comprehensive review of recent changes. Use this after implementation is c
 
 ## Process
 
-Run these five agents **in parallel** using the Task tool:
+### Step 1: Identify Scope
 
-1. **security-reviewer** — Scan for vulnerabilities (injection, XSS, secrets, auth issues)
+Check `git status` and `git diff` to see what's changed. Focus on modified/added files.
+
+### Step 2: Detect Project Capabilities
+
+Before spawning agents, check what the project actually has:
+
+**Test infrastructure** — Glob for:
+- `{test,tests,spec}` directories
+- `{jest.config.*,pytest.ini,vitest.config.*,.rspec}`
+- `pyproject.toml` (then grep for `[tool.pytest]`)
+
+**CI/CD artifacts** — Glob for:
+- `.github/workflows/` directory
+- `{Dockerfile,docker-compose*,.gitlab-ci.yml,Jenkinsfile}`
+
+### Step 3: Spawn Agents
+
+Launch agents **in parallel** using the Agent tool. Always spawn the core three; conditionally spawn the others based on Step 2.
+
+**Always spawn:**
+1. **security-reviewer** — Scan for vulnerabilities
 2. **pre-commit-reviewer** — Check code quality, run linters, find debug artifacts
-3. **test-enforcer** — Identify missing test coverage and edge cases
-4. **docs-compliance-reviewer** — Check changes against documented rules and decisions
-5. **cicd-reviewer** — Validate workflows and Docker stack templates
+3. **docs-compliance-reviewer** — Check changes against documented rules
 
-## Instructions
+**Conditional:**
+4. **test-enforcer** — Only when test infrastructure detected in Step 2
+5. **cicd-reviewer** — Only when CI/CD artifacts detected in Step 2
 
-1. First, identify the scope of changes to review:
-   - Check `git status` and `git diff` to see what's changed
-   - Focus on modified/added files, not the entire codebase
+Each agent receives the list of changed files.
 
-2. Launch all five agents in parallel with the Task tool:
-   - Each agent should receive the list of files to review
-   - Each agent produces its own report
+### Step 4: Consolidated Summary
 
-3. After all agents complete, provide a **consolidated summary**:
+After all agents complete, provide a summary. Include sections only for agents that ran. For skipped agents, add a one-line note.
 
-```markdown
+````markdown
 ## Review Summary
 
 ### Security
@@ -33,14 +49,14 @@ Run these five agents **in parallel** using the Task tool:
 ### Code Quality
 [Key findings from pre-commit-reviewer, or "Ready to commit"]
 
-### Test Coverage
-[Key findings from test-enforcer, or "Coverage looks good"]
-
 ### Documentation Compliance
 [Key findings from docs-compliance-reviewer, or "No conflicts with documented rules"]
 
+### Test Coverage
+[If test-enforcer ran: key findings. If skipped: "No test infrastructure detected — skipped"]
+
 ### CI/CD
-[Key findings from cicd-reviewer, or "No issues found"]
+[If cicd-reviewer ran: key findings. If skipped: "No CI/CD configuration detected — skipped"]
 
 ### Action Items
 - [ ] [Specific items that should be addressed]
@@ -48,7 +64,7 @@ Run these five agents **in parallel** using the Task tool:
 
 ### Verdict
 [READY TO COMMIT | ADDRESS ISSUES FIRST]
-```
+````
 
 ## Notes
 
