@@ -3,10 +3,10 @@ name: tdd
 description: >
   Verification gates for implementation tasks. Auto-trigger on code-producing tasks during
   the build phase (after /build operator alignment). Also invoked via gate tags in plan
-  output ([Red-Green-Refactor], [Command & Confirm], [Evals], [Usage]).
-  Does NOT apply to docs, planning artifacts, or prototype work — those get Usage
-  or are exempt. Use when writing code, creating config, or implementing any task that
-  carries a verification gate tag.
+  output ([Red-Green-Refactor], [Command & Confirm], [Usage]).
+  Does NOT apply to docs, planning artifacts, or prototype work — those get Usage or
+  are exempt. Use when writing code, creating config, or implementing any task that carries
+  a verification gate tag.
 ---
 
 # TDD
@@ -15,7 +15,7 @@ Verification gates for implementation tasks. Every task has a "done" criterion �
 
 ## Verification Gates
 
-Four gates, ordered by decreasing automation and increasing human judgment.
+Three gates, ordered by decreasing automation and increasing human judgment.
 
 ### Red-Green-Refactor (hard gate)
 
@@ -54,12 +54,6 @@ Config, infrastructure, and artifacts with a validator. The plan includes a spec
 1. Run the verification command specified in the plan
 2. Confirm the output matches expectations
 3. If it doesn't match, investigate — don't tweak until it passes by coincidence
-
-### Evals (planned — falls back to Human Review)
-
-Skills, prompts, and subjective quality artifacts. LLM-as-judge evaluation against criteria defined in the plan. Not yet implemented — falls back to Human Review until eval tooling is configured.
-
-When a task is tagged Evals, the plan should include evaluation criteria even though automated evaluation isn't available yet. This forces thinking about what "good" means.
 
 ### Usage (baseline)
 
