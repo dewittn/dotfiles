@@ -49,6 +49,7 @@ Read the enriched feature doc. Absorb:
 - All feature sections with their codebase findings and architecture decisions
 - Gate assignments per section (Red-Green-Refactor, Command & Confirm, Usage)
 - Implementation order and dependencies
+- Out of Scope boundaries, when present — respect these during plan creation
 - Open questions and constraints
 
 Also read:

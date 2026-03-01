@@ -12,11 +12,9 @@ description: >
 
 # Feature Planning
 
-A conversational skill for turning loose ideas into well-defined feature documents.
-
 **You are not building a spec. You are helping the operator discover what they actually want.**
 
-The deliverable is a **feature doc** that answers WHAT and WHY, not HOW. The feature doc becomes the input artifact for `/pre-plan`, which handles implementation planning.
+The deliverable is a **feature doc** that answers WHAT and WHY, not HOW.
 
 ## Timer Scripts
 
@@ -25,7 +23,6 @@ Use the bundled scripts for tracking planning duration. Do not generate date/dur
 **Start timer** (run at the very beginning, before any conversation):
 ```bash
 ~/.claude/skills/feature-plan/scripts/start-timer.sh <docs-dir> <NNN> <feature-slug>
-# Example: ~/.claude/skills/feature-plan/scripts/start-timer.sh ~/.claude/docs/projects/my-tool/features 001 hybrid-memory-search
 ```
 
 **Log duration and clean up** (run when operator signals completion):
@@ -76,11 +73,13 @@ Feed the answer into the Context line of the feature doc. Then continue with cla
 Ask 2-3 questions at a time, not all at once. Focus on:
 
 - **Placement**: Where does this sit in the existing system? What triggers it? What does it produce?
-- **Boundaries**: What is IN scope vs. explicitly OUT?
+- **Boundaries**: What is IN scope?
 - **Inputs/outputs**: What data flows in and out? What format?
 - **Constraints**: Architectural decisions, technology choices, patterns to follow
 - **Edge cases**: What should degrade gracefully vs. fail loudly?
 - **Ambiguity test**: Could a competent developer read this and build the wrong thing? If yes, ask the clarifying question.
+
+After features are outlined, surface scope boundaries: **"What should this feature explicitly NOT do?"** If meaningful boundaries emerge, they populate the Out of Scope section in the feature doc. If nothing surfaces, omit the section entirely.
 
 ### Phase 3: Iterative Refinement
 
@@ -92,11 +91,9 @@ When creating the feature doc:
 
 Feature docs live at: `~/.claude/docs/projects/<name>/features/NNN-feature-name.md`
 
-### Phase 4: Dependency Mapping
-
 Identify which features depend on others, which are independent, and suggest implementation order with rationale.
 
-### Phase 5: Log the Time
+### Phase 4: Log the Time
 
 When operator signals completion:
 1. Run `log-duration.sh` (with `--log` flag if operator wants it logged)
