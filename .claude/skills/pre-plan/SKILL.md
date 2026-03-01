@@ -15,11 +15,11 @@ description: >
 
 Walk through the feature doc section by section for operator alignment, producing an enriched feature doc that a fresh `/build` session can execute from.
 
-**Read first:** `~/.claude/docs/coding/style-guide.md`
+**Read first:** `~/Programing/dewittn/agentic-docs/coding/style-guide.md`
 
 ## Stage 0: Locate Feature Doc
 
-Check `~/.claude/docs/projects/<name>/features/` for a feature doc (files matching `NNN-*.md`) that covers the work being planned, where `<name>` is derived from the current working directory's folder name.
+Check `~/Programing/dewittn/agentic-docs/projects/<name>/features/` for a feature doc (files matching `NNN-*.md`) that covers the work being planned, where `<name>` is derived from the current working directory's folder name.
 
 - **If a feature doc exists**: Read it. Use it to guide the section-by-section review in Stage 1.
 
@@ -59,11 +59,11 @@ Heading tag format:
 - **If no feature doc exists**: Assess whether one would help. If the user is describing a loose or multi-part idea rather than a well-defined task, suggest: **"This sounds like it could benefit from `/feature-plan` first to nail down what we're building. Want to do that before we plan the implementation?"** This is not a hard gate — if the user wants to proceed directly, skip Stage 1 and go to Completion with whatever context is available.
 
 Also read:
-- Project plan from `~/.claude/docs/projects/<name>/` for conventions
-- Domain docs from `~/.claude/docs/` based on project type
+- Project plan from `~/Programing/dewittn/agentic-docs/projects/<name>/` for conventions
+- Domain docs from `~/Programing/dewittn/agentic-docs/` based on project type
 - The project's CLAUDE.md for project-specific conventions
 
-Explicitly exclude `~/.claude/docs/projects/<name>/scenarios/` from context gathering.
+Explicitly exclude `~/Programing/dewittn/agentic-docs/projects/<name>/scenarios/` from context gathering.
 
 ## Stage 1: Section-by-Section Review
 
@@ -122,7 +122,7 @@ Run history-search and Explore agents in parallel for each section. Each agent r
 
 - Section review is mandatory. No skipping, no batching multiple sections.
 - The pause between sections is mandatory. Each section gets confirmed before moving on.
-- Domain docs from `~/.claude/docs/planning/` may apply — read relevant guides based on project type.
+- Domain docs from `~/Programing/dewittn/agentic-docs/planning/` may apply — read relevant guides based on project type.
 
 ## Completion
 
@@ -139,9 +139,9 @@ The enriched feature doc is the handoff artifact. A fresh session runs `/build` 
 
 This skill handles HOW. The feature doc (from `/feature-plan`) defines WHAT and WHY. If a feature doc exists, use its constraints and decisions — don't re-ask questions it already answers. Respect its implementation order when defining commit checkpoints.
 
-Works with: `/feature-plan` command, `/build` skill, `/review-code` command, tdd skill, history-search agent, Explore agents, code-styling skill, style guide (`~/.claude/docs/coding/style-guide.md`), domain docs (`~/.claude/docs/`).
+Works with: `/feature-plan` command, `/build` skill, `/review-code` command, tdd skill, history-search agent, Explore agents, code-styling skill, style guide (`~/Programing/dewittn/agentic-docs/coding/style-guide.md`), domain docs (`~/Programing/dewittn/agentic-docs/`).
 
-See `~/.claude/docs/planning/README.md` for the full workflow overview.
+See `~/Programing/dewittn/agentic-docs/planning/README.md` for the full workflow overview.
 
 ## Notes
 

@@ -36,17 +36,17 @@ Use the bundled scripts for tracking planning duration. Do not generate date/dur
 
 **Project name**: Derive `<name>` from the current working directory's folder name (same convention as `/project-plan`).
 
-**Feature numbering**: Check BOTH `~/.claude/docs/projects/<name>/features/` AND `~/.claude/docs/projects/<name>/features/complete/` for existing docs (files matching `NNN-*.md`). Find the highest NNN across both directories and increment. Numbering is a global sequence — completed features do not free up their numbers.
+**Feature numbering**: Check BOTH `~/Programing/dewittn/agentic-docs/projects/<name>/features/` AND `~/Programing/dewittn/agentic-docs/projects/<name>/features/complete/` for existing docs (files matching `NNN-*.md`). Find the highest NNN across both directories and increment. Numbering is a global sequence — completed features do not free up their numbers.
 
-**Project context**: Read the project plan README at `~/.claude/docs/projects/<name>/README.md` when it exists. If no project plan exists, proceed without project context — feature planning is not gated on project planning.
+**Project context**: Read the project plan README at `~/Programing/dewittn/agentic-docs/projects/<name>/README.md` when it exists. If no project plan exists, proceed without project context — feature planning is not gated on project planning.
 
 ## Workflow
 
 ### Phase 0: Check the Inbox
 
-Before starting a fresh conversation, check `~/.claude/docs/projects/inbox/` for pending items.
+Before starting a fresh conversation, check `~/Programing/dewittn/agentic-docs/projects/inbox/` for pending items.
 
-- **If inbox items exist**: List them. For each item, read project README summaries from `~/.claude/docs/projects/*/README.md` to suggest which project it belongs to. Always ask the operator before filing — no silent auto-sorting.
+- **If inbox items exist**: List them. For each item, read project README summaries from `~/Programing/dewittn/agentic-docs/projects/*/README.md` to suggest which project it belongs to. Always ask the operator before filing — no silent auto-sorting.
 - **If an item matches the current project**: Offer to use it as the seed for this feature planning session.
 - **If items don't match any project**: Surface them cleanly. They may need a project plan first.
 - **After a feature doc is written from an inbox item**: Delete the inbox item.
@@ -89,7 +89,7 @@ When creating the feature doc:
 1. Run `date +%Y-%m-%d` to get today's date (never generate dates manually)
 2. Set frontmatter: `status: draft`, `date` and `last-updated` both set to today's date from the shell command
 
-Feature docs live at: `~/.claude/docs/projects/<name>/features/NNN-feature-name.md`
+Feature docs live at: `~/Programing/dewittn/agentic-docs/projects/<name>/features/NNN-feature-name.md`
 
 Identify which features depend on others, which are independent, and suggest implementation order with rationale.
 

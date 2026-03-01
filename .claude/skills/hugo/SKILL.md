@@ -5,7 +5,7 @@ description: Hugo static site development. Always consult when working on Hugo p
 
 # Hugo Development
 
-**Read first:** `~/.claude/docs/platforms/hugo-development.md`
+**Read first:** `~/Programing/dewittn/agentic-docs/platforms/hugo-development.md`
 
 ## When to Invoke
 

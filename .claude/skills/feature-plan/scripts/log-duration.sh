@@ -1,10 +1,10 @@
 #!/bin/bash
 # Reads a .started timestamp file, calculates duration, optionally logs it, and cleans up.
 # Usage: log-duration.sh <docs-dir> <NNN> <feature-slug> [--log <project-name>]
-# Example: log-duration.sh ~/.claude/docs/projects/my-tool/features 001 hybrid-memory-search --log my-tool
+# Example: log-duration.sh ~/Programing/dewittn/agentic-docs/projects/my-tool/features 001 hybrid-memory-search --log my-tool
 #
 # Without --log: prints duration and deletes .started file
-# With --log: also appends to ~/.claude/docs/planning/planning-log.md
+# With --log: also appends to ~/Programing/dewittn/agentic-docs/planning/planning-log.md
 
 set -euo pipefail
 
@@ -48,7 +48,7 @@ echo "Duration: $DURATION"
 # Log if requested
 if [ "${4:-}" = "--log" ]; then
     PROJECT="${5:?--log requires a project name}"
-    LOG_DIR="$HOME/.claude/docs/planning"
+    LOG_DIR="$HOME/Programing/dewittn/agentic-docs/planning"
     LOG_FILE="$LOG_DIR/planning-log.md"
     TODAY=$(date +"%Y-%m-%d")
 

@@ -6,8 +6,8 @@ description: Docker context safety and operational patterns. Consult before runn
 # Docker Context Safety
 
 **Read first:**
-- `~/.claude/docs/infrastructure/docker-contexts.md`
-- `~/.claude/docs/infrastructure/volume-safety.md`
+- `~/Programing/dewittn/agentic-docs/infrastructure/docker-contexts.md`
+- `~/Programing/dewittn/agentic-docs/infrastructure/volume-safety.md`
 
 ## When to Invoke
 
