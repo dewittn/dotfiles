@@ -10,3 +10,4 @@
 | 2026-02-28 | dotfiles | review-code-enhancements | ~13 min |
 | 2026-03-01 | dotfiles | rename-human-review-gate-to-usage | ~17 min |
 | 2026-03-01 | dotfiles | quick-build | ~8 min |
+| 2026-03-01 | dotfiles | pain-prompt-strengthening | ~5 min |
