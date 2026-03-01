@@ -33,6 +33,7 @@ Raw ideas land in the **inbox** (`~/.claude/docs/projects/inbox/`) and get picke
 | /build | Skill | Manual | Committed code on feature branch + PR to dev/main |
 | tdd | Skill | Auto (code tasks) + plan tags | Verification gate enforcement during build phase |
 | /review-code | Command | Manual | Review summary with READY TO COMMIT / ADDRESS ISSUES verdict |
+| /quick-build | Skill | Manual | Chains feature-plan → pre-plan → build → review-code for small features |
 | commit | Skill | Auto (git commit) | Committed + pushed code with safety enforcement |
 
 ## Common Paths
@@ -64,6 +65,11 @@ pre-plan → Enriched Doc + Feature Branch
 ```
 pre-plan → Enriched Doc + Feature Branch
 /build → /review-code → commit → PR
+```
+
+### Quick build (small feature)
+```
+/quick-build → feature-plan → pre-plan → /build → /review-code → commit → PR
 ```
 
 ### Simple change
