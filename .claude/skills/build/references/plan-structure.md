@@ -21,7 +21,7 @@ Assign a gate to every task using the TDD skill's gate definitions:
 | Testable behavior (functions, APIs, logic) | Red-Green-Refactor |
 | Config/infrastructure with a validator | Command & Confirm |
 | Skills, prompts, subjective quality | Evals |
-| Docs, planning, non-executable | Human Review |
+| Docs, planning, non-executable | Usage |
 
 For Command & Confirm: include the specific command and expected output in the plan.
 For Evals: include evaluation criteria.

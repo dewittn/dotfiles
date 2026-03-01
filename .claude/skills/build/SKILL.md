@@ -47,7 +47,7 @@ If the branch doesn't exist locally, fetch and track it from the remote.
 Read the enriched feature doc. Absorb:
 
 - All feature sections with their codebase findings and architecture decisions
-- Gate assignments per section (Red-Green-Refactor, Command & Confirm, Evals, Human Review)
+- Gate assignments per section (Red-Green-Refactor, Command & Confirm, Evals, Usage)
 - Implementation order and dependencies
 - Open questions and constraints
 
