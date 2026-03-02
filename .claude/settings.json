@@ -10,7 +10,8 @@
       "Bash(stow *)",
       "Bash(open -a \"Marked\" *)",
       "Bash(gh *)",
-      "mcp__pencil"
+      "mcp__pencil",
+      "Read(~/Programing/dewittn/agentic-docs/**)"
     ],
     "deny": [
       "Read(docker-*op*.yaml)"
