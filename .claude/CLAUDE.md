@@ -14,17 +14,17 @@ These override default behavior. They exist because Claude repeatedly gets them 
 
 | Path | Topics |
 |------|--------|
-| infrastructure/docker-contexts.md | Context switching, orbstack vs coto-v3 |
-| infrastructure/volume-safety.md | Volume deletion, data loss prevention |
-| infrastructure/swarm-stacks.md | Stack naming, templates, rollback |
-| infrastructure/healthchecks.md | Healthcheck config, minimal images |
-| infrastructure/cicd-pipelines.md | GitHub Actions, reusable workflows |
-| platforms/ghost-themes.md | Templates, routes.yaml, member access |
-| platforms/hugo-development.md | Dev server, builds, Docker deployment |
-| platforms/playwright-automation.md | playwright-cli commands, viewports, browser install, workflows |
-| coding/style-guide.md | Style patterns, control flow, data-driven design |
-| planning/README.md | Workflow chain overview, tool table, common paths |
-| planning/methodology.md | Zoom hierarchy, artifact flow, quality gates, commit rules |
-| planning/frontend-design.md | Design contracts, W3C DTCG tokens, Playwright validation |
-| planning/agentic-systems.md | LLM agents, tool use, intelligence boundaries |
-| planning/infrastructure.md | Docker, deployment, CI/CD, config hierarchy, observability |
+| ~/Programing/dewittn/agentic-docs/infrastructure/docker-contexts.md | Context switching, orbstack vs coto-v3 |
+| ~/Programing/dewittn/agentic-docs/infrastructure/volume-safety.md | Volume deletion, data loss prevention |
+| ~/Programing/dewittn/agentic-docs/infrastructure/swarm-stacks.md | Stack naming, templates, rollback |
+| ~/Programing/dewittn/agentic-docs/infrastructure/healthchecks.md | Healthcheck config, minimal images |
+| ~/Programing/dewittn/agentic-docs/infrastructure/cicd-pipelines.md | GitHub Actions, reusable workflows |
+| ~/Programing/dewittn/agentic-docs/platforms/ghost-themes.md | Templates, routes.yaml, member access |
+| ~/Programing/dewittn/agentic-docs/platforms/hugo-development.md | Dev server, builds, Docker deployment |
+| ~/Programing/dewittn/agentic-docs/platforms/playwright-automation.md | playwright-cli commands, viewports, browser install, workflows |
+| ~/Programing/dewittn/agentic-docs/coding/style-guide.md | Style patterns, control flow, data-driven design |
+| ~/Programing/dewittn/agentic-docs/planning/README.md | Workflow chain overview, tool table, common paths |
+| ~/Programing/dewittn/agentic-docs/planning/methodology.md | Zoom hierarchy, artifact flow, quality gates, commit rules |
+| ~/Programing/dewittn/agentic-docs/planning/frontend-design.md | Design contracts, W3C DTCG tokens, Playwright validation |
+| ~/Programing/dewittn/agentic-docs/planning/agentic-systems.md | LLM agents, tool use, intelligence boundaries |
+| ~/Programing/dewittn/agentic-docs/planning/infrastructure.md | Docker, deployment, CI/CD, config hierarchy, observability |
