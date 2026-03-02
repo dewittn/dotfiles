@@ -10,7 +10,7 @@ The operator has a project idea but hasn't mapped out all the dimensions needed 
 
 The deliverable is a **project plan directory** containing a global overview and individual documents for each facet of the project. These documents grow organically across sessions as thinking matures.
 
-Project plans live at `~/.claude/docs/projects/<project-name>/`, where `<project-name>` is derived from the current working directory's folder name. This keeps planning docs in a central location (symlinked to the Pensieve project-manager) rather than scattered across project repos.
+Project plans live at `~/Programing/dewittn/agentic-docs/projects/<project-name>/`, where `<project-name>` is derived from the current working directory's folder name. This keeps planning docs in a central location (symlinked to the Pensieve project-manager) rather than scattered across project repos.
 
 The project plan becomes the foundation for **feature planning** (`/feature-plan`) and **implementation planning** (`pre-plan`).
 
@@ -22,9 +22,9 @@ This is a long-running planning process that spans multiple sessions. The projec
 
 ## Phase 0: Locate the Project Plan
 
-Derive the project name from the current working directory's folder name (e.g., if cwd is `/Users/dewittn/Projects/my-tool`, the project name is `my-tool`). The plan directory is `~/.claude/docs/projects/<project-name>/`.
+Derive the project name from the current working directory's folder name (e.g., if cwd is `/Users/dewittn/Projects/my-tool`, the project name is `my-tool`). The plan directory is `~/Programing/dewittn/agentic-docs/projects/<project-name>/`.
 
-Before anything else, check `~/.claude/docs/projects/` for existing project directories. This gives context on what's already being tracked.
+Before anything else, check `~/Programing/dewittn/agentic-docs/projects/` for existing project directories. This gives context on what's already being tracked.
 
 **If a plan directory exists for this project:**
 1. Read `README.md` and all existing facet documents in the project directory
@@ -33,7 +33,7 @@ Before anything else, check `~/.claude/docs/projects/` for existing project dire
 4. If the operator provided a description with the command, treat it as direction for this session (e.g., `/project-plan let's figure out the auth model` → jump to the relevant facet)
 
 **If no plan directory exists for this project:**
-- Note any existing projects in `~/.claude/docs/projects/` for context (don't list them unprompted, but be aware)
+- Note any existing projects in `~/Programing/dewittn/agentic-docs/projects/` for context (don't list them unprompted, but be aware)
 - Continue to Phase 1
 - If the operator provided a description, use it as the seed
 
@@ -85,11 +85,11 @@ The operator can also propose facets you didn't list, or merge/split facets as t
 
 ### Produce the Global Doc
 
-Create `~/.claude/docs/projects/<project-name>/README.md` using the template at [references/project-plan-overview-template.md](references/project-plan-overview-template.md).
+Create `~/Programing/dewittn/agentic-docs/projects/<project-name>/README.md` using the template at [references/project-plan-overview-template.md](references/project-plan-overview-template.md).
 
 This document captures the project vision and serves as the hub for all facet documents.
 
-Write technical context to `~/.claude/docs/projects/<project-name>/technical.md` using the template at [references/project-plan-technical-template.md](references/project-plan-technical-template.md). If codebase exploration produced a draft, use it as the starting point.
+Write technical context to `~/Programing/dewittn/agentic-docs/projects/<project-name>/technical.md` using the template at [references/project-plan-technical-template.md](references/project-plan-technical-template.md). If codebase exploration produced a draft, use it as the starting point.
 
 After writing both documents, ask: **"Want to dive into one of these facets now, or let this sit?"**
 
@@ -115,7 +115,7 @@ Match the depth to the complexity. A database choice for a simple CLI might be o
 
 ### Write the Facet Document
 
-Use the template at [references/project-plan-facet-template.md](references/project-plan-facet-template.md). Save it to `~/.claude/docs/projects/<project-name>/<facet-name>.md`.
+Use the template at [references/project-plan-facet-template.md](references/project-plan-facet-template.md). Save it to `~/Programing/dewittn/agentic-docs/projects/<project-name>/<facet-name>.md`.
 
 ## Phase 3: Cross-Pollination
 

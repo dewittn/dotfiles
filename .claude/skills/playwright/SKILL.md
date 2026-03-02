@@ -5,7 +5,7 @@ description: Playwright CLI reference for browser automation. Consult when takin
 
 # Playwright CLI Reference
 
-**Read first:** `~/.claude/docs/platforms/playwright-automation.md`
+**Read first:** `~/Programing/dewittn/agentic-docs/platforms/playwright-automation.md`
 
 ## When to Invoke
 

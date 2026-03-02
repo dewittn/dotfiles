@@ -1,6 +1,6 @@
 # Global Claude Configuration
 
-Documentation at ~/.claude/docs/ captures patterns pre-training gets wrong.
+Documentation at ~/Programing/dewittn/agentic-docs/ captures patterns pre-training gets wrong.
 
 ## Hard Rules
 

@@ -7,7 +7,7 @@ description: Use when creating new visual designs, overhauling existing UI, or m
 
 Mock significant design changes in static HTML before applying them to the project. The frontend equivalent of `/feature-plan` — refine design decisions before they enter the codebase.
 
-**Read first:** `~/.claude/docs/planning/frontend-design.md`
+**Read first:** `~/Programing/dewittn/agentic-docs/planning/frontend-design.md`
 
 ## Phase 1: Prototype in Static HTML
 
@@ -49,7 +49,7 @@ Once a direction is approved, extract the design decisions into the handoff docu
 - Component patterns (cards, buttons, nav, etc.)
 - Breakpoint behavior
 
-For larger projects where a formal design contract is warranted, extract tokens into W3C DTCG format (`design-contract.json`). See `~/.claude/docs/planning/frontend-design.md` for the contract format and validation approach.
+For larger projects where a formal design contract is warranted, extract tokens into W3C DTCG format (`design-contract.json`). See `~/Programing/dewittn/agentic-docs/planning/frontend-design.md` for the contract format and validation approach.
 
 For smaller projects, the handoff document alone is sufficient.
 
@@ -82,7 +82,7 @@ The handoff document is the bridge between prototyping and implementation. When 
 - **`frontend-design` plugin** — Can be invoked manually during Phase 1 for novel design generation. The plugin handles creative generation; this skill handles the process around it.
 - **`playwright-cli`** — Used for capturing screenshots at standard viewports during prototyping
 - **pre-plan skill** — Consumes the handoff document when planning implementation
-- **`~/.claude/docs/planning/frontend-design.md`** — Reference for design contract format when scope warrants it
+- **`~/Programing/dewittn/agentic-docs/planning/frontend-design.md`** — Reference for design contract format when scope warrants it
 
 ### Cleanup
 

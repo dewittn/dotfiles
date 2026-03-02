@@ -13,7 +13,7 @@ description: |
 
 # Code Styling
 
-**Read first:** `~/.claude/docs/coding/style-guide.md`
+**Read first:** `~/Programing/dewittn/agentic-docs/coding/style-guide.md`
 
 ## Patterns
 

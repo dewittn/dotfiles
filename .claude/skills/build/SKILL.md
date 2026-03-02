@@ -15,13 +15,13 @@ disable-model-invocation: true
 
 Execute implementation from an enriched feature doc. The feature doc (produced by pre-plan) contains all codebase findings, gate assignments, and architectural decisions needed to build.
 
-**Read first:** `~/.claude/docs/coding/style-guide.md`
+**Read first:** `~/Programing/dewittn/agentic-docs/coding/style-guide.md`
 
 ## Step 1: Locate Feature Doc
 
 Parse arguments: `$0` = feature number, `$1` = mode (default: `main`).
 
-Find the feature doc matching `$0` in `~/.claude/docs/projects/<name>/features/` (where `<name>` is derived from the current working directory's folder name). Look for files matching `NNN-*.md` where NNN matches the feature number.
+Find the feature doc matching `$0` in `~/Programing/dewittn/agentic-docs/projects/<name>/features/` (where `<name>` is derived from the current working directory's folder name). Look for files matching `NNN-*.md` where NNN matches the feature number.
 
 Guard on status:
 
@@ -53,9 +53,9 @@ Read the enriched feature doc. Absorb:
 - Open questions and constraints
 
 Also read:
-- Project plan from `~/.claude/docs/projects/<name>/` for conventions
+- Project plan from `~/Programing/dewittn/agentic-docs/projects/<name>/` for conventions
 - The project's CLAUDE.md for project-specific conventions
-- Domain docs from `~/.claude/docs/` based on project type
+- Domain docs from `~/Programing/dewittn/agentic-docs/` based on project type
 
 ## Step 4: Enter Plan Mode
 
@@ -115,9 +115,9 @@ The commit skill's branch behavior creates the PR automatically when pushing a n
 
 This skill handles BUILD. Pre-plan (enrichment) defines the inputs. The feature doc is the contract between pre-plan and build — all codebase findings, gate assignments, and decisions must be in the doc, not in a shared context window.
 
-Works with: `pre-plan` skill, `/review-code` command, `tdd` skill, `commit` skill, style guide (`~/.claude/docs/coding/style-guide.md`), domain docs (`~/.claude/docs/`).
+Works with: `pre-plan` skill, `/review-code` command, `tdd` skill, `commit` skill, style guide (`~/Programing/dewittn/agentic-docs/coding/style-guide.md`), domain docs (`~/Programing/dewittn/agentic-docs/`).
 
-See `~/.claude/docs/planning/README.md` for the full workflow overview.
+See `~/Programing/dewittn/agentic-docs/planning/README.md` for the full workflow overview.
 
 ## Notes
 

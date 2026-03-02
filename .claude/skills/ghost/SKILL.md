@@ -5,7 +5,7 @@ description: Ghost theme development patterns and gotchas. Consult when working 
 
 # Ghost Theme Development
 
-**Read first:** `~/.claude/docs/platforms/ghost-themes.md`
+**Read first:** `~/Programing/dewittn/agentic-docs/platforms/ghost-themes.md`
 
 ## When to Invoke
 
