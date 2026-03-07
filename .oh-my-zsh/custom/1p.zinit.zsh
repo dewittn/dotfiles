@@ -1,7 +1,5 @@
-# Source 1Password shell plugins (linode-cli, etc.)
-if [ -f ~/.config/op/plugins.sh ]; then
-  source ~/.config/op/plugins.sh
-fi
+# 1Password shell plugin aliases (manually managed to avoid gh plugin auth on shell start)
+alias linode-cli="op plugin run -- linode-cli"
 
 # Override the gh plugin alias with a lazy-loading function.
 # Fetches the token from 1Password on first use (one biometric prompt),
