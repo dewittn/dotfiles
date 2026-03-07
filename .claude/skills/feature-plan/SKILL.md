@@ -91,6 +91,8 @@ When creating the feature doc:
 
 Feature docs live at: `~/Programing/dewittn/agentic-docs/projects/<name>/features/NNN-feature-name.md`
 
+When creating frontmatter, suggest `systems` tags — a list of system/component identifiers that this feature touches (e.g., `systems: [pre-plan, feature-plan, tdd]`). Suggest based on the features discussed, then confirm with the operator. These tags enable sibling feature scanning during pre-plan.
+
 Identify which features depend on others, which are independent, and suggest implementation order with rationale.
 
 ### Phase 4: Log the Time

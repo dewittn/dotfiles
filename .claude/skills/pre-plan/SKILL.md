@@ -98,7 +98,9 @@ For each feature section in the doc, walk through this cycle:
 4. **Pause for operator review** — confirm or redirect. Do not proceed to the next section until the operator confirms this section's interpretation.
 5. **Update the feature doc** — After the operator confirms a section:
    - Mark the section heading `[reviewed]` (replace `[pending]` or `[in-review]`)
-   - Enrich the section content: update Architecture with codebase findings, resolve answered Open Questions, add specifics discovered during review
+   - Enrich the section content with two parts:
+     1. **Codebase findings** (factual): affected files, existing patterns, current state, sibling feature context
+     2. **Decision record** (rationale, optional): what was chosen, why, what was ruled out. Include prior sibling decisions when relevant.
    - Update `last-updated` in frontmatter (via `date +%Y-%m-%d`)
    - When beginning a new section's review, mark its heading `[in-review]`
 
@@ -116,7 +118,13 @@ For each section, gather only what's relevant:
 - Naming conventions and patterns in the affected area
 - Configuration patterns (data-driven vs hardcoded)
 
-Run history-search and Explore agents in parallel for each section. Each agent returns a focused summary, not raw file contents.
+**Sibling feature scanning**:
+- Run `scripts/list-feature-metadata.sh` on the features directory to get all feature metadata
+- Match the current section's concerns against `systems` tags from sibling docs
+- Read the Architecture sections from matching siblings with `[reviewed]` status
+- Use sibling decisions as context (not constraints) — they inform, they don't bind
+
+Run history-search, Explore agents, and sibling scanning in parallel for each section. Each agent returns a focused summary, not raw file contents.
 
 ### Rules
 
