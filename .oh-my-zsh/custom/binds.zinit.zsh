@@ -1,11 +1,11 @@
 # Set atuin as history search (if available)
 (( $+functions[atuin-search] )) && bindkey '^r' atuin-search
-bindkey '^[[3;9~' vi-beginning-of-line
-bindkey '^[[5;9~' vi-end-of-line
+bindkey -M viins '^[[3;9~' vi-beginning-of-line
+bindkey -M viins '^[[5;9~' vi-end-of-line
 
-# zsh autocomplete
-bindkey '^[[1;2C' forward-word
-bindkey '^[[1;2D' backward-kill-word
+# Shift+Arrow word navigation
+bindkey -M viins '^[[1;2C' forward-word
+bindkey -M viins '^[[1;2D' backward-word
 
 # Vi mode settings
 bindkey -v '^?' backward-delete-char  # Backspace deletes any character
