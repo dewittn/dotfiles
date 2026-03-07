@@ -95,6 +95,12 @@ When creating frontmatter, suggest `systems` tags — a list of system/component
 
 Identify which features depend on others, which are independent, and suggest implementation order with rationale.
 
+**Reflection** (single pass, before moving to Phase 4):
+- Spec completeness: missing error cases, undefined behavior?
+- Scope: too big for one feature? Should this split?
+- Obvious alternatives at the concept level (no codebase context — spec-level only)
+- "Nothing to add" is valid. Do not loop.
+
 ### Phase 4: Log the Time
 
 When operator signals completion:

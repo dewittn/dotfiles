@@ -132,9 +132,21 @@ Run history-search, Explore agents, and sibling scanning in parallel for each se
 - The pause between sections is mandatory. Each section gets confirmed before moving on.
 - Domain docs from `~/Programing/dewittn/agentic-docs/planning/` may apply — read relevant guides based on project type.
 
+## Final Review
+
+Triggers after all sections reach `[reviewed]`, before Completion. Single pass — not iterative.
+
+1. Read the complete enriched doc (codebase findings, decision records, sibling context)
+2. Surface anything the section-by-section view may have missed:
+   - Simpler paths the overall picture reveals
+   - Cross-cutting concerns spanning multiple sections
+   - Patterns from sibling features that suggest a different approach
+3. Present findings to the operator. "Nothing to add" is explicitly valid.
+4. Operator decides whether to act on any findings. Do not loop back to section review.
+
 ## Completion
 
-When all sections are reviewed and confirmed:
+When all sections are reviewed and confirmed (and Final Review is complete):
 
 1. Update feature doc frontmatter: set `status: planned`, `last-updated` via `date +%Y-%m-%d`
 2. Create feature branch: `feature/NNNN-name` (base: `dev` if it exists, `main` otherwise)
