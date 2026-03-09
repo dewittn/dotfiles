@@ -2,7 +2,7 @@
 # Creates a .started timestamp file for tracking feature planning duration.
 # Usage: start-timer.sh <docs-dir> <NNN> <feature-slug>
 # Example: start-timer.sh ~/Programing/dewittn/agentic-docs/projects/my-tool/features 001 hybrid-memory-search
-# Creates: docs/.feature-plan-001-hybrid-memory-search.started
+# Creates: docs/.feature-define-001-hybrid-memory-search.started
 
 set -euo pipefail
 
@@ -10,7 +10,7 @@ DOCS_DIR="${1:?Usage: start-timer.sh <docs-dir> <NNN> <feature-slug>}"
 NUM="${2:?Usage: start-timer.sh <docs-dir> <NNN> <feature-slug>}"
 SLUG="${3:?Usage: start-timer.sh <docs-dir> <NNN> <feature-slug>}"
 
-STARTED_FILE="${DOCS_DIR}/.feature-plan-${NUM}-${SLUG}.started"
+STARTED_FILE="${DOCS_DIR}/.feature-define-${NUM}-${SLUG}.started"
 
 if [ -f "$STARTED_FILE" ]; then
     echo "Timer already running: $STARTED_FILE"

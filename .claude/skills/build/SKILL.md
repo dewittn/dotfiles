@@ -28,7 +28,7 @@ Guard on status:
 | Status | Action |
 |--------|--------|
 | `planned` | Proceed |
-| `draft` | Stop. "This feature doc is still in draft. Run `/feature-plan` to complete it." |
+| `draft` | Stop. "This feature doc is still in draft. Run `/feature-define` to complete it." |
 | `feature-planned` | Stop. "This feature doc needs pre-planning. Run `/pre-plan $0` first." |
 | `pre-planning` | Stop. "Pre-planning is in progress. Complete `/pre-plan $0` first." |
 | `implementing` | Ask: "This feature is already being implemented. Resume building, or start fresh?" |

@@ -5,7 +5,7 @@ description: Use when creating new visual designs, overhauling existing UI, or m
 
 # Frontend Prototype
 
-Mock significant design changes in static HTML before applying them to the project. The frontend equivalent of `/feature-plan` — refine design decisions before they enter the codebase.
+Mock significant design changes in static HTML before applying them to the project. The frontend equivalent of `/feature-define` — refine design decisions before they enter the codebase.
 
 **Read first:** `~/Programing/dewittn/agentic-docs/planning/frontend-design.md`
 
@@ -69,7 +69,7 @@ Create `HANDOFF.md` in the prototype directory using the template at [references
 ### Workflow Chain
 
 ```
-/feature-plan (optional, WHAT/WHY)
+/feature-define (optional, WHAT/WHY)
     → frontend-prototype (DESIGN — mock in static HTML)
         → pre-plan (HOW — implementation plan)
             → implementation

@@ -1,5 +1,5 @@
 ---
-name: feature-plan
+name: feature-define
 description: >
   Turn loose ideas into well-defined feature documents through guided conversation.
   Use when discussing adding complex functionality, planning a new feature, brainstorming
@@ -7,10 +7,10 @@ description: >
   to think through before building. Also trigger when the user describes something they
   want to build but hasn't defined the scope, boundaries, or constraints yet.
   Produces a feature doc (WHAT and WHY) that feeds into /pre-plan (HOW).
-  Can also be invoked explicitly with /feature-plan.
+  Can also be invoked explicitly with /feature-define.
 ---
 
-# Feature Planning
+# Feature Define
 
 **You are not building a spec. You are helping the operator discover what they actually want.**
 
@@ -22,16 +22,16 @@ Use the bundled scripts for tracking planning duration. Do not generate date/dur
 
 **Start timer** (run at the very beginning, before any conversation):
 ```bash
-~/.claude/skills/feature-plan/scripts/start-timer.sh <docs-dir> <NNN> <feature-slug>
+~/.claude/skills/feature-define/scripts/start-timer.sh <docs-dir> <NNN> <feature-slug>
 ```
 
 **Log duration and clean up** (run when operator signals completion):
 ```bash
 # Print duration only:
-~/.claude/skills/feature-plan/scripts/log-duration.sh <docs-dir> <NNN> <feature-slug>
+~/.claude/skills/feature-define/scripts/log-duration.sh <docs-dir> <NNN> <feature-slug>
 
 # Print duration AND append to planning log:
-~/.claude/skills/feature-plan/scripts/log-duration.sh <docs-dir> <NNN> <feature-slug> --log <project-name>
+~/.claude/skills/feature-define/scripts/log-duration.sh <docs-dir> <NNN> <feature-slug> --log <project-name>
 ```
 
 **Project name**: Derive `<name>` from the current working directory's folder name (same convention as `/project-plan`).

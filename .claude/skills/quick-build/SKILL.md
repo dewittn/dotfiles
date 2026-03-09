@@ -1,7 +1,7 @@
 ---
 name: quick-build
 description: >
-  Chain the full planning pipeline (feature-plan → pre-plan → build → review-code)
+  Chain the full planning pipeline (feature-define → pre-plan → build → review-code)
   into a single continuous flow for small features. Use when a feature is simple
   enough to plan and build in one session. Invoked explicitly with /quick-build.
   If feature planning takes >10 minutes, bails out and tells the operator to run
@@ -14,9 +14,9 @@ Chain the full planning pipeline into a single continuous flow for small feature
 
 ## Phase 1: Feature Plan
 
-Read and execute `.claude/skills/feature-plan/SKILL.md` — run all 5 phases (inbox check, capture, clarify, refine, log duration). The skill has a `references/` directory with the feature doc template; follow its instructions for loading it.
+Read and execute `.claude/skills/feature-define/SKILL.md` — run all 5 phases (inbox check, capture, clarify, refine, log duration). The skill has a `references/` directory with the feature doc template; follow its instructions for loading it.
 
-Pass the operator's freeform description as the seed idea. The conversational flow is identical to invoking `/feature-plan` directly.
+Pass the operator's freeform description as the seed idea. The conversational flow is identical to invoking `/feature-define` directly.
 
 ## Transition: Duration Check
 
@@ -48,7 +48,7 @@ Build's Step 6 runs `/review-code` as the final quality gate. Build's Step 7 han
 
 ## What the Operator Sees
 
-1. Feature planning starts — same conversational flow as `/feature-plan`
+1. Feature planning starts — same conversational flow as `/feature-define`
 2. Duration check — if >10 min, stops with bail-out message (feature doc preserved)
 3. Pre-plan starts — same section-by-section review with confirmation pauses
 4. Build starts — plan mode, operator alignment, sequential execution
