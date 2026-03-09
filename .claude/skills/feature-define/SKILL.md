@@ -87,7 +87,7 @@ Draft the feature doc using the template at [references/feature-plan-template.md
 
 When creating the feature doc:
 1. Run `date +%Y-%m-%d` to get today's date (never generate dates manually)
-2. Set frontmatter: `status: draft`, `date` and `last-updated` both set to today's date from the shell command
+2. Set frontmatter: `status: defining`, `date` and `last-updated` both set to today's date from the shell command
 
 Feature docs live at: `~/Programing/dewittn/agentic-docs/projects/<name>/features/NNN-feature-name.md`
 
@@ -106,7 +106,7 @@ Identify which features depend on others, which are independent, and suggest imp
 When operator signals completion:
 1. Run `log-duration.sh` (with `--log` flag if operator wants it logged)
 2. Report the duration
-3. Update the feature doc frontmatter: set `status: feature-planned` and `last-updated` to today's date (via `date +%Y-%m-%d`)
+3. Update the feature doc frontmatter: set `status: defined` and `last-updated` to today's date (via `date +%Y-%m-%d`)
 
 ## Guiding Principles
 

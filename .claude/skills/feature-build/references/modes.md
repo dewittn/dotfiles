@@ -8,7 +8,7 @@ Single agent builds everything. Plan mode produces the implementation plan, then
 
 - Simplest model — no coordination overhead
 - Best for features touching few files or requiring tight coupling between steps
-- Invocation: `/build 003` or `/build 003 main`
+- Invocation: `/feature-build 003` or `/feature-build 003 main`
 
 ## sub
 
@@ -19,7 +19,7 @@ Orchestrator dispatches fresh subagents per task via the Task tool. Each subagen
 - Independent tasks can be dispatched in parallel
 - Subagents return results to the orchestrator, who verifies gate compliance
 - Best for features with independent, well-scoped tasks
-- Invocation: `/build 003 sub`
+- Invocation: `/feature-build 003 sub`
 
 ## team
 
@@ -31,7 +31,7 @@ TeamCreate with shared TaskList. Agents join the team, claim tasks from the shar
 - Team lead monitors progress and resolves blockers
 - Most autonomous model — agents decide task order within dependency constraints
 - Experimental — no TeamCreate usage exists in codebase yet
-- Invocation: `/build 003 team`
+- Invocation: `/feature-build 003 team`
 
 ## Common Across All Modes
 

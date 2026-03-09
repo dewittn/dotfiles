@@ -1,5 +1,5 @@
 ---
-status: draft
+status: defining
 date: YYYY-MM-DD
 last-updated: YYYY-MM-DD
 ---

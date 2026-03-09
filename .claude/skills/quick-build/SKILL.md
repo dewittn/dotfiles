@@ -1,7 +1,7 @@
 ---
 name: quick-build
 description: >
-  Chain the full planning pipeline (feature-define → feature-plan → build → review-code)
+  Chain the full planning pipeline (feature-define → feature-plan → feature-build → review-code)
   into a single continuous flow for small features. Use when a feature is simple
   enough to plan and build in one session. Invoked explicitly with /quick-build.
   If feature planning takes >10 minutes, bails out and tells the operator to run
@@ -26,7 +26,7 @@ Parse the `MINUTES` value from the script output (`Duration: ~X min`). If the fe
 
 > Feature planning took ~X minutes — this feature is complex enough to benefit from running the stages separately. Your feature doc is saved. Next steps:
 > 1. `/feature-plan` to enrich the feature doc
-> 2. `/build` to implement
+> 2. `/feature-build` to implement
 
 Do not proceed to Phase 2.
 
@@ -40,7 +40,7 @@ The feature doc just created in Phase 1 is the input. Feature-plan's section-by-
 
 ## Phase 3: Build
 
-Read and execute `.claude/skills/build/SKILL.md` in **`main` mode** (single agent, sequential execution). The skill has a `references/` directory with plan structure and mode details; follow its instructions for loading them.
+Read and execute `.claude/skills/feature-build/SKILL.md` in **`main` mode** (single agent, sequential execution). The skill has a `references/` directory with plan structure and mode details; follow its instructions for loading them.
 
 Hardcode mode to `main` — do not offer mode selection. The feature number is known from Phase 1.
 

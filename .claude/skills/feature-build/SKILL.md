@@ -1,12 +1,12 @@
 ---
-name: build
+name: feature-build
 description: >
-  Execute implementation from an enriched feature doc. Invoked via /build <number> [mode].
+  Execute implementation from an enriched feature doc. Invoked via /feature-build <number> [mode].
   Reads a feature doc with status "planned", enters plan mode to create an implementation plan,
   then executes the plan. Three modes: main (single agent, default), sub (subagent dispatch),
   team (agent team via TeamCreate). Creates a PR on completion.
   Use when a feature doc has been pre-planned and is ready for implementation.
-  Do NOT auto-trigger — operator explicitly invokes /build.
+  Do NOT auto-trigger — operator explicitly invokes /feature-build.
 argument-hint: "[feature-number] [mode]"
 disable-model-invocation: true
 ---
@@ -28,11 +28,11 @@ Guard on status:
 | Status | Action |
 |--------|--------|
 | `planned` | Proceed |
-| `draft` | Stop. "This feature doc is still in draft. Run `/feature-define` to complete it." |
-| `feature-planned` | Stop. "This feature doc needs pre-planning. Run `/feature-plan $0` first." |
-| `pre-planning` | Stop. "Pre-planning is in progress. Complete `/feature-plan $0` first." |
+| `defining` | Stop. "This feature doc is still being defined. Run `/feature-define` to complete it." |
+| `defined` | Stop. "This feature doc needs planning. Run `/feature-plan $0` first." |
+| `planning` | Stop. "Feature planning is in progress. Complete `/feature-plan $0` first." |
 | `implementing` | Ask: "This feature is already being implemented. Resume building, or start fresh?" |
-| `complete` | Stop. "This feature is already complete." |
+| `implemented` | Stop. "This feature is already complete." |
 
 Run `date +%Y-%m-%d` for today's date. Update frontmatter: set `status: implementing`, set `last-updated` to today's date.
 
@@ -105,7 +105,7 @@ After all tasks are complete, run `/review-code` before the final commit. This i
 
 ## Step 7: Completion
 
-1. Update feature doc frontmatter: set `status: complete`, `last-updated` via `date +%Y-%m-%d`
+1. Update feature doc frontmatter: set `status: implemented`, `last-updated` via `date +%Y-%m-%d`
 2. Move feature doc from `features/NNN-name.md` to `features/complete/NNN-name.md` (create `complete/` directory if needed)
 3. Commit and push via the commit skill (which handles branch-aware push and PR creation)
 
@@ -121,6 +121,6 @@ See `~/Programing/dewittn/agentic-docs/planning/README.md` for the full workflow
 
 ## Notes
 
-- Build failures leave status at `implementing` so the operator can re-run `/build` in a new session.
-- Worktree is external — the operator creates a worktree before invoking `/build`. This skill works with whatever branch/checkout it finds.
+- Build failures leave status at `implementing` so the operator can re-run `/feature-build` in a new session.
+- Worktree is external — the operator creates a worktree before invoking `/feature-build`. This skill works with whatever branch/checkout it finds.
 - The `sub` and `team` modes are experimental. Start with `main` until the others prove their value.

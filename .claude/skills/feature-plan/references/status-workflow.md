@@ -4,18 +4,18 @@
 
 | Current Status | Action |
 |---------------|--------|
-| `feature-planned` | Fresh start. Set `status: pre-planning`, set `last-updated` to today (`date +%Y-%m-%d`). Proceed to Stage 1 from first section. |
-| `pre-planning` | Resuming. Read heading tags, show resumption summary, pick up at first non-reviewed section. |
+| `defined` | Fresh start. Set `status: planning`, set `last-updated` to today (`date +%Y-%m-%d`). Proceed to Stage 1 from first section. |
+| `planning` | Resuming. Read heading tags, show resumption summary, pick up at first non-reviewed section. |
 | `planned` | Already complete. Tell operator: "Ready for `/feature-build`. Want to re-review instead?" |
-| `draft` | Not yet feature-planned. Suggest `/feature-define` first. |
-| `implementing` / `complete` | Already past pre-planning. Tell operator the current status. |
+| `defining` | Not yet defined. Suggest `/feature-define` first. |
+| `implementing` / `implemented` | Already past feature planning. Tell operator the current status. |
 
 ## Resumption Display
 
-When resuming (`pre-planning` status), present this generated display (not stored in the doc):
+When resuming (`planning` status), present this generated display (not stored in the doc):
 
 ```
-## Resuming Pre-Plan: [Feature Name]
+## Resuming Feature Plan: [Feature Name]
 
 | Section | Status |
 |---------|--------|

@@ -18,9 +18,9 @@ Parse the argument — accept NNN (zero-padded feature number) or a full path. L
 
 Read the feature doc. Check the YAML frontmatter `status` field:
 
-- **`draft`**: Feature planning not yet complete. Suggest running `/feature-define` first.
-- **`feature-planned`**, **`pre-planning`**, **`planned`**: Valid states for research. Proceed.
-- **`implementing`** or **`complete`**: Warn the operator — research is typically done before implementation. Proceed only if confirmed.
+- **`defining`**: Feature definition not yet complete. Suggest running `/feature-define` first.
+- **`defined`**, **`planning`**, **`planned`**: Valid states for research. Proceed.
+- **`implementing`** or **`implemented`**: Warn the operator — research is typically done before implementation. Proceed only if confirmed.
 
 ## Phase 1: Identify & Select Features
 
@@ -79,7 +79,7 @@ Update `last-updated` in the feature doc frontmatter via `date +%Y-%m-%d`.
 
 ## Integration
 
-Works with: `/feature-define` (produces the docs this skill consumes), `feature-plan` (consumes the enriched docs this skill produces), `/build` (uses research context for implementation), style guide (`~/Programing/dewittn/agentic-docs/coding/style-guide.md`), domain docs (`~/Programing/dewittn/agentic-docs/`).
+Works with: `/feature-define` (produces the docs this skill consumes), `feature-plan` (consumes the enriched docs this skill produces), `/feature-build` (uses research context for implementation), style guide (`~/Programing/dewittn/agentic-docs/coding/style-guide.md`), domain docs (`~/Programing/dewittn/agentic-docs/`).
 
 See `~/Programing/dewittn/agentic-docs/planning/README.md` for the full workflow overview.
 
