@@ -24,19 +24,19 @@ Read the feature doc. Check the YAML frontmatter `status` field:
 
 ## Phase 1: Identify & Select Features
 
-Parse `### Feature Name [status]` headings from the feature doc. For each feature, check whether a `#### Research Discoveries` subsection already exists.
+Parse `### Change Name [status]` headings from the feature doc. For each change, check whether a `#### Research Discoveries` subsection already exists.
 
 Present a selection table:
 
 ```
-| # | Feature | Researched? |
-|---|---------|-------------|
-| 1 | Feature A | No |
-| 2 | Feature B | Yes (2026-03-01) |
-| 3 | Feature C | No |
+| # | Change | Researched? |
+|---|--------|-------------|
+| 1 | Change A | No |
+| 2 | Change B | Yes (2026-03-01) |
+| 3 | Change C | No |
 ```
 
-Ask the operator which feature(s) to research this session. Incremental by design — can research one today, another tomorrow.
+Ask the operator which change(s) to research this session. Incremental by design — can research one today, another tomorrow.
 
 ## Phase 2: Craft Research Prompt
 
@@ -61,7 +61,7 @@ This is discuss-then-curate. Raw research is noisy — the operator decides what
 
 ## Phase 4: Integration
 
-Write curated findings into the feature doc as `#### Research Discoveries` subsections under each researched feature heading. Place after `Architecture` and before `Open questions`.
+Write curated findings into the feature doc as `#### Research Discoveries` subsections under each researched change heading. Place after `Architecture` and before `Open questions`.
 
 Structured fields (all optional — only include what's relevant):
 

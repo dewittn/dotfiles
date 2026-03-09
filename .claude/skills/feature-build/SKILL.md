@@ -5,13 +5,13 @@ description: >
   Reads a feature doc with status "planned", enters plan mode to create an implementation plan,
   then executes the plan. Three modes: main (single agent, default), sub (subagent dispatch),
   team (agent team via TeamCreate). Creates a PR on completion.
-  Use when a feature doc has been pre-planned and is ready for implementation.
+  Use when a feature doc has been planned (via feature-plan) and is ready for implementation.
   Do NOT auto-trigger — operator explicitly invokes /feature-build.
 argument-hint: "[feature-number] [mode]"
 disable-model-invocation: true
 ---
 
-# Build
+# Feature Build
 
 Execute implementation from an enriched feature doc. The feature doc (produced by feature-plan) contains all codebase findings, gate assignments, and architectural decisions needed to build.
 

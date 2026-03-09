@@ -31,7 +31,7 @@ Heading tags are the single source of truth for status. Do not add a progress ta
 ## Heading Tag Format
 
 ```
-### Feature A [pending]
-### Feature B [in-review]
-### Feature C [reviewed]
+### Change A [pending]
+### Change B [in-review]
+### Change C [reviewed]
 ```

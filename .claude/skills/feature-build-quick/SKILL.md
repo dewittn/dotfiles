@@ -8,11 +8,11 @@ description: >
   stages separately. Do NOT auto-trigger — operator explicitly invokes /feature-build-quick.
 ---
 
-# Quick Build
+# Feature Build Quick
 
 Chain the full planning pipeline into a single continuous flow for small features. Each phase delegates to its own skill — debug at the individual skill level, not here.
 
-## Phase 1: Feature Plan
+## Phase 1: Feature Define
 
 Read and execute `.claude/skills/feature-define/SKILL.md` — run all 5 phases (inbox check, capture, clarify, refine, log duration). The skill has a `references/` directory with the feature doc template; follow its instructions for loading it.
 

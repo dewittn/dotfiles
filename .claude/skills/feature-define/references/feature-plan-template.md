@@ -25,7 +25,7 @@ last-updated: YYYY-MM-DD
 
 ## Implementation Order
 
-1. [Feature] — [rationale, dependency notes]
+1. [Change] — [rationale, dependency notes]
 
 ## Dependencies
 
