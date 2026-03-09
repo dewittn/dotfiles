@@ -25,7 +25,7 @@ Read context sources listed in [references/context-gathering.md](references/cont
 
 ## Stage 1: Section-by-Section Review
 
-For each feature section in the doc:
+For each section in the doc:
 
 1. **Read the section** — absorb what the feature spec asks for
 2. **Gather targeted context** — run agents in parallel per [references/context-gathering.md](references/context-gathering.md). Targeted investigation, not whole-codebase sweeps.

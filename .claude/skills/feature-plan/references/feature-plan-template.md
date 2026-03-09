@@ -8,16 +8,16 @@ last-updated: YYYY-MM-DD
 
 **Context**: What problem is this solving and why now?
 
-## Features
+## Changes
 
-### [Feature Name] [pending]
+### [Change Name] [pending]
 - **What it does**: 2-3 sentences, plain language
 - **Why it matters**: What problem it solves or what capability it adds
 - **Inputs and outputs**: What goes in, what comes out
 - **Architecture**: Technology choices, structural patterns, integration approach
 - **Open questions**: Anything unresolved — these are fine to leave open
 
-[Repeat for each feature]
+[Repeat for each change]
 
 ## Out of Scope
 
