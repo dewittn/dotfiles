@@ -12,7 +12,7 @@ DOCS_DIR="${1:?Usage: log-duration.sh <docs-dir> <NNN> <feature-slug> [--log <pr
 NUM="${2:?Usage: log-duration.sh <docs-dir> <NNN> <feature-slug> [--log <project-name>]}"
 SLUG="${3:?Usage: log-duration.sh <docs-dir> <NNN> <feature-slug> [--log <project-name>]}"
 
-STARTED_FILE="${DOCS_DIR}/.feature-plan-${NUM}-${SLUG}.started"
+STARTED_FILE="${DOCS_DIR}/.feature-define-${NUM}-${SLUG}.started"
 
 if [ ! -f "$STARTED_FILE" ]; then
     echo "Error: No timer found at $STARTED_FILE"

@@ -1,19 +1,19 @@
 ---
-name: build
+name: feature-build
 description: >
-  Execute implementation from an enriched feature doc. Invoked via /build <number> [mode].
+  Execute implementation from an enriched feature doc. Invoked via /feature-build <number> [mode].
   Reads a feature doc with status "planned", enters plan mode to create an implementation plan,
   then executes the plan. Three modes: main (single agent, default), sub (subagent dispatch),
   team (agent team via TeamCreate). Creates a PR on completion.
-  Use when a feature doc has been pre-planned and is ready for implementation.
-  Do NOT auto-trigger — operator explicitly invokes /build.
+  Use when a feature doc has been planned (via feature-plan) and is ready for implementation.
+  Do NOT auto-trigger — operator explicitly invokes /feature-build.
 argument-hint: "[feature-number] [mode]"
 disable-model-invocation: true
 ---
 
-# Build
+# Feature Build
 
-Execute implementation from an enriched feature doc. The feature doc (produced by pre-plan) contains all codebase findings, gate assignments, and architectural decisions needed to build.
+Execute implementation from an enriched feature doc. The feature doc (produced by feature-plan) contains all codebase findings, gate assignments, and architectural decisions needed to build.
 
 **Read first:** `~/Programing/dewittn/agentic-docs/coding/style-guide.md`
 
@@ -28,17 +28,17 @@ Guard on status:
 | Status | Action |
 |--------|--------|
 | `planned` | Proceed |
-| `draft` | Stop. "This feature doc is still in draft. Run `/feature-plan` to complete it." |
-| `feature-planned` | Stop. "This feature doc needs pre-planning. Run `/pre-plan $0` first." |
-| `pre-planning` | Stop. "Pre-planning is in progress. Complete `/pre-plan $0` first." |
+| `defining` | Stop. "This feature doc is still being defined. Run `/feature-define` to complete it." |
+| `defined` | Stop. "This feature doc needs planning. Run `/feature-plan $0` first." |
+| `planning` | Stop. "Feature planning is in progress. Complete `/feature-plan $0` first." |
 | `implementing` | Ask: "This feature is already being implemented. Resume building, or start fresh?" |
-| `complete` | Stop. "This feature is already complete." |
+| `implemented` | Stop. "This feature is already complete." |
 
 Run `date +%Y-%m-%d` for today's date. Update frontmatter: set `status: implementing`, set `last-updated` to today's date.
 
 ## Step 2: Checkout Branch
 
-Checkout the feature branch created by pre-plan: `feature/NNNN-name`. Skip this step if already on the correct branch (e.g., when running inside a worktree).
+Checkout the feature branch created by feature-plan: `feature/NNNN-name`. Skip this step if already on the correct branch (e.g., when running inside a worktree).
 
 If the branch doesn't exist locally, fetch and track it from the remote.
 
@@ -66,7 +66,7 @@ Enter plan mode. Build the implementation plan following the structure in `refer
 - **Documentation Deliverables** — what docs get created or updated
 - **Human-Touchable Artifacts** — files the operator will read or edit
 - **Principle Propagation** — new patterns applied exhaustively or flagged as follow-up
-- **History Findings** — pre-plan findings that affect the plan
+- **History Findings** — feature-plan findings that affect the plan
 
 ### Operator Alignment Gate
 
@@ -105,7 +105,7 @@ After all tasks are complete, run `/review-code` before the final commit. This i
 
 ## Step 7: Completion
 
-1. Update feature doc frontmatter: set `status: complete`, `last-updated` via `date +%Y-%m-%d`
+1. Update feature doc frontmatter: set `status: implemented`, `last-updated` via `date +%Y-%m-%d`
 2. Move feature doc from `features/NNN-name.md` to `features/complete/NNN-name.md` (create `complete/` directory if needed)
 3. Commit and push via the commit skill (which handles branch-aware push and PR creation)
 
@@ -113,14 +113,14 @@ The commit skill's branch behavior creates the PR automatically when pushing a n
 
 ## Integration
 
-This skill handles BUILD. Pre-plan (enrichment) defines the inputs. The feature doc is the contract between pre-plan and build — all codebase findings, gate assignments, and decisions must be in the doc, not in a shared context window.
+This skill handles BUILD. Feature-plan (enrichment) defines the inputs. The feature doc is the contract between feature-plan and build — all codebase findings, gate assignments, and decisions must be in the doc, not in a shared context window.
 
-Works with: `pre-plan` skill, `/review-code` command, `tdd` skill, `commit` skill, style guide (`~/Programing/dewittn/agentic-docs/coding/style-guide.md`), domain docs (`~/Programing/dewittn/agentic-docs/`).
+Works with: `feature-plan` skill, `/review-code` command, `tdd` skill, `commit` skill, style guide (`~/Programing/dewittn/agentic-docs/coding/style-guide.md`), domain docs (`~/Programing/dewittn/agentic-docs/`).
 
 See `~/Programing/dewittn/agentic-docs/planning/README.md` for the full workflow overview.
 
 ## Notes
 
-- Build failures leave status at `implementing` so the operator can re-run `/build` in a new session.
-- Worktree is external — the operator creates a worktree before invoking `/build`. This skill works with whatever branch/checkout it finds.
+- Build failures leave status at `implementing` so the operator can re-run `/feature-build` in a new session.
+- Worktree is external — the operator creates a worktree before invoking `/feature-build`. This skill works with whatever branch/checkout it finds.
 - The `sub` and `team` modes are experimental. Start with `main` until the others prove their value.

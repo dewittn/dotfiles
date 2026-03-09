@@ -1,117 +1,75 @@
 ---
 name: feature-plan
 description: >
-  Turn loose ideas into well-defined feature documents through guided conversation.
-  Use when discussing adding complex functionality, planning a new feature, brainstorming
-  system changes that touch multiple components, or when the user has an idea they want
-  to think through before building. Also trigger when the user describes something they
-  want to build but hasn't defined the scope, boundaries, or constraints yet.
-  Produces a feature doc (WHAT and WHY) that feeds into /pre-plan (HOW).
-  Can also be invoked explicitly with /feature-plan.
+  Walk through a feature doc section by section for operator alignment, producing an enriched
+  feature doc that a fresh /feature-build session can execute from. Runs BEFORE /feature-build, not during it.
+  Every feature MUST go through this process before building — no exceptions.
+  Triggers: auto-trigger when discussing implementing a feature that has a feature doc,
+  explicit /feature-plan invocation, or when the user describes work requiring multiple files
+  or architectural decisions. Also suggest /feature-define first if the user has a loose idea
+  without a feature doc.
 ---
 
-# Feature Planning
+# Feature Plan
 
-**You are not building a spec. You are helping the operator discover what they actually want.**
+Walk through the feature doc section by section, producing an enriched feature doc that a fresh `/feature-build` session can execute from. Do not begin implementation without completing all stages.
 
-The deliverable is a **feature doc** that answers WHAT and WHY, not HOW.
+## Stage 0: Locate Feature Doc
 
-## Timer Scripts
+Check `~/Programing/dewittn/agentic-docs/projects/<name>/features/` for a feature doc (`NNN-*.md`), where `<name>` is derived from the current working directory's folder name.
 
-Use the bundled scripts for tracking planning duration. Do not generate date/duration logic manually.
+- **If a feature doc exists**: Read it. Check frontmatter `status` — see [references/status-workflow.md](references/status-workflow.md) for the state machine, resumption logic, and heading tag format.
+- **If no feature doc exists**: If the user has a loose or multi-part idea, suggest `/feature-define` first. Not a hard gate — proceed directly if the user prefers.
 
-**Start timer** (run at the very beginning, before any conversation):
-```bash
-~/.claude/skills/feature-plan/scripts/start-timer.sh <docs-dir> <NNN> <feature-slug>
-```
+Read context sources listed in [references/context-gathering.md](references/context-gathering.md) (project plan, domain docs, CLAUDE.md, style guide).
 
-**Log duration and clean up** (run when operator signals completion):
-```bash
-# Print duration only:
-~/.claude/skills/feature-plan/scripts/log-duration.sh <docs-dir> <NNN> <feature-slug>
+## Stage 1: Section-by-Section Review
 
-# Print duration AND append to planning log:
-~/.claude/skills/feature-plan/scripts/log-duration.sh <docs-dir> <NNN> <feature-slug> --log <project-name>
-```
+For each section in the doc:
 
-**Project name**: Derive `<name>` from the current working directory's folder name (same convention as `/project-plan`).
+1. **Read the section** — absorb what the feature spec asks for
+2. **Gather targeted context** — run agents in parallel per [references/context-gathering.md](references/context-gathering.md). Targeted investigation, not whole-codebase sweeps.
+3. **Present interpretation** — "Given this feature spec and this codebase, here's what I'd build." Use tables and visuals per [references/table-and-visual-formats.md](references/table-and-visual-formats.md). Reserve narrative for rationale, tradeoffs, and open questions.
+4. **Pause for operator review** — confirm or redirect. Do not proceed until the operator confirms.
+5. **Update the feature doc** — After operator confirms:
+   - Mark heading `[reviewed]` (replace `[pending]` or `[in-review]`)
+   - Enrich with two parts:
+     1. **Codebase findings** (factual): affected files, existing patterns, current state, sibling feature context
+     2. **Decision record** (rationale, optional): what was chosen, why, what was ruled out. Include prior sibling decisions when relevant.
+   - Update `last-updated` in frontmatter (via `date +%Y-%m-%d`)
+   - Mark next section `[in-review]`
 
-**Feature numbering**: Check BOTH `~/Programing/dewittn/agentic-docs/projects/<name>/features/` AND `~/Programing/dewittn/agentic-docs/projects/<name>/features/complete/` for existing docs (files matching `NNN-*.md`). Find the highest NNN across both directories and increment. Numbering is a global sequence — completed features do not free up their numbers.
+### Rules
 
-**Project context**: Read the project plan README at `~/Programing/dewittn/agentic-docs/projects/<name>/README.md` when it exists. If no project plan exists, proceed without project context — feature planning is not gated on project planning.
+- Section review is mandatory. No skipping, no batching multiple sections.
+- The pause between sections is mandatory. Each section gets confirmed before moving on.
+- History findings are advisory, not blocking. Red flags mean "understand before proceeding."
+- Co-modified files are hidden dependencies — if A always changes with B, touch both.
 
-## Workflow
+## Final Review
 
-### Phase 0: Check the Inbox
+Triggers after all sections reach `[reviewed]`, before Completion. Single pass — not iterative.
 
-Before starting a fresh conversation, check `~/Programing/dewittn/agentic-docs/projects/inbox/` for pending items.
+1. Read the complete enriched doc (codebase findings, decision records, sibling context)
+2. Surface anything the section-by-section view may have missed:
+   - Simpler paths the overall picture reveals
+   - Cross-cutting concerns spanning multiple sections
+   - Patterns from sibling features that suggest a different approach
+3. Present findings to the operator. "Nothing to add" is explicitly valid.
+4. Operator decides whether to act. Do not loop back to section review.
 
-- **If inbox items exist**: List them. For each item, read project README summaries from `~/Programing/dewittn/agentic-docs/projects/*/README.md` to suggest which project it belongs to. Always ask the operator before filing — no silent auto-sorting.
-- **If an item matches the current project**: Offer to use it as the seed for this feature planning session.
-- **If items don't match any project**: Surface them cleanly. They may need a project plan first.
-- **After a feature doc is written from an inbox item**: Delete the inbox item.
-- **If no inbox items exist or operator wants to start fresh**: Continue to Phase 1.
+## Completion
 
-### Phase 1: Capture the Raw Idea
+When all sections are reviewed and Final Review is complete:
 
-1. Run `start-timer.sh` immediately
-2. Absorb the operator's description — listen for core intent, identify separate features vs. parts of one, note confidence vs. hand-waving
-3. Summarize back as distinct features/concerns
-4. Ask: **"Is this everything, or is there more rattling around?"**
+1. Update frontmatter: `status: planned`, `last-updated` via `date +%Y-%m-%d`
+2. Create feature branch: `feature/NNNN-name` (base: `dev` if it exists, `main` otherwise)
+3. Push branch: `git push -u origin feature/NNNN-name`
 
-Match depth to complexity. Not every feature needs four rounds of clarification.
+The enriched feature doc is the handoff artifact. A fresh session runs `/feature-build` to implement.
 
-### Phase 2: Clarifying Questions
+## Integration
 
-Start with the triggering pain:
+This skill handles HOW. The feature doc (from `/feature-define`) defines WHAT and WHY. Use its constraints — don't re-ask answered questions. Respect its implementation order.
 
-1. If Phase 1 already surfaced a specific incident, failure, or frustration — confirm it: "It sounds like you're building this because [X] wasn't working. Anything to add?"
-2. If not — ask directly: "What broke, what was annoying, or what failed that made this worth doing?"
-
-Feed the answer into the Context line of the feature doc. Then continue with clarifying questions:
-
-Ask 2-3 questions at a time, not all at once. Focus on:
-
-- **Placement**: Where does this sit in the existing system? What triggers it? What does it produce?
-- **Boundaries**: What is IN scope?
-- **Inputs/outputs**: What data flows in and out? What format?
-- **Constraints**: Architectural decisions, technology choices, patterns to follow
-- **Edge cases**: What should degrade gracefully vs. fail loudly?
-- **Ambiguity test**: Could a competent developer read this and build the wrong thing? If yes, ask the clarifying question.
-
-After features are outlined, surface scope boundaries: **"What should this feature explicitly NOT do?"** If meaningful boundaries emerge, they populate the Out of Scope section in the feature doc. If nothing surfaces, omit the section entirely.
-
-### Phase 3: Iterative Refinement
-
-Draft the feature doc using the template at [references/feature-plan-template.md](references/feature-plan-template.md). Share it. Incorporate operator feedback. Each "wait, actually..." is a design decision being surfaced — slow down and explore it.
-
-When creating the feature doc:
-1. Run `date +%Y-%m-%d` to get today's date (never generate dates manually)
-2. Set frontmatter: `status: draft`, `date` and `last-updated` both set to today's date from the shell command
-
-Feature docs live at: `~/Programing/dewittn/agentic-docs/projects/<name>/features/NNN-feature-name.md`
-
-When creating frontmatter, suggest `systems` tags — a list of system/component identifiers that this feature touches (e.g., `systems: [pre-plan, feature-plan, tdd]`). Suggest based on the features discussed, then confirm with the operator. These tags enable sibling feature scanning during pre-plan.
-
-Identify which features depend on others, which are independent, and suggest implementation order with rationale.
-
-**Reflection** (single pass, before moving to Phase 4):
-- Spec completeness: missing error cases, undefined behavior?
-- Scope: too big for one feature? Should this split?
-- Obvious alternatives at the concept level (no codebase context — spec-level only)
-- "Nothing to add" is valid. Do not loop.
-
-### Phase 4: Log the Time
-
-When operator signals completion:
-1. Run `log-duration.sh` (with `--log` flag if operator wants it logged)
-2. Report the duration
-3. Update the feature doc frontmatter: set `status: feature-planned` and `last-updated` to today's date (via `date +%Y-%m-%d`)
-
-## Guiding Principles
-
-- **Ask, don't assume.** Surface the operator's defaults, don't substitute your own.
-- **Follow the tweaks.** "Oh, and also..." signals discovery. Explore it.
-- **Keep implementation out (mostly).** Capture constraints as decisions, not solutions.
-- **Name the open questions.** Explicitly marking "open" beats pretending it's decided.
-- **Respect the operator's energy.** Match their pace. Capture thinking while it's fresh.
+Works with: `/feature-define`, `/feature-build`, `/review-code`, tdd, history-search agent, Explore agents, code-styling, style guide, domain docs. See `~/Programing/dewittn/agentic-docs/planning/README.md` for the full workflow.

@@ -52,6 +52,6 @@ Show the operator what was written. Offer to refine — update the file in place
 
 ## Integration
 
-This skill feeds into `/feature-plan` Phase 0, which checks the inbox for pending items. The standardized format ensures feature-plan can reliably parse and suggest project matches.
+This skill feeds into `/feature-define` Phase 0, which checks the inbox for pending items. The standardized format ensures feature-plan can reliably parse and suggest project matches.
 
 Output location: `~/Programing/dewittn/agentic-docs/projects/inbox/`

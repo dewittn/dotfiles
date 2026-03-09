@@ -12,7 +12,7 @@ The deliverable is a **project plan directory** containing a global overview and
 
 Project plans live at `~/Programing/dewittn/agentic-docs/projects/<project-name>/`, where `<project-name>` is derived from the current working directory's folder name. This keeps planning docs in a central location (symlinked to the Pensieve project-manager) rather than scattered across project repos.
 
-The project plan becomes the foundation for **feature planning** (`/feature-plan`) and **implementation planning** (`pre-plan`).
+The project plan becomes the foundation for **feature planning** (`/feature-define`) and **implementation planning** (`feature-plan`).
 
 ## How This Works
 
@@ -152,6 +152,6 @@ This facet deserves special attention. Assume the operator works solo with codin
 - **Follow the energy.** If the operator wants to talk business before tech, talk business. The facets are tools for organizing output, not a prescribed order of operations.
 - **Cross-pollinate aggressively.** The most valuable planning insights often come from unexpected connections between facets. When you hear one, capture it immediately.
 - **Name what you don't know.** Open questions are a feature, not a bug. Marking something as "needs more thought" is better than glossing over it.
-- **Keep implementation out of it.** This is project-level thinking. "We'll use PostgreSQL" is a project decision. "The users table will have these columns" is implementation — save it for feature-plan or pre-plan.
+- **Keep implementation out of it.** This is project-level thinking. "We'll use PostgreSQL" is a project decision. "The users table will have these columns" is implementation — save it for feature-define or feature-plan.
 - **The documents are living.** They'll be updated as thinking evolves. Don't optimize for a perfect first draft.
 - **Respect the operator's context.** They may know things about the market, the business, or the constraints that you can't see. When they make a decision that seems odd, ask why rather than pushing back.

@@ -1,5 +1,5 @@
 ---
-status: draft
+status: defining
 date: YYYY-MM-DD
 last-updated: YYYY-MM-DD
 ---
@@ -8,16 +8,16 @@ last-updated: YYYY-MM-DD
 
 **Context**: What problem is this solving and why now?
 
-## Features
+## Changes
 
-### [Feature Name] [pending]
+### [Change Name] [pending]
 - **What it does**: 2-3 sentences, plain language
 - **Why it matters**: What problem it solves or what capability it adds
 - **Inputs and outputs**: What goes in, what comes out
 - **Architecture**: Technology choices, structural patterns, integration approach
 - **Open questions**: Anything unresolved — these are fine to leave open
 
-[Repeat for each feature]
+[Repeat for each change]
 
 ## Out of Scope
 
@@ -25,7 +25,7 @@ last-updated: YYYY-MM-DD
 
 ## Implementation Order
 
-1. [Feature] — [rationale, dependency notes]
+1. [Change] — [rationale, dependency notes]
 
 ## Dependencies
 
@@ -33,7 +33,7 @@ last-updated: YYYY-MM-DD
 
 ## Next Step
 
-When ready to implement, run `pre-plan` to enrich this document with codebase findings, then `/build` to plan and execute the implementation.
+When ready to implement, run `/feature-plan` to enrich this document with codebase findings, then `/feature-build` to plan and execute the implementation.
 
 ## Notes
 

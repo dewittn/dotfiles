@@ -4,7 +4,7 @@ description: >
   Research unfamiliar territory for a feature doc by crafting adaptive prompts for Claude AI
   and integrating findings through discussion. Use when a feature doc involves tools, patterns,
   or techniques the operator hasn't used before. Invoked manually via /feature-research.
-  Not embedded in feature-plan or pre-plan — standalone skill.
+  Not embedded in feature-define or feature-plan — standalone skill.
 argument-hint: "[NNN or path]"
 ---
 
@@ -18,25 +18,25 @@ Parse the argument — accept NNN (zero-padded feature number) or a full path. L
 
 Read the feature doc. Check the YAML frontmatter `status` field:
 
-- **`draft`**: Feature planning not yet complete. Suggest running `/feature-plan` first.
-- **`feature-planned`**, **`pre-planning`**, **`planned`**: Valid states for research. Proceed.
-- **`implementing`** or **`complete`**: Warn the operator — research is typically done before implementation. Proceed only if confirmed.
+- **`defining`**: Feature definition not yet complete. Suggest running `/feature-define` first.
+- **`defined`**, **`planning`**, **`planned`**: Valid states for research. Proceed.
+- **`implementing`** or **`implemented`**: Warn the operator — research is typically done before implementation. Proceed only if confirmed.
 
 ## Phase 1: Identify & Select Features
 
-Parse `### Feature Name [status]` headings from the feature doc. For each feature, check whether a `#### Research Discoveries` subsection already exists.
+Parse `### Change Name [status]` headings from the feature doc. For each change, check whether a `#### Research Discoveries` subsection already exists.
 
 Present a selection table:
 
 ```
-| # | Feature | Researched? |
-|---|---------|-------------|
-| 1 | Feature A | No |
-| 2 | Feature B | Yes (2026-03-01) |
-| 3 | Feature C | No |
+| # | Change | Researched? |
+|---|--------|-------------|
+| 1 | Change A | No |
+| 2 | Change B | Yes (2026-03-01) |
+| 3 | Change C | No |
 ```
 
-Ask the operator which feature(s) to research this session. Incremental by design — can research one today, another tomorrow.
+Ask the operator which change(s) to research this session. Incremental by design — can research one today, another tomorrow.
 
 ## Phase 2: Craft Research Prompt
 
@@ -61,7 +61,7 @@ This is discuss-then-curate. Raw research is noisy — the operator decides what
 
 ## Phase 4: Integration
 
-Write curated findings into the feature doc as `#### Research Discoveries` subsections under each researched feature heading. Place after `Architecture` and before `Open questions`.
+Write curated findings into the feature doc as `#### Research Discoveries` subsections under each researched change heading. Place after `Architecture` and before `Open questions`.
 
 Structured fields (all optional — only include what's relevant):
 
@@ -79,7 +79,7 @@ Update `last-updated` in the feature doc frontmatter via `date +%Y-%m-%d`.
 
 ## Integration
 
-Works with: `/feature-plan` (produces the docs this skill consumes), `pre-plan` (consumes the enriched docs this skill produces), `/build` (uses research context for implementation), style guide (`~/Programing/dewittn/agentic-docs/coding/style-guide.md`), domain docs (`~/Programing/dewittn/agentic-docs/`).
+Works with: `/feature-define` (produces the docs this skill consumes), `feature-plan` (consumes the enriched docs this skill produces), `/feature-build` (uses research context for implementation), style guide (`~/Programing/dewittn/agentic-docs/coding/style-guide.md`), domain docs (`~/Programing/dewittn/agentic-docs/`).
 
 See `~/Programing/dewittn/agentic-docs/planning/README.md` for the full workflow overview.
 
