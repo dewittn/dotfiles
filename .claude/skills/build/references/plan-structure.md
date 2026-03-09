@@ -62,7 +62,7 @@ If the plan establishes a new pattern or convention, list **every** place in the
 
 Present as a table: **File / Finding / Impact**.
 
-Surface anything from the pre-plan section reviews that affects the plan:
+Surface anything from the feature-plan section reviews that affects the plan:
 
 - Files with high churn or recent reverts (extra scrutiny needed)
 - Co-modified files not yet in the plan (hidden dependencies)

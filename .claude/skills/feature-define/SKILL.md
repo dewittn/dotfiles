@@ -6,7 +6,7 @@ description: >
   system changes that touch multiple components, or when the user has an idea they want
   to think through before building. Also trigger when the user describes something they
   want to build but hasn't defined the scope, boundaries, or constraints yet.
-  Produces a feature doc (WHAT and WHY) that feeds into /pre-plan (HOW).
+  Produces a feature doc (WHAT and WHY) that feeds into /feature-plan (HOW).
   Can also be invoked explicitly with /feature-define.
 ---
 
@@ -91,7 +91,7 @@ When creating the feature doc:
 
 Feature docs live at: `~/Programing/dewittn/agentic-docs/projects/<name>/features/NNN-feature-name.md`
 
-When creating frontmatter, suggest `systems` tags — a list of system/component identifiers that this feature touches (e.g., `systems: [pre-plan, feature-plan, tdd]`). Suggest based on the features discussed, then confirm with the operator. These tags enable sibling feature scanning during pre-plan.
+When creating frontmatter, suggest `systems` tags — a list of system/component identifiers that this feature touches (e.g., `systems: [feature-plan, feature-define, tdd]`). Suggest based on the features discussed, then confirm with the operator. These tags enable sibling feature scanning during feature-plan.
 
 Identify which features depend on others, which are independent, and suggest implementation order with rationale.
 

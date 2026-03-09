@@ -13,7 +13,7 @@ disable-model-invocation: true
 
 # Build
 
-Execute implementation from an enriched feature doc. The feature doc (produced by pre-plan) contains all codebase findings, gate assignments, and architectural decisions needed to build.
+Execute implementation from an enriched feature doc. The feature doc (produced by feature-plan) contains all codebase findings, gate assignments, and architectural decisions needed to build.
 
 **Read first:** `~/Programing/dewittn/agentic-docs/coding/style-guide.md`
 
@@ -29,8 +29,8 @@ Guard on status:
 |--------|--------|
 | `planned` | Proceed |
 | `draft` | Stop. "This feature doc is still in draft. Run `/feature-define` to complete it." |
-| `feature-planned` | Stop. "This feature doc needs pre-planning. Run `/pre-plan $0` first." |
-| `pre-planning` | Stop. "Pre-planning is in progress. Complete `/pre-plan $0` first." |
+| `feature-planned` | Stop. "This feature doc needs pre-planning. Run `/feature-plan $0` first." |
+| `pre-planning` | Stop. "Pre-planning is in progress. Complete `/feature-plan $0` first." |
 | `implementing` | Ask: "This feature is already being implemented. Resume building, or start fresh?" |
 | `complete` | Stop. "This feature is already complete." |
 
@@ -38,7 +38,7 @@ Run `date +%Y-%m-%d` for today's date. Update frontmatter: set `status: implemen
 
 ## Step 2: Checkout Branch
 
-Checkout the feature branch created by pre-plan: `feature/NNNN-name`. Skip this step if already on the correct branch (e.g., when running inside a worktree).
+Checkout the feature branch created by feature-plan: `feature/NNNN-name`. Skip this step if already on the correct branch (e.g., when running inside a worktree).
 
 If the branch doesn't exist locally, fetch and track it from the remote.
 
@@ -66,7 +66,7 @@ Enter plan mode. Build the implementation plan following the structure in `refer
 - **Documentation Deliverables** — what docs get created or updated
 - **Human-Touchable Artifacts** — files the operator will read or edit
 - **Principle Propagation** — new patterns applied exhaustively or flagged as follow-up
-- **History Findings** — pre-plan findings that affect the plan
+- **History Findings** — feature-plan findings that affect the plan
 
 ### Operator Alignment Gate
 
@@ -113,9 +113,9 @@ The commit skill's branch behavior creates the PR automatically when pushing a n
 
 ## Integration
 
-This skill handles BUILD. Pre-plan (enrichment) defines the inputs. The feature doc is the contract between pre-plan and build — all codebase findings, gate assignments, and decisions must be in the doc, not in a shared context window.
+This skill handles BUILD. Feature-plan (enrichment) defines the inputs. The feature doc is the contract between feature-plan and build — all codebase findings, gate assignments, and decisions must be in the doc, not in a shared context window.
 
-Works with: `pre-plan` skill, `/review-code` command, `tdd` skill, `commit` skill, style guide (`~/Programing/dewittn/agentic-docs/coding/style-guide.md`), domain docs (`~/Programing/dewittn/agentic-docs/`).
+Works with: `feature-plan` skill, `/review-code` command, `tdd` skill, `commit` skill, style guide (`~/Programing/dewittn/agentic-docs/coding/style-guide.md`), domain docs (`~/Programing/dewittn/agentic-docs/`).
 
 See `~/Programing/dewittn/agentic-docs/planning/README.md` for the full workflow overview.
 

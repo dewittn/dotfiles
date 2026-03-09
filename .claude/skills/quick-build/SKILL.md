@@ -1,7 +1,7 @@
 ---
 name: quick-build
 description: >
-  Chain the full planning pipeline (feature-define → pre-plan → build → review-code)
+  Chain the full planning pipeline (feature-define → feature-plan → build → review-code)
   into a single continuous flow for small features. Use when a feature is simple
   enough to plan and build in one session. Invoked explicitly with /quick-build.
   If feature planning takes >10 minutes, bails out and tells the operator to run
@@ -25,18 +25,18 @@ After feature planning completes and `log-duration.sh` prints its output, check 
 Parse the `MINUTES` value from the script output (`Duration: ~X min`). If the feature planning took **more than 10 minutes**, stop and tell the operator:
 
 > Feature planning took ~X minutes — this feature is complex enough to benefit from running the stages separately. Your feature doc is saved. Next steps:
-> 1. `/pre-plan` to enrich the feature doc
+> 1. `/feature-plan` to enrich the feature doc
 > 2. `/build` to implement
 
 Do not proceed to Phase 2.
 
 If **10 minutes or less**, continue immediately.
 
-## Phase 2: Pre-Plan
+## Phase 2: Feature Plan
 
-Read and execute `.claude/skills/pre-plan/SKILL.md` — run all stages (locate feature doc, section-by-section review, completion with branch creation). The skill has a `references/` directory with visual format examples; follow its instructions for loading them.
+Read and execute `.claude/skills/feature-plan/SKILL.md` — run all stages (locate feature doc, section-by-section review, completion with branch creation). The skill has a `references/` directory with visual format examples; follow its instructions for loading them.
 
-The feature doc just created in Phase 1 is the input. Pre-plan's section-by-section review still pauses for operator confirmation at each section — quick-build does not skip these checkpoints.
+The feature doc just created in Phase 1 is the input. Feature-plan's section-by-section review still pauses for operator confirmation at each section — quick-build does not skip these checkpoints.
 
 ## Phase 3: Build
 
@@ -50,7 +50,7 @@ Build's Step 6 runs `/review-code` as the final quality gate. Build's Step 7 han
 
 1. Feature planning starts — same conversational flow as `/feature-define`
 2. Duration check — if >10 min, stops with bail-out message (feature doc preserved)
-3. Pre-plan starts — same section-by-section review with confirmation pauses
+3. Feature plan starts — same section-by-section review with confirmation pauses
 4. Build starts — plan mode, operator alignment, sequential execution
 5. Review + PR — build handles `/review-code` and PR creation
 

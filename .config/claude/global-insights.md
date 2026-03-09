@@ -80,7 +80,7 @@ Reframe the work:
 The last reframe is critical. "Scrambling to catch up" is defensive and reactive. "Building the framework" is the methodology applied to itself. When Nelson encounters a new domain (including AI), the methodology is always the same: define the problem, immerse, recognize patterns, prototype, create feedback loops, refine. AI isn't an exception to the methodology — it's the latest domain the methodology applies to.
 
 ### The Planning System as Deliberate Practice
-Nelson's planning tools (`/project-plan` → `/feature-define` → `pre-plan` → `/review-code` → `commit`) form a specification pipeline. Each level produces artifacts that constrain the next. Quality gates (operator alignment, code review) are where human judgment intervenes. This maps to directing agents with specs and evaluating outcomes — not writing code, not reviewing diffs line-by-line, but defining what should exist and verifying that it does.
+Nelson's planning tools (`/project-plan` → `/feature-define` → `/feature-plan` → `/review-code` → `commit`) form a specification pipeline. Each level produces artifacts that constrain the next. Quality gates (operator alignment, code review) are where human judgment intervenes. This maps to directing agents with specs and evaluating outcomes — not writing code, not reviewing diffs line-by-line, but defining what should exist and verifying that it does.
 
 ### Domain Manifestations
 - **Career:** The planning system is evidence of specification fluency — a demonstrable, practiced skill

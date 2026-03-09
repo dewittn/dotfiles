@@ -25,14 +25,14 @@ Lead with visuals for structural information. Pick the format that fits the data
 
 ## How to Format
 
-ASCII examples for pre-plan section reviews. Use box-drawing characters (`─ │ ├ └ →`).
+ASCII examples for feature-plan section reviews. Use box-drawing characters (`─ │ ├ └ →`).
 
 ## Flow Diagram
 
 When showing data paths, control flow, or pipeline stages.
 
 ```
-Feature Doc → pre-plan → Plan → Build
+Feature Doc → feature-plan → Plan → Build
                 │                  │
                 ├→ history-search  ├→ tdd gates
                 └→ Explore agents  └→ /review-code
@@ -79,7 +79,7 @@ When showing multiple items with shared attributes. Use markdown tables.
 When showing where in the system changes land.
 
 ```
-pre-plan/
+feature-plan/
 ├── SKILL.md
 │   ├── Stage 0 ← resumption summary
 │   ├── Stage 1 ← table + visual directives

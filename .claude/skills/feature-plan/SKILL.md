@@ -1,18 +1,18 @@
 ---
-name: pre-plan
+name: feature-plan
 description: >
   Walk through a feature doc section by section for operator alignment, producing an enriched
-  feature doc that a fresh /build session can execute from. Runs BEFORE /build, not during it.
+  feature doc that a fresh /feature-build session can execute from. Runs BEFORE /feature-build, not during it.
   Every feature MUST go through this process before building — no exceptions.
   Triggers: auto-trigger when discussing implementing a feature that has a feature doc,
-  explicit /pre-plan invocation, or when the user describes work requiring multiple files
+  explicit /feature-plan invocation, or when the user describes work requiring multiple files
   or architectural decisions. Also suggest /feature-define first if the user has a loose idea
   without a feature doc.
 ---
 
-# Pre-Plan
+# Feature Plan
 
-Walk through the feature doc section by section, producing an enriched feature doc that a fresh `/build` session can execute from. Do not begin implementation without completing all stages.
+Walk through the feature doc section by section, producing an enriched feature doc that a fresh `/feature-build` session can execute from. Do not begin implementation without completing all stages.
 
 ## Stage 0: Locate Feature Doc
 
@@ -66,10 +66,10 @@ When all sections are reviewed and Final Review is complete:
 2. Create feature branch: `feature/NNNN-name` (base: `dev` if it exists, `main` otherwise)
 3. Push branch: `git push -u origin feature/NNNN-name`
 
-The enriched feature doc is the handoff artifact. A fresh session runs `/build` to implement.
+The enriched feature doc is the handoff artifact. A fresh session runs `/feature-build` to implement.
 
 ## Integration
 
 This skill handles HOW. The feature doc (from `/feature-define`) defines WHAT and WHY. Use its constraints — don't re-ask answered questions. Respect its implementation order.
 
-Works with: `/feature-define`, `/build`, `/review-code`, tdd, history-search agent, Explore agents, code-styling, style guide, domain docs. See `~/Programing/dewittn/agentic-docs/planning/README.md` for the full workflow.
+Works with: `/feature-define`, `/feature-build`, `/review-code`, tdd, history-search agent, Explore agents, code-styling, style guide, domain docs. See `~/Programing/dewittn/agentic-docs/planning/README.md` for the full workflow.

@@ -4,7 +4,7 @@ description: >
   Research unfamiliar territory for a feature doc by crafting adaptive prompts for Claude AI
   and integrating findings through discussion. Use when a feature doc involves tools, patterns,
   or techniques the operator hasn't used before. Invoked manually via /feature-research.
-  Not embedded in feature-define or pre-plan — standalone skill.
+  Not embedded in feature-define or feature-plan — standalone skill.
 argument-hint: "[NNN or path]"
 ---
 
@@ -79,7 +79,7 @@ Update `last-updated` in the feature doc frontmatter via `date +%Y-%m-%d`.
 
 ## Integration
 
-Works with: `/feature-define` (produces the docs this skill consumes), `pre-plan` (consumes the enriched docs this skill produces), `/build` (uses research context for implementation), style guide (`~/Programing/dewittn/agentic-docs/coding/style-guide.md`), domain docs (`~/Programing/dewittn/agentic-docs/`).
+Works with: `/feature-define` (produces the docs this skill consumes), `feature-plan` (consumes the enriched docs this skill produces), `/build` (uses research context for implementation), style guide (`~/Programing/dewittn/agentic-docs/coding/style-guide.md`), domain docs (`~/Programing/dewittn/agentic-docs/`).
 
 See `~/Programing/dewittn/agentic-docs/planning/README.md` for the full workflow overview.
 

@@ -71,17 +71,17 @@ Create `HANDOFF.md` in the prototype directory using the template at [references
 ```
 /feature-define (optional, WHAT/WHY)
     → frontend-prototype (DESIGN — mock in static HTML)
-        → pre-plan (HOW — implementation plan)
+        → feature-plan (HOW — implementation plan)
             → implementation
 ```
 
-The handoff document is the bridge between prototyping and implementation. When pre-plan runs, it should check for a handoff document and use its design decisions to inform the implementation plan.
+The handoff document is the bridge between prototyping and implementation. When feature-plan runs, it should check for a handoff document and use its design decisions to inform the implementation plan.
 
 ### Works With
 
 - **`frontend-design` plugin** — Can be invoked manually during Phase 1 for novel design generation. The plugin handles creative generation; this skill handles the process around it.
 - **`playwright-cli`** — Used for capturing screenshots at standard viewports during prototyping
-- **pre-plan skill** — Consumes the handoff document when planning implementation
+- **feature-plan skill** — Consumes the handoff document when planning implementation
 - **`~/Programing/dewittn/agentic-docs/planning/frontend-design.md`** — Reference for design contract format when scope warrants it
 
 ### Cleanup

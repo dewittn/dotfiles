@@ -6,7 +6,7 @@
 |---------------|--------|
 | `feature-planned` | Fresh start. Set `status: pre-planning`, set `last-updated` to today (`date +%Y-%m-%d`). Proceed to Stage 1 from first section. |
 | `pre-planning` | Resuming. Read heading tags, show resumption summary, pick up at first non-reviewed section. |
-| `planned` | Already complete. Tell operator: "Ready for `/build`. Want to re-review instead?" |
+| `planned` | Already complete. Tell operator: "Ready for `/feature-build`. Want to re-review instead?" |
 | `draft` | Not yet feature-planned. Suggest `/feature-define` first. |
 | `implementing` / `complete` | Already past pre-planning. Tell operator the current status. |
 

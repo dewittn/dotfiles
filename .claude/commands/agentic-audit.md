@@ -130,7 +130,7 @@ Tailored to this specific project. Include:
 
 **Available skills** (reference knowledge):
 - `/review-code` — Run all reviewers in parallel (security, quality, tests)
-- **pre-plan skill** — Front-loads context gathering and operator alignment before implementation
+- **feature-plan skill** — Front-loads context gathering and operator alignment before implementation
 - `/cicd-patterns` — Docker Swarm deployment patterns
 - `/docs-style` — Documentation conventions (auto-loads on README edits)
 

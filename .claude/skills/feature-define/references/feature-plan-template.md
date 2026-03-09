@@ -33,7 +33,7 @@ last-updated: YYYY-MM-DD
 
 ## Next Step
 
-When ready to implement, run `pre-plan` to enrich this document with codebase findings, then `/build` to plan and execute the implementation.
+When ready to implement, run `/feature-plan` to enrich this document with codebase findings, then `/feature-build` to plan and execute the implementation.
 
 ## Notes
 
