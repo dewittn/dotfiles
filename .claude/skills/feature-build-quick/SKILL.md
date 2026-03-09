@@ -1,11 +1,11 @@
 ---
-name: quick-build
+name: feature-build-quick
 description: >
   Chain the full planning pipeline (feature-define → feature-plan → feature-build → review-code)
   into a single continuous flow for small features. Use when a feature is simple
-  enough to plan and build in one session. Invoked explicitly with /quick-build.
+  enough to plan and build in one session. Invoked explicitly with /feature-build-quick.
   If feature planning takes >10 minutes, bails out and tells the operator to run
-  stages separately. Do NOT auto-trigger — operator explicitly invokes /quick-build.
+  stages separately. Do NOT auto-trigger — operator explicitly invokes /feature-build-quick.
 ---
 
 # Quick Build
@@ -36,7 +36,7 @@ If **10 minutes or less**, continue immediately.
 
 Read and execute `.claude/skills/feature-plan/SKILL.md` — run all stages (locate feature doc, section-by-section review, completion with branch creation). The skill has a `references/` directory with visual format examples; follow its instructions for loading them.
 
-The feature doc just created in Phase 1 is the input. Feature-plan's section-by-section review still pauses for operator confirmation at each section — quick-build does not skip these checkpoints.
+The feature doc just created in Phase 1 is the input. Feature-plan's section-by-section review still pauses for operator confirmation at each section — feature-build-quick does not skip these checkpoints.
 
 ## Phase 3: Build
 
