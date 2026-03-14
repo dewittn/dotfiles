@@ -1,0 +1,15 @@
+{
+  "eval_id": 1,
+  "eval_name": "wfid-init-mode",
+  "prompt": "Run /context-audit init on WFID fixtures",
+  "assertions": [
+    {"name": "move-to-skill-present", "description": "Report classifies at least one section as 'move to skill'"},
+    {"name": "mfa-professor-referenced", "description": "Report mentions mfa-professor by name as target skill"},
+    {"name": "story-context-moved", "description": "Story context read directive classified as move-to-skill, not keep"},
+    {"name": "wfid-guidelines-moved", "description": "At least 4 of 6 WFID guidelines classified as move-to-skill"},
+    {"name": "document-authority-kept", "description": "Document Authority Notes classified as keep"},
+    {"name": "dont-read-chats-kept", "description": "Don't read Chats rule classified as keep"},
+    {"name": "token-savings-positive", "description": "Token savings > 0"},
+    {"name": "skill-inventory-performed", "description": "Agent references skills inventory before classifying"}
+  ]
+}

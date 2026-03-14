@@ -1,0 +1,12 @@
+{
+  "eval_id": 2,
+  "eval_name": "wfid-skill-mode",
+  "prompt": "Run /context-audit skill on mfa-professor fixture",
+  "assertions": [
+    {"name": "frontmatter-commentary-flagged", "description": "Opening line restating frontmatter is flagged as commentary"},
+    {"name": "persona-exception-applied", "description": "Persona/creative exception is mentioned and applied"},
+    {"name": "office-not-flagged", "description": "The Office section is NOT flagged as noise"},
+    {"name": "teaching-philosophy-not-flagged", "description": "Teaching Philosophy is NOT flagged as noise"},
+    {"name": "novel-section-flagged", "description": "The Novel section is flagged as potential redundancy"}
+  ]
+}

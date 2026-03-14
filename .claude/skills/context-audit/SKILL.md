@@ -31,13 +31,14 @@ Parse argument from `$ARGUMENTS`:
 Read `references/init-rubric.md` for the four-bucket classification rubric.
 
 Workflow:
-1. Read the project's CLAUDE.md
-2. Run `scripts/estimate-tokens.sh` on the file
-3. Classify each section using the four-bucket rubric (delete, hook candidate, move to skill, keep)
-4. For "delete" candidates — probe the codebase to confirm discoverability before classifying
-5. Present report per `references/report-template.md`
-6. Wait for operator confirmation before applying changes
-7. Apply changes, re-run token estimate, report savings
+1. **Skill inventory first** — read `.claude/skills/*/SKILL.md` frontmatter to understand what skills exist and what domains they cover
+2. Read the project's CLAUDE.md
+3. Run `scripts/estimate-tokens.sh` on the file
+4. Classify each section using the four-bucket rubric — **start with "move to skill"**, then delete, hook candidate, keep
+5. For "move to skill" — match content against the skill inventory. Ask: "Does an infrastructure session need this?"
+6. Present report per `references/report-template.md`
+7. Wait for operator confirmation before applying changes
+8. Apply changes, re-run token estimate, report savings
 
 ## Skill Mode — SKILL.md Audit
 
